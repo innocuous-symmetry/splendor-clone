@@ -1,0 +1,998 @@
+{
+    "tierOne": [
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 1,
+                "cedar": 1,
+                "mahogany": 1,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 1,
+                "cedar": 0,
+                "mahogany": 1,
+                "aspen": 1
+            },
+            "isWorth": "cedar",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 1,
+                "cedar": 1,
+                "mahogany": 0,
+                "aspen": 1
+            },
+            "isWorth": "mahogany",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 0,
+                "cedar": 1,
+                "mahogany": 1,
+                "aspen": 1
+            },
+            "isWorth": "walnut",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 1,
+                "cedar": 1,
+                "mahogany": 1,
+                "aspen": 1
+            },
+            "isWorth": "cherry",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 2,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 2
+            },
+            "isWorth": "mahogany",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 0,
+                "cedar": 2,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 3,
+                "cedar": 1,
+                "mahogany": 0,
+                "aspen": 1
+            },
+            "isWorth": "cedar",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 1,
+                "cedar": 3,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 2,
+                "aspen": 1
+            },
+            "isWorth": "walnut",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 1,
+                "cedar": 2,
+                "mahogany": 1,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 1,
+                "cedar": 1,
+                "mahogany": 1,
+                "aspen": 2
+            },
+            "isWorth": "cherry",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 1,
+                "mahogany": 1,
+                "aspen": 2
+            },
+            "isWorth": "cherry",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 0,
+                "cedar": 1,
+                "mahogany": 1,
+                "aspen": 1
+            },
+            "isWorth": "walnut",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 2,
+                "cedar": 2,
+                "mahogany": 1,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 2,
+                "cedar": 1,
+                "mahogany": 0,
+                "aspen": 1
+            },
+            "isWorth": "mahogany",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 2,
+                "cedar": 1,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cherry",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 1
+            },
+            "isWorth": "cherry",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 1,
+                "cedar": 0,
+                "mahogany": 1,
+                "aspen": 3
+            },
+            "isWorth": "aspen",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 1,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 1,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 2
+            },
+            "isWorth": "cedar",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 1,
+                "cedar": 0,
+                "mahogany": 2,
+                "aspen": 1
+            },
+            "isWorth": "cedar",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 1,
+                "cedar": 0,
+                "mahogany": 1,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 0,
+                "cedar": 1,
+                "mahogany": 1,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 0,
+                "cedar": 2,
+                "mahogany": 0,
+                "aspen": 1
+            },
+            "isWorth": "walnut",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 2,
+                "mahogany": 0,
+                "aspen": 2
+            },
+            "isWorth": "mahogany",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 2,
+                "cedar": 0,
+                "mahogany": 2,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 2,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 2
+            },
+            "isWorth": "cherry",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 2,
+                "mahogany": 2,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 3
+            },
+            "isWorth": "cherry",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 3,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 0
+        },
+        {
+            "cost": {
+                "cherry": 4,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 4
+            },
+            "isWorth": "cherry",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 4,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 4,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 4,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 1
+        }
+    ],
+    "tierTwo": [
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 5,
+                "aspen": 3
+            },
+            "isWorth": "cherry",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 0,
+                "cedar": 5,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 2,
+                "aspen": 2
+            },
+            "isWorth": "cedar",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 5
+            },
+            "isWorth": "mahogany",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 5,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 5,
+                "aspen": 0
+            },
+            "isWorth": "cherry",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 5,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 5,
+                "cedar": 3,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 5,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 5,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 2
+            },
+            "isWorth": "aspen",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 1,
+                "cedar": 4,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 1,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 4,
+                "aspen": 2
+            },
+            "isWorth": "walnut",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 6,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 2,
+                "cedar": 0,
+                "mahogany": 1,
+                "aspen": 4
+            },
+            "isWorth": "cedar",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 6
+            },
+            "isWorth": "aspen",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 4,
+                "cedar": 2,
+                "mahogany": 0,
+                "aspen": 1
+            },
+            "isWorth": "cherry",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 2,
+                "cedar": 2,
+                "mahogany": 0,
+                "aspen": 3
+            },
+            "isWorth": "mahogany",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 3,
+                "mahogany": 2,
+                "aspen": 3
+            },
+            "isWorth": "mahogany",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 6,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 2
+            },
+            "isWorth": "cherry",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 4,
+                "walnut": 0,
+                "cedar": 1,
+                "mahogany": 2,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 0,
+                "cedar": 2,
+                "mahogany": 0,
+                "aspen": 3
+            },
+            "isWorth": "cedar",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 0,
+                "cedar": 3,
+                "mahogany": 2,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 2,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 0
+            },
+            "isWorth": "cherry",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 2,
+                "cedar": 2,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 1
+        },
+        {
+            "cost": {
+                "cherry": 6,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cherry",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 6,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 5
+            },
+            "isWorth": "walnut",
+            "points": 2
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 2,
+                "cedar": 3,
+                "mahogany": 3,
+                "aspen": 0
+            },
+            "isWorth": "walnut",
+            "points": 1
+        }
+    ],
+    "tierThree": [
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 7,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cherry",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 7,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 6,
+                "aspen": 3
+            },
+            "isWorth": "aspen",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 3,
+                "cedar": 6,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 7,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 6
+            },
+            "isWorth": "walnut",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 6,
+                "walnut": 0,
+                "cedar": 3,
+                "mahogany": 3,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 7
+            },
+            "isWorth": "walnut",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 7,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 6,
+                "cedar": 3,
+                "mahogany": 0,
+                "aspen": 3
+            },
+            "isWorth": "cedar",
+            "points": 4
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 5,
+                "cedar": 3,
+                "mahogany": 3,
+                "aspen": 3
+            },
+            "isWorth": "cherry",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 5
+            },
+            "isWorth": "cedar",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 5,
+                "walnut": 3,
+                "cedar": 3,
+                "mahogany": 3,
+                "aspen": 0
+            },
+            "isWorth": "aspen",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 3,
+                "cedar": 5,
+                "mahogany": 0,
+                "aspen": 3
+            },
+            "isWorth": "mahogany",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 0,
+                "cedar": 3,
+                "mahogany": 5,
+                "aspen": 3
+            },
+            "isWorth": "walnut",
+            "points": 3
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 3,
+                "cedar": 0,
+                "mahogany": 0,
+                "aspen": 7
+            },
+            "isWorth": "walnut",
+            "points": 5
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 7,
+                "aspen": 3
+            },
+            "isWorth": "aspen",
+            "points": 5
+        },
+        {
+            "cost": {
+                "cherry": 3,
+                "walnut": 0,
+                "cedar": 7,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cherry",
+            "points": 5
+        },
+        {
+            "cost": {
+                "cherry": 0,
+                "walnut": 7,
+                "cedar": 3,
+                "mahogany": 0,
+                "aspen": 0
+            },
+            "isWorth": "cedar",
+            "points": 5
+        },
+        {
+            "cost": {
+                "cherry": 7,
+                "walnut": 0,
+                "cedar": 0,
+                "mahogany": 3,
+                "aspen": 0
+            },
+            "isWorth": "mahogany",
+            "points": 5
+        }
+    ]
+}
