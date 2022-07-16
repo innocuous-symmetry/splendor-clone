@@ -1,13 +1,9 @@
 /// <reference path="Gameboard.d.ts" />
-/// <reference path="../Card/Card.d.ts" />
-
-import { useState, useEffect } from "react"
+/// <reference path="../../util/main.d.ts" />
 
 export default function Gameboard() {
-    const [cards, setCards] = useState();
-
-    const exampleCard: CardInfo.Card = {
-        gemValue: "ruby",
+    const exampleCard: Universals.Card = {
+        gemValue: Universals.GemValue.Ruby,
         tier: 1,
         cost: 5
     }

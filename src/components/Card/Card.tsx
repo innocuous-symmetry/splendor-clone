@@ -1,6 +1,6 @@
-/// <reference path="Card.d.ts" />
+/// <reference path="../../util/main.d.ts" />
 
-export default function Card(data: CardInfo.Card) {
+export default function Card(data: Universals.Card) {
     return (
         <div className="card">
             <p>{data.gemValue}</p>
