@@ -1,12 +1,15 @@
-/// <reference path="../../util/main.d.ts" />
+import { CardData } from '../../util/types';
 
-export default function Card(data: Universals.Card) {
+type CardProps = {
+    data: CardData
+}
+
+export default function Card({ data }: CardProps) {
     return (
         <div className="card">
             <p>{data.gemValue}</p>
             <p>{data.tier}</p>
             <p>{data.points || 0}</p>
-            <p>{data.cost}</p>
         </div>
     )
 }
