@@ -6,10 +6,18 @@ type CardProps = {
 
 export default function Card({ data }: CardProps) {
     return (
-        <div className="card">
-            <p>{data.gemValue}</p>
-            <p>{data.tier}</p>
-            <p>{data.points || 0}</p>
+        <div className={`card`}>
+            <div className="top-row">
+                <p>Counts as: {data.gemValue}</p>
+                <p>Point value: {data.points || 0}</p>
+                <p>Cost:</p>
+                { Object.keys(data.resourceCost).map((key, value) => {
+                    return (
+                        // @ts-ignore
+                        <p>{key}: {data.resourceCost[key]}</p>
+                    )
+                }) }
+            </div>
         </div>
     )
 }

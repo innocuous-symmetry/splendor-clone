@@ -1,26 +1,47 @@
 import { useEffect, useState } from 'react';
-import { CardData, NobleData, GemValue } from '../../util/types';
-import CardDeck from '../../util/cards.json';
+import { CardData, NobleData } from '../../util/types';
+import CardRow from './CardRow';
+import CardDeck from '../../data/cards.json';
+import Nobles from '../../data/nobles.json';
 
 export default function Gameboard() {
     const [state, setState] = useState({
         deck: CardDeck,
-        nobles: new Array<NobleData>,
+        nobles: Nobles.nobles,
         cardRows: {
             tierOne: new Array<CardData>,
             tierTwo: new Array<CardData>,
             tierThree: new Array<CardData>
         },
+        tradingResources: {
+            ruby: 7,
+            sapphire: 7,
+            emerald: 7,
+            diamond: 7,
+            onyx: 7,
+            gold: 5
+        }
     })
+
+    const [view, setView] = useState(<p>Loading...</p>)
 
     useEffect(() => {
         initializeBoard();
-        console.log(state || null);
+        console.log(state);
     }, [])
+
+    useEffect(() => {
+        setView(
+            <>
+            <CardRow tier={1} cards={state.cardRows.tierOne} />
+            <CardRow tier={2} cards={state.cardRows.tierTwo} />
+            <CardRow tier={3} cards={state.cardRows.tierThree} />
+            </>
+        )
+    }, [state.cardRows]);
 
     const shuffleDeck = () => {
         if (!state.deck) return;
-
         let newDeck = state.deck;
 
         for (const [key, value] of Object.entries(newDeck)) {
@@ -35,8 +56,22 @@ export default function Gameboard() {
         setState({ ...state, deck: newDeck });
     }
 
+    const setNobles = () => {
+        let newNobles = state.nobles;
+        let shuffledNobles = new Array<NobleData>;
+
+        while (shuffledNobles.length < 4) {
+            const rand = Math.floor(Math.random() * newNobles.length);
+            const randNoble = newNobles.splice(rand,1)[0];
+            shuffledNobles.push(randNoble);
+        }
+        
+        setState({ ...state, nobles: shuffledNobles });
+    }
+
     const initializeBoard = () => {
         shuffleDeck();
+        setNobles();
 
         let newState = state;
 
@@ -55,6 +90,7 @@ export default function Gameboard() {
     return (
         <div>
             <h1>Gameboard</h1>
+            { view }
         </div>
     )
 }
