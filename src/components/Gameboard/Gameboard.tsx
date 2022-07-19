@@ -33,9 +33,9 @@ export default function Gameboard() {
     useEffect(() => {
         setView(
             <>
-            <CardRow tier={1} cards={state.cardRows.tierOne} />
-            <CardRow tier={2} cards={state.cardRows.tierTwo} />
             <CardRow tier={3} cards={state.cardRows.tierThree} />
+            <CardRow tier={2} cards={state.cardRows.tierTwo} />
+            <CardRow tier={1} cards={state.cardRows.tierOne} />
             </>
         )
     }, [state.cardRows]);
@@ -89,7 +89,7 @@ export default function Gameboard() {
 
     return (
         <div>
-            <h1>Gameboard</h1>
+            <h1>SPLENDOR</h1>
             { view }
         </div>
     )
