@@ -2,8 +2,11 @@ import { useContext, useEffect, useState } from 'react';
 import { Context } from '../../context/Context';
 import GameConstructor from '../../util/GameConstructor';
 import { NobleData } from '../../util/types';
+import AllPlayers from '../Player/AllPlayers';
 import AvailableChips from '../Resources/AvailableChips';
 import CardRow from './CardRow';
+import Nobles from './Nobles';
+import NobleStore from '../../data/nobles.json';
 
 export default function Gameboard() {
     let AppContext = useContext(Context);
@@ -16,14 +19,21 @@ export default function Gameboard() {
 
     useEffect(() => {
         if (!players.length) {
-            setView(<GameConstructor />);
+            setView(
+                <div className="error-page">
+                    <h1>Sorry! It appears we've lost track of your game data.</h1>
+                    <p>Please head back to the <a href="/">home page</a> to start a fresh game.</p>
+                </div>
+            );
         } else {
             setView(
                 <div className="gameboard-rows">
+                    <Nobles />
                     <CardRow tier={3} cards={gameboard.cardRows.tierThree} />
                     <CardRow tier={2} cards={gameboard.cardRows.tierTwo} />
                     <CardRow tier={1} cards={gameboard.cardRows.tierOne} />
                     <AvailableChips />
+                    <AllPlayers />
                 </div>
             )
         }
@@ -47,7 +57,7 @@ export default function Gameboard() {
     }
 
     const setNobles = () => {
-        let newNobles = gameboard.nobles;
+        let newNobles = NobleStore.nobles;
         let shuffledNobles = new Array<NobleData>;
 
         while (shuffledNobles.length < 4) {
@@ -55,6 +65,9 @@ export default function Gameboard() {
             const randNoble = newNobles.splice(rand,1)[0];
             shuffledNobles.push(randNoble);
         }
+
+        console.log(newNobles);
+        console.log(shuffledNobles);
         
         // setState({ ...gameboard, nobles: shuffledNobles });
         gameboard.nobles = shuffledNobles;

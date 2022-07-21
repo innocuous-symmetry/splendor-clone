@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Context } from "../../context/Context"
 import { v4 } from "uuid";
+import "./AvailableChips.css"
 
 export default function AvailableChips() {
     const { gameboard } = useContext(Context);

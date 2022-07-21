@@ -12,12 +12,12 @@ export default function Card({ data }: CardProps) {
                 <p>Counts as: {data.gemValue}</p>
                 <p>Point value: {data.points || 0}</p>
                 <p>Cost:</p>
-                { Object.keys(data.resourceCost).map((key, value) => {
-                    return (
+                {
+                    Object.keys(data.resourceCost).map((key, value) => {
                         // @ts-ignore
-                        <p key={v4()}>{key}: {data.resourceCost[key]}</p>
-                    )
-                }) }
+                        return (data.resourceCost[key] > 0) && <p key={v4()}>{key}: {data.resourceCost[key]}</p>
+                    })
+                }
             </div>
         </div>
     )
