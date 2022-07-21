@@ -1,5 +1,6 @@
+import { v4 } from "uuid";
 import { useState } from "react";
-import { CardData, GemValue, NobleData, PlayerData } from "../../util/types";
+import { CardData, GemValue, PlayerData } from "../../util/types";
 
 interface PlayerProps {
     data: PlayerData
@@ -36,7 +37,7 @@ export default function Player({ data }: PlayerProps) {
     }
 
     return (
-        <div className="player-ui">
+        <div className="player-ui" key={v4()}>
             <p>Name: {data.name}</p>
             <p>Score: {data.points}</p>
             <p>Is {data.starter || "not"} round starter</p>

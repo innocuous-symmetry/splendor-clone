@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { Context } from "../../context/Context"
 import Player from "./Player";
+import { v4 } from "uuid";
 import "./AllPlayers.css"
 
 export default function AllPlayers() {
@@ -9,7 +10,7 @@ export default function AllPlayers() {
     return (
         <div className="all-players">
             {
-                players.map((player) => <Player data={player} />)
+                players.map((player) => <Player key={v4()} data={player} />)
             }
         </div>
     )

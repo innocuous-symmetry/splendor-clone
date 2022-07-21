@@ -102,7 +102,7 @@ export default function GameConstructor() {
                     id="P1-START"
                     required
                     onChange={() => handleRadio(1)}
-                    checked={starter === 0}>
+                    checked={starter === 0 && input.playerOne.name.length > 0}>
                 </input>
             </div>
 
@@ -118,7 +118,7 @@ export default function GameConstructor() {
                     id="P2-START"
                     required
                     onChange={() => handleRadio(2)}
-                    checked={starter === 1}>
+                    checked={starter === 1 && input.playerTwo.name.length > 0}>
                 </input>
             </div>
 
@@ -134,7 +134,7 @@ export default function GameConstructor() {
                     id="P3-START"
                     required
                     onChange={() => handleRadio(3)}
-                    checked={starter === 2}>
+                    checked={starter === 2 && input.playerThree.name.length > 0}>
                 </input>
             </div>
 
@@ -149,7 +149,7 @@ export default function GameConstructor() {
                     type="radio"
                     id="P1-START"
                     onChange={() => handleRadio(4)}
-                    checked={starter === 3}>
+                    checked={starter === 3 && input.playerFour.name.length > 0}>
                 </input>
             </div>
 

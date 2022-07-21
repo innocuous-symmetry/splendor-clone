@@ -19,7 +19,7 @@ export default function Nobles() {
                             {
                                 Object.keys(noble.resourceCost).map((each) => {
                                     // @ts-ignore
-                                    return (noble.resourceCost[each] > 0) && <p>{each}: {noble.resourceCost[each]}</p>
+                                    return (noble.resourceCost[each] > 0) && <p key={v4()}>{each}: {noble.resourceCost[each]}</p>
                                 })
                             }
                         </div>
