@@ -39,6 +39,7 @@ export default function Player({ data }: PlayerProps) {
         <div className="player-ui">
             <p>Name: {data.name}</p>
             <p>Score: {data.points}</p>
+            <p>Is {data.starter || "not"} round starter</p>
             <div className="player-cards"></div>
             <div className="player-resources"></div>
         </div>

@@ -1,27 +1,53 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Context } from "../context/Context";
 import { CardData, NobleData, PlayerData } from "./types";
+
+interface InputState {
+    playerOne: PlayerInput
+    playerTwo: PlayerInput
+    playerThree: PlayerInput
+    playerFour: PlayerInput
+}
+
+interface PlayerInput {
+    name: string,
+    starter: boolean
+}
 
 export default function GameConstructor() {
     const AppContext = useContext(Context);
     const navigate = useNavigate();
 
-    const [input, setInput] = useState({
-        playerOne: '',
-        playerTwo: '',
-        playerThree: '',
-        playerFour: '',
+    const [starter, setStarter] = useState(-1);
+
+    const [input, setInput] = useState<InputState>({
+        playerOne: {
+            name: '',
+            starter: false
+        },
+        playerTwo: {
+            name: '',
+            starter: false
+        },
+        playerThree: {
+            name: '',
+            starter: false
+        },
+        playerFour: {
+            name: '',
+            starter: false
+        },
     })
 
     const newGame = () => {
-        if (!input.playerOne || !input.playerTwo) return;
-        if (input.playerFour && !input.playerThree) return;
+        if (!input.playerOne.name || !input.playerTwo.name) return;
+        if (input.playerFour.name && !input.playerThree.name) return;
 
-        const newPlayers = Object.values(input).map((name: string): PlayerData => {
+        const newPlayers = Object.values(input).map((val: {name: string, starter: boolean}): PlayerData => {
             return {
-                name: name,
-                starter: false,
+                name: val.name,
+                starter: val.starter,
                 points: 0,
                 nobles: new Array<NobleData>,
                 cards: new Array<CardData>,
@@ -41,9 +67,23 @@ export default function GameConstructor() {
         }
 
         AppContext.players = newPlayers;
-
-        console.log(AppContext)
         navigate('/game');
+    }
+
+    const handleRadio = (x: number) => {
+        const playerKeys = ["playerOne", "playerTwo", "playerThree", "playerFour"]
+        const inputKey = playerKeys[x-1];
+        setStarter(x-1);
+
+        setInput((prev) => {
+            let newState = prev;
+            for (let key of Object.keys(prev)) {
+                // @ts-ignore
+                newState[key].starter = (key === inputKey);
+            }
+
+            return newState;
+        })
     }
 
     return (
@@ -52,19 +92,68 @@ export default function GameConstructor() {
 
             <div>
                 <label htmlFor="P1-NAME">Player 1 Name:</label>
-                <input type="text" id="P1-NAME" required onChange={(e) => setInput({ ...input, playerOne: e.target.value})}></input>
+                <input
+                    type="text"
+                    id="P1-NAME" required
+                    onChange={(e) => setInput({ ...input, playerOne: {...input.playerOne, name: e.target.value}})}>
+                </input>
+                <input
+                    type="radio"
+                    id="P1-START"
+                    required
+                    onChange={() => handleRadio(1)}
+                    checked={starter === 0}>
+                </input>
+            </div>
+
+            <div>
                 <label htmlFor="P2-NAME">Player 2 Name:</label>
-                <input type="text" id="P2-NAME" required onChange={(e) => setInput({ ...input, playerTwo: e.target.value})}></input>
+                <input
+                    type="text"
+                    id="P2-NAME" required
+                    onChange={(e) => setInput({ ...input, playerTwo: {...input.playerTwo, name: e.target.value}})}>
+                </input>
+                <input
+                    type="radio"
+                    id="P2-START"
+                    required
+                    onChange={() => handleRadio(2)}
+                    checked={starter === 1}>
+                </input>
             </div>
 
             <div>
                 <label htmlFor="P3-NAME">Player 3 Name:</label>
-                <input type="text" id="P3-NAME" onChange={(e) => setInput({ ...input, playerThree: e.target.value})}></input>
-                <label htmlFor="P4-NAME">Player 4 Name:</label>
-                <input type="text" id="P4-NAME" onChange={(e) => setInput({ ...input, playerFour: e.target.value})}></input>
+                <input
+                    type="text"
+                    id="P3-NAME"
+                    onChange={(e) => setInput({ ...input, playerThree: {...input.playerThree, name: e.target.value}})}>
+                </input>
+                <input
+                    type="radio"
+                    id="P3-START"
+                    required
+                    onChange={() => handleRadio(3)}
+                    checked={starter === 2}>
+                </input>
             </div>
 
-            <button onClick={newGame}>Start Game</button>
+            <div>
+                <label htmlFor="P4-NAME">Player 4 Name:</label>
+                <input
+                    type="text"
+                    id="P4-NAME"
+                    onChange={(e) => setInput({ ...input, playerFour: {...input.playerFour, name: e.target.value}})}>
+                </input>
+                <input
+                    type="radio"
+                    id="P1-START"
+                    onChange={() => handleRadio(4)}
+                    checked={starter === 3}>
+                </input>
+            </div>
+
+            <button disabled={!input.playerOne.name || !input.playerTwo.name} onClick={newGame}>Start Game</button>
         </div>
     )
 }

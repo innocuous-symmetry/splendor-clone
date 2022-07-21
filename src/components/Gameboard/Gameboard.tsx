@@ -21,7 +21,7 @@ export default function Gameboard() {
         if (!players.length) {
             setView(
                 <div className="error-page">
-                    <h1>Sorry! It appears we've lost track of your game data.</h1>
+                    <strong>Sorry! It appears we've lost track of your game data.</strong>
                     <p>Please head back to the <a href="/">home page</a> to start a fresh game.</p>
                 </div>
             );
@@ -53,7 +53,6 @@ export default function Gameboard() {
         }
 
         gameboard.deck = newDeck;
-        // setState({ ...gameboard, deck: newDeck });
     }
 
     const setNobles = () => {
@@ -65,11 +64,7 @@ export default function Gameboard() {
             const randNoble = newNobles.splice(rand,1)[0];
             shuffledNobles.push(randNoble);
         }
-
-        console.log(newNobles);
-        console.log(shuffledNobles);
         
-        // setState({ ...gameboard, nobles: shuffledNobles });
         gameboard.nobles = shuffledNobles;
     }
 

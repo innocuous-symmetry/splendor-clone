@@ -5,10 +5,6 @@ import "./Nobles.css"
 
 export default function Nobles() {
     const { gameboard } = useContext(Context);
-    
-    useEffect(() => {
-        console.log(gameboard);
-    }, [gameboard])
 
     return (
         <div className="nobles-panel">
