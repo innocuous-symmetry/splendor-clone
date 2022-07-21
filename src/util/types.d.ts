@@ -44,10 +44,10 @@ export interface NobleData {
 }
 
 export enum GemValue {
-    Ruby,
-    Sapphire,
-    Emerald,
-    Diamond,
-    Onyx,
-    Gold,
+    ruby,
+    sapphire,
+    emerald,
+    diamond,
+    onyx,
+    gold,
 }

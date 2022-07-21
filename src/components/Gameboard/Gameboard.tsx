@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Context } from '../../context/Context';
-import GameConstructor from '../../util/GameConstructor';
+import { appState, Context } from '../../context/Context';
 import { NobleData } from '../../util/types';
 import AllPlayers from '../Player/AllPlayers';
 import AvailableChips from '../Resources/AvailableChips';
@@ -28,16 +27,16 @@ export default function Gameboard() {
         } else {
             setView(
                 <div className="gameboard-rows">
-                    <Nobles />
+                    <Nobles AppContext={AppContext} />
                     <CardRow tier={3} cards={gameboard.cardRows.tierThree} />
                     <CardRow tier={2} cards={gameboard.cardRows.tierTwo} />
                     <CardRow tier={1} cards={gameboard.cardRows.tierOne} />
                     <AvailableChips />
-                    <AllPlayers />
+                    <AllPlayers AppContext={AppContext} />
                 </div>
             )
         }
-    }, [players]);
+    }, [AppContext]);
 
     const shuffleDeck = () => {
         if (!gameboard.deck) return;

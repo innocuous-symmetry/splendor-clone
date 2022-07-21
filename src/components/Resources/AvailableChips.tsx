@@ -1,23 +1,23 @@
-import { useContext } from "react"
-import { Context } from "../../context/Context"
+import { useContext, useEffect, useState } from "react"
 import { v4 } from "uuid";
+import { appState, Context } from "../../context/Context";
+import { ResourceCost } from "../../util/types";
 import "./AvailableChips.css"
 
 export default function AvailableChips() {
-    const { gameboard } = useContext(Context);
+    const AppContext = useContext(Context);
 
     return (
         <div className="available-chips">
-        {
-            Object.keys(gameboard.tradingResources).map((key: string) => {
-                return (
-                    <div key={v4()} className={`chips-${key}`}>
-                        {/* @ts-ignore */}
-                        <p>{key}: {gameboard.tradingResources[key]}</p>
-                    </div>
-                )
-            })
-        }
+            {
+                Object.keys(AppContext.gameboard.tradingResources).map((key: string) => {
+                    return (
+                        <div key={v4()} className={`chips-${key}`}>
+                            <p>{key}: {AppContext.gameboard.tradingResources[key as keyof ResourceCost]}</p>
+                        </div>
+                    )
+                })
+            }
         </div>
     )
 }

@@ -13,13 +13,15 @@ function App() {
 
   return (
     <div className="App">
-      <h1>SPLENDOR</h1>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<GameConstructor />} />
-          <Route path="/game" element={<Gameboard />} />
-        </Routes>
-      </BrowserRouter>
+      <Context.Provider value={appState}>
+        <h1>SPLENDOR</h1>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<GameConstructor />} />
+            <Route path="/game" element={<Gameboard />} />
+          </Routes>
+        </BrowserRouter>
+      </Context.Provider>
     </div>
   );
 }
