@@ -1,48 +1,37 @@
-import { useEffect, useState } from 'react';
-import { CardData, NobleData } from '../../util/types';
+import { useContext, useEffect, useState } from 'react';
+import { Context } from '../../context/Context';
+import GameConstructor from '../../util/GameConstructor';
+import { NobleData } from '../../util/types';
+import AvailableChips from '../Resources/AvailableChips';
 import CardRow from './CardRow';
-import CardDeck from '../../data/cards.json';
-import Nobles from '../../data/nobles.json';
 
 export default function Gameboard() {
-    const [state, setState] = useState({
-        deck: CardDeck,
-        nobles: Nobles.nobles,
-        cardRows: {
-            tierOne: new Array<CardData>,
-            tierTwo: new Array<CardData>,
-            tierThree: new Array<CardData>
-        },
-        tradingResources: {
-            ruby: 7,
-            sapphire: 7,
-            emerald: 7,
-            diamond: 7,
-            onyx: 7,
-            gold: 5
-        }
-    })
-
+    let AppContext = useContext(Context);
+    let { gameboard, players } = AppContext;
     const [view, setView] = useState(<p>Loading...</p>)
 
     useEffect(() => {
         initializeBoard();
-        console.log(state);
     }, [])
 
     useEffect(() => {
-        setView(
-            <>
-            <CardRow tier={3} cards={state.cardRows.tierThree} />
-            <CardRow tier={2} cards={state.cardRows.tierTwo} />
-            <CardRow tier={1} cards={state.cardRows.tierOne} />
-            </>
-        )
-    }, [state.cardRows]);
+        if (!players.length) {
+            setView(<GameConstructor />);
+        } else {
+            setView(
+                <div className="gameboard-rows">
+                    <CardRow tier={3} cards={gameboard.cardRows.tierThree} />
+                    <CardRow tier={2} cards={gameboard.cardRows.tierTwo} />
+                    <CardRow tier={1} cards={gameboard.cardRows.tierOne} />
+                    <AvailableChips />
+                </div>
+            )
+        }
+    }, [players]);
 
     const shuffleDeck = () => {
-        if (!state.deck) return;
-        let newDeck = state.deck;
+        if (!gameboard.deck) return;
+        let newDeck = gameboard.deck;
 
         for (const [key, value] of Object.entries(newDeck)) {
             for (let i = value.length - 1; i > 0; i--) {
@@ -53,11 +42,12 @@ export default function Gameboard() {
             }
         }
 
-        setState({ ...state, deck: newDeck });
+        gameboard.deck = newDeck;
+        // setState({ ...gameboard, deck: newDeck });
     }
 
     const setNobles = () => {
-        let newNobles = state.nobles;
+        let newNobles = gameboard.nobles;
         let shuffledNobles = new Array<NobleData>;
 
         while (shuffledNobles.length < 4) {
@@ -66,16 +56,17 @@ export default function Gameboard() {
             shuffledNobles.push(randNoble);
         }
         
-        setState({ ...state, nobles: shuffledNobles });
+        // setState({ ...gameboard, nobles: shuffledNobles });
+        gameboard.nobles = shuffledNobles;
     }
 
     const initializeBoard = () => {
         shuffleDeck();
         setNobles();
 
-        let newState = state;
+        let newState = gameboard;
 
-        for (const [key, value] of Object.entries(state.deck)) {
+        for (const [key, value] of Object.entries(gameboard.deck)) {
             // @ts-ignore
             while (newState.cardRows[key].length < 4) {
                 const nextCard = value.shift();
@@ -84,13 +75,8 @@ export default function Gameboard() {
             }
         }
 
-        setState(newState);
+        gameboard = newState;
     }
 
-    return (
-        <div>
-            <h1>SPLENDOR</h1>
-            { view }
-        </div>
-    )
+    return view;
 }

@@ -1,4 +1,5 @@
 import { CardData } from '../../util/types';
+import { v4 } from 'uuid';
 
 type CardProps = {
     data: CardData
@@ -14,7 +15,7 @@ export default function Card({ data }: CardProps) {
                 { Object.keys(data.resourceCost).map((key, value) => {
                     return (
                         // @ts-ignore
-                        <p>{key}: {data.resourceCost[key]}</p>
+                        <p key={v4()}>{key}: {data.resourceCost[key]}</p>
                     )
                 }) }
             </div>
