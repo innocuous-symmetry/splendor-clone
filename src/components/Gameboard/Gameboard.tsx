@@ -24,6 +24,7 @@ export default function Gameboard({ state, setState }: StateProps) {
         } else {
             setView(
                 <div className="gameboard-rows">
+                    <strong>Round: {state.round}</strong>
                     <Nobles state={state} setState={setState} />
                     <CardRow tier={3} cards={state.gameboard.cardRows.tierThree} />
                     <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />

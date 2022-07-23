@@ -30,6 +30,7 @@ export interface GameInformation {
 
 export interface PlayerData {
     name: string,
+    id: number,
     starter: boolean,
     turnActive?: boolean,
     points: number,

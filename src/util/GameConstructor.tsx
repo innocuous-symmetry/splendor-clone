@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Context } from "../context/Context";
+import { v4 } from "uuid";
 import { CardData, NobleData, PlayerData, StateProps } from "./types";
 
 interface InputState {
@@ -19,6 +19,7 @@ export default function GameConstructor({ state, setState }: StateProps) {
     const navigate = useNavigate();
 
     const [starter, setStarter] = useState(-1);
+    const [error, setError] = useState('init');
     const [input, setInput] = useState<InputState>({
         playerOne: {
             name: '',
@@ -38,14 +39,30 @@ export default function GameConstructor({ state, setState }: StateProps) {
         },
     })
 
-    const newGame = () => {
-        if (!input.playerOne.name || !input.playerTwo.name) return;
-        if (input.playerFour.name && !input.playerThree.name) return;
+    useEffect(() => {
+        if (!input.playerOne.name || !input.playerTwo.name) {
+            setError("Please provide the minimum number of players.");
+        } else if (input.playerFour.name && !input.playerThree.name) {
+            setError("Your player input data is invalid. Please input players sequential turn order.");
+        } else if (error !== 'init' && starter === -1) {
+            setError("Please indicate a player to start.");
+        } else {
+            setError('');
+        }
+    }, [input, starter])
 
+    const newGame = () => {
+        if (error) return;
+
+        let i = 0;
         const newPlayers = Object.values(input).map((val: {name: string, starter: boolean}): PlayerData => {
+            i++;
+
             return {
                 name: val.name,
+                id: i,
                 starter: val.starter,
+                turnActive: val.starter,
                 points: 0,
                 nobles: new Array<NobleData>,
                 cards: new Array<CardData>,
@@ -151,7 +168,8 @@ export default function GameConstructor({ state, setState }: StateProps) {
                 </input>
             </div>
 
-            <button disabled={!input.playerOne.name || !input.playerTwo.name} onClick={newGame}>Start Game</button>
+            <p>{error !== 'init' && error}</p>
+            <button disabled={error.length > 0} onClick={newGame}>Start Game</button>
         </div>
     )
 }
