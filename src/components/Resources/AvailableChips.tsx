@@ -1,19 +1,20 @@
-import { useContext, useEffect, useState } from "react"
+import { ResourceCost, StateProps } from "../../util/types";
 import { v4 } from "uuid";
-import { appState, Context } from "../../context/Context";
-import { ResourceCost } from "../../util/types";
 import "./AvailableChips.css"
+import { useEffect } from "react";
 
-export default function AvailableChips() {
-    const AppContext = useContext(Context);
+export default function AvailableChips({ state }: StateProps) {
+    useEffect(() => {
+        return;
+    }, [state])
 
     return (
         <div className="available-chips">
             {
-                Object.keys(AppContext.gameboard.tradingResources).map((key: string) => {
+                Object.keys(state.gameboard.tradingResources).map((key: string) => {
                     return (
                         <div key={v4()} className={`chips-${key}`}>
-                            <p>{key}: {AppContext.gameboard.tradingResources[key as keyof ResourceCost]}</p>
+                            <p>{key}: {state.gameboard.tradingResources[key as keyof ResourceCost]}</p>
                         </div>
                     )
                 })

@@ -1,15 +1,12 @@
-import { useContext, useEffect, useState } from 'react';
-import { appState, Context } from '../../context/Context';
-import { NobleData } from '../../util/types';
+import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { CardData, FullDeck, NobleData, StateProps } from '../../util/types';
 import AllPlayers from '../Player/AllPlayers';
 import AvailableChips from '../Resources/AvailableChips';
 import CardRow from './CardRow';
 import Nobles from './Nobles';
 import NobleStore from '../../data/nobles.json';
 
-export default function Gameboard() {
-    let AppContext = useContext(Context);
-    let { gameboard, players } = AppContext;
+export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>)
 
     useEffect(() => {
@@ -17,7 +14,7 @@ export default function Gameboard() {
     }, [])
 
     useEffect(() => {
-        if (!players.length) {
+        if (!state.players.length) {
             setView(
                 <div className="error-page">
                     <strong>Sorry! It appears we've lost track of your game data.</strong>
@@ -27,20 +24,20 @@ export default function Gameboard() {
         } else {
             setView(
                 <div className="gameboard-rows">
-                    <Nobles AppContext={AppContext} />
-                    <CardRow tier={3} cards={gameboard.cardRows.tierThree} />
-                    <CardRow tier={2} cards={gameboard.cardRows.tierTwo} />
-                    <CardRow tier={1} cards={gameboard.cardRows.tierOne} />
-                    <AvailableChips />
-                    <AllPlayers AppContext={AppContext} />
+                    <Nobles state={state} setState={setState} />
+                    <CardRow tier={3} cards={state.gameboard.cardRows.tierThree} />
+                    <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />
+                    <CardRow tier={1} cards={state.gameboard.cardRows.tierOne} />
+                    <AvailableChips state={state} setState={setState} />
+                    <AllPlayers state={state} setState={setState} />
                 </div>
             )
         }
-    }, [AppContext]);
+    }, [state]);
 
     const shuffleDeck = () => {
-        if (!gameboard.deck) return;
-        let newDeck = gameboard.deck;
+        if (!state.gameboard.deck) return;
+        let newDeck: FullDeck = state.gameboard.deck;
 
         for (const [key, value] of Object.entries(newDeck)) {
             for (let i = value.length - 1; i > 0; i--) {
@@ -51,7 +48,7 @@ export default function Gameboard() {
             }
         }
 
-        gameboard.deck = newDeck;
+        setState({ ...state, gameboard: { ...state.gameboard, deck: newDeck }})
     }
 
     const setNobles = () => {
@@ -64,26 +61,24 @@ export default function Gameboard() {
             shuffledNobles.push(randNoble);
         }
         
-        gameboard.nobles = shuffledNobles;
+        setState({ ...state, gameboard: { ...state.gameboard, nobles: shuffledNobles }})
     }
 
     const initializeBoard = () => {
         shuffleDeck();
-        setNobles();
 
-        let newState = gameboard;
-
-        for (const [key, value] of Object.entries(gameboard.deck)) {
-            // @ts-ignore
-            while (newState.cardRows[key].length < 4) {
-                const nextCard = value.shift();
+        let newDeck = state.gameboard.cardRows;
+        for (const [key, value] of Object.entries(state.gameboard.deck)) {
+            while (newDeck[key as keyof FullDeck].length < 4) {
                 // @ts-ignore
-                newState.cardRows[key].push(nextCard);
+                const nextCard = value.shift();
+                newDeck[key as keyof FullDeck].push(nextCard);
             }
         }
 
-        gameboard = newState;
+        setState({ ...state, gameboard: { ...state.gameboard, cardRows: newDeck } })
+        setNobles();
     }
 
-    return view;
+    return view
 }

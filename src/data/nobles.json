@@ -1,6 +1,7 @@
 {
     "nobles": [
         {
+            "nobleid": 1,
             "points": 3,
             "resourceCost": {
                 "ruby": 0,
@@ -11,6 +12,7 @@
             }
         },
         {
+            "nobleid": 2,
             "points": 3,
             "resourceCost": {
                 "ruby": 0,
@@ -21,6 +23,7 @@
             }
         },
         {
+            "nobleid": 3,
             "points": 3,
             "resourceCost": {
                 "ruby": 3,
@@ -31,6 +34,7 @@
             }
         },
         {
+            "nobleid": 4,
             "points": 3,
             "resourceCost": {
                 "ruby": 4,
@@ -41,6 +45,7 @@
             }
         },
         {
+            "nobleid": 5,
             "points": 3,
             "resourceCost": {
                 "ruby": 0,
@@ -51,6 +56,7 @@
             }
         },
         {
+            "nobleid": 6,
             "points": 3,
             "resourceCost": {
                 "ruby": 3,
@@ -61,6 +67,7 @@
             }
         },
         {
+            "nobleid": 7,
             "points": 3,
             "resourceCost": {
                 "ruby": 0,
@@ -71,6 +78,7 @@
             }
         },
         {
+            "nobleid": 8,
             "points": 3,
             "resourceCost": {
                 "ruby": 3,
@@ -81,6 +89,7 @@
             }
         },
         {
+            "nobleid": 9,
             "points": 3,
             "resourceCost": {
                 "ruby": 4,
@@ -91,6 +100,7 @@
             }
         },
         {
+            "nobleid": 10,
             "points": 3,
             "resourceCost": {
                 "ruby": 0,

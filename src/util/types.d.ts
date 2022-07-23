@@ -1,3 +1,26 @@
+import { Dispatch, SetStateAction } from "react"
+import { AppState } from "../context/types"
+
+export interface AppState {
+    gameboard: {
+        nobles: Array<NobleData>,
+        cardRows: {
+            tierOne: Array<CardData>
+            tierTwo: Array<CardData>
+            tierThree: Array<CardData>
+        },
+        tradingResources: ResourceCost
+        deck: FullDeck,
+    },
+    round: number,
+    players: Array<PlayerData>
+}
+
+export interface StateProps {
+    state: AppState,
+    setState: Dispatch<SetStateAction<AppState>>
+}
+
 export interface GameInformation {
     players: PlayerData[],
     nobles: NobleData[],
@@ -8,6 +31,7 @@ export interface GameInformation {
 export interface PlayerData {
     name: string,
     starter: boolean,
+    turnActive?: boolean,
     points: number,
     nobles: NobleData[],
     cards: CardData[],
@@ -39,6 +63,7 @@ export interface ResourceCost {
 }
 
 export interface NobleData {
+    nobleid?: number,
     points: number,
     resourceCost: ResourceCost
 }

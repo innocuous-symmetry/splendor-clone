@@ -1,16 +1,28 @@
+import { useEffect } from "react";
 import { v4 } from "uuid";
-import { NobleData, ResourceCost } from "../../util/types";
+import { NobleData, ResourceCost, StateProps } from "../../util/types";
 import "./Nobles.css"
 
-export default function Nobles({ AppContext }: any) {
-    const { gameboard } = AppContext;
+export default function Nobles({ state, setState }: StateProps) {
+    const removeNoble = (noble: NobleData) => {
+        console.log(noble);
+        setState((prev) => {
+            return {
+                ...prev,
+                gameboard: {
+                    ...prev.gameboard,
+                    nobles: prev.gameboard.nobles.filter((each) => each.nobleid !== noble.nobleid)
+                }
+            }
+        })
+    }
 
     return (
         <div className="nobles-panel">
             <strong>NOBLES</strong>
             <div className="all-nobles">
                 {
-                gameboard.nobles && gameboard.nobles.map((noble: NobleData) => {
+                state && state.gameboard.nobles.map((noble: NobleData) => {
                     return (
                         <div className="noble-card" key={v4()}>
                             <p>Points: {noble.points}</p>
@@ -23,7 +35,7 @@ export default function Nobles({ AppContext }: any) {
                             }
                         </div>
                     )
-                }) || <p>Nobles not found. Please wait...</p>
+                })
                 }
             </div>
         </div>

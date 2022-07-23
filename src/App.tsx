@@ -1,27 +1,45 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { useState } from 'react'
 import Gameboard from './components/Gameboard/Gameboard'
-import './App.css'
-import { useCallback, useContext, useEffect, useState } from 'react'
-import { appState, Context } from './context/Context'
-import AvailableChips from './components/Resources/AvailableChips';
 import GameConstructor from './util/GameConstructor';
-import { PlayerData } from './util/types';
+import { PlayerData, NobleData, CardData } from './util/types';
+import CardDeck from './data/cards.json';
+import './App.css'
 
 function App() {
-  let AppContext = useContext(Context);
-  let { players } = AppContext;
+  const [state, setState] = useState({
+    gameboard: {
+      nobles: new Array<NobleData>,
+      cardRows: {
+          tierOne: new Array<CardData>,
+          tierTwo: new Array<CardData>,
+          tierThree: new Array<CardData>,
+      },
+      tradingResources: {
+          ruby: 7,
+          sapphire: 7,
+          emerald: 7,
+          diamond: 7,
+          onyx: 7,
+          gold: 5
+      },
+      deck: CardDeck,
+  },
+  round: 0,
+  players: new Array<PlayerData>,
+  })
 
   return (
     <div className="App">
-      <Context.Provider value={appState}>
-        <h1>SPLENDOR</h1>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<GameConstructor />} />
-            <Route path="/game" element={<Gameboard />} />
-          </Routes>
-        </BrowserRouter>
-      </Context.Provider>
+      <h1>SPLENDOR</h1>
+      <BrowserRouter>
+        <Routes>
+          {/* @ts-ignore */}
+          <Route path="/" element={<GameConstructor state={state} setState={setState} />} />
+          {/* @ts-ignore */}
+          <Route path="/game" element={<Gameboard state={state} setState={setState} />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

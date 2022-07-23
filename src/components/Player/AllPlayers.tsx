@@ -1,17 +1,13 @@
-import { useContext } from "react"
-import { Context } from "../../context/Context"
 import Player from "./Player";
 import { v4 } from "uuid";
 import "./AllPlayers.css"
-import { PlayerData } from "../../util/types";
+import { PlayerData, StateProps } from "../../util/types";
 
-export default function AllPlayers({ AppContext }: any) {
-    const { players } = AppContext;
-
+export default function AllPlayers({ state, setState }: StateProps) {
     return (
         <div className="all-players">
             {
-                players.map((player: PlayerData) => <Player key={v4()} data={player} />)
+                state.players?.map((player: PlayerData) => <Player key={v4()} player={player} state={state} setState={setState} />)
             }
         </div>
     )

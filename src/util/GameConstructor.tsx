@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Context } from "../context/Context";
-import { CardData, NobleData, PlayerData } from "./types";
+import { CardData, NobleData, PlayerData, StateProps } from "./types";
 
 interface InputState {
     playerOne: PlayerInput
@@ -15,12 +15,10 @@ interface PlayerInput {
     starter: boolean
 }
 
-export default function GameConstructor() {
-    const AppContext = useContext(Context);
+export default function GameConstructor({ state, setState }: StateProps) {
     const navigate = useNavigate();
 
     const [starter, setStarter] = useState(-1);
-
     const [input, setInput] = useState<InputState>({
         playerOne: {
             name: '',
@@ -66,7 +64,7 @@ export default function GameConstructor() {
             if (!player.name) newPlayers.splice(newPlayers.indexOf(player));
         }
 
-        AppContext.players = newPlayers;
+        setState({ ...state, players: newPlayers });
         navigate('/game');
     }
 
