@@ -8,6 +8,8 @@ import NobleStore from '../../data/nobles.json';
 
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>)
+    const [selection, setSelection] = useState<Array<String>>([]);
+    const chipSelection = { selection, setSelection };
 
     useEffect(() => {
         initializeBoard();
@@ -29,8 +31,8 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <CardRow tier={3} cards={state.gameboard.cardRows.tierThree} />
                     <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />
                     <CardRow tier={1} cards={state.gameboard.cardRows.tierOne} />
-                    <AvailableChips state={state} setState={setState} />
-                    <AllPlayers state={state} setState={setState} />
+                    <AvailableChips chipSelection={chipSelection} state={state} setState={setState} />
+                    <AllPlayers chipSelection={chipSelection} state={state} setState={setState} />
                 </div>
             )
         }
