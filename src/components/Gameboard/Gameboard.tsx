@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
-import { FullDeck, NobleData, StateProps } from '../../util/types';
+import { useCallback, useEffect, useState } from 'react';
+import { AppState, FullDeck, NobleData, StateProps } from '../../util/types';
 import AllPlayers from '../Player/AllPlayers';
 import AvailableChips from '../Resources/AvailableChips';
 import CardRow from './CardRow';
 import Nobles from './Nobles';
 import NobleStore from '../../data/nobles.json';
+import useActionStatus from '../../util/useActionStatus';
 
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>)
@@ -31,8 +32,8 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <CardRow tier={3} cards={state.gameboard.cardRows.tierThree} />
                     <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />
                     <CardRow tier={1} cards={state.gameboard.cardRows.tierOne} />
-                    <AvailableChips chipSelection={chipSelection} state={state} setState={setState} />
-                    <AllPlayers chipSelection={chipSelection} state={state} setState={setState} />
+                    <AvailableChips liftFromChildren={liftFromChildren} chipSelection={chipSelection} state={state} setState={setState} />
+                    <AllPlayers liftFromChildren={liftFromChildren} chipSelection={chipSelection} state={state} setState={setState} />
                 </div>
             )
         }
@@ -82,6 +83,10 @@ export default function Gameboard({ state, setState }: StateProps) {
         setState({ ...state, gameboard: { ...state.gameboard, cardRows: newDeck } })
         setNobles();
     }
+
+    const liftFromChildren = useCallback((childState: AppState) => {
+        setState(childState);
+    }, [state]);
 
     return view
 }

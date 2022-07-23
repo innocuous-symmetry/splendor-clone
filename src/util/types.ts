@@ -13,22 +13,7 @@ export interface AppState {
     },
     round: number,
     players: Array<PlayerData>,
-    actions?: {
-        getChips?: {
-            active: boolean
-            chips?: Array<keyof ResourceCost>
-            valid?: boolean
-        }
-        buyCard?: {
-            active: boolean
-            card?: CardData | null
-        }
-        reserveCard?: {
-            active: boolean
-            card?: CardData | null
-            includeGold?: boolean
-        }
-    }
+    actions: ActionTypes
 }
 
 export interface StateProps {
@@ -41,6 +26,23 @@ export enum GameActions {
     BUYCARD,
     RESERVECARD,
     AWAIT
+}
+
+export interface ActionTypes {
+    getChips: {
+        active: boolean
+        chips?: Array<keyof ResourceCost>
+        valid?: boolean
+    }
+    buyCard: {
+        active: boolean
+        card?: CardData | null
+    }
+    reserveCard: {
+        active: boolean
+        card?: CardData | null
+        includeGold?: boolean
+    }
 }
 
 export enum ActionPrompts {

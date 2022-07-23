@@ -1,6 +1,7 @@
 import { AppState, ActionPrompts, GameActions, PlayerData, ResourceCost, StateProps } from "../../util/types";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { TurnOrderUtil } from "../../util/TurnOrderUtil";
+import useActionType from "../../util/useActionType";
 import { v4 } from "uuid";
 
 interface PlayerProps extends StateProps {
@@ -8,33 +9,35 @@ interface PlayerProps extends StateProps {
     chipSelection: {
         selection: String[],
         setSelection: Dispatch<SetStateAction<Array<String>>>
-    }
+    },
+    liftFromChildren: any
 }
 
-export default function Player({ player, state, setState, chipSelection }: PlayerProps) {
+export default function Player({ player, state, setState, chipSelection, liftFromChildren }: PlayerProps) {
     const [actionPrompt, setActionPrompt] = useState(ActionPrompts[0]);
-    const [actionType, setActionType] = useState<GameActions>();
-    const [dynamic, setDynamic] = useState<PlayerData>();
+    const [actionType, setActionType] = useState<GameActions>(GameActions.AWAIT);
+    const [dynamic, setDynamic] = useState<PlayerData | undefined>(state.players.find((element: PlayerData) => element.id === player.id));
     const { selection, setSelection } = chipSelection;
-
-    useEffect(() => {
-        setDynamic(state.players.find((element: PlayerData) => element.id === player.id));
-    }, [state]);
 
     useEffect(() => {
         return;
     }, [selection, setSelection])
 
     useEffect(() => {
+        const newState = useActionType(state, actionType);
+        console.log(newState);
+
         switch (actionType) {
             case GameActions.GETCHIPS:
-                console.log('get chips');
+                setActionPrompt(ActionPrompts[1]);
                 getChips();
                 setSelection([]);
-                setActionType(GameActions.AWAIT);
                 break;
-            case GameActions.AWAIT:
-                console.log('waiting for next action');
+            case GameActions.BUYCARD:
+                setActionPrompt(ActionPrompts[2]);
+                break;
+            case GameActions.RESERVECARD:
+                setActionPrompt(ActionPrompts[3]);
                 break;
             default:
                 break;
@@ -70,6 +73,8 @@ export default function Player({ player, state, setState, chipSelection }: Playe
                 },
             }
         })
+
+        liftFromChildren(state);
     }
 
     return (
@@ -83,9 +88,8 @@ export default function Player({ player, state, setState, chipSelection }: Playe
             <p>{dynamic?.turnActive ? actionPrompt : "..."}</p>
 
             <button onClick={() => setActionType(GameActions.GETCHIPS)}>Get Chips</button>
-
-            <button onClick={()=>{}}>Buy a Card</button>
-            <button onClick={()=>{}}>Reserve a Card</button>
+            <button onClick={()=> setActionType(GameActions.BUYCARD)}>Buy a Card</button>
+            <button onClick={()=> setActionType(GameActions.RESERVECARD)}>Reserve a Card</button>
             <div className="player-cards"></div>
             <div className="player-resources"></div>
         </div>

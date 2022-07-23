@@ -2,36 +2,35 @@ import { GameActions, ResourceCost, StateProps } from "../../util/types";
 import { v4 } from "uuid";
 import "./AvailableChips.css"
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import useActionStatus from "../../util/useActionStatus";
 
 interface AvailableChipsProps extends StateProps {
+    liftFromChildren: any,
     chipSelection: {
         selection: String[],
         setSelection: Dispatch<SetStateAction<Array<String>>>
     }
 }
 
-export default function AvailableChips({ state, chipSelection }: AvailableChipsProps) {
+export default function AvailableChips({ state, chipSelection, liftFromChildren }: AvailableChipsProps) {
     const { selection, setSelection } = chipSelection;
 
     const handleSelection = (key: string) => {
-        let newValue = selection;
+        console.log(key)
+        console.log(state);
 
-        if (newValue.length > 3) return;
-        newValue.push(key);
+        if (selection.length > 3) return;
 
-        setSelection(newValue);
+        setSelection((prev) => {
+            let newValue = prev;
+            newValue.push(key);
+            return newValue;
+        })
     }
 
     useEffect(() => {
-        return;
+        useActionStatus(state);
     }, [state])
-
-    useEffect(() => {
-        switch (state.actions) {
-            case (GameActions.GETCHIPS):
-                console.log('get chips');
-        }
-    })
 
     return (
         <div className="available-chips">
