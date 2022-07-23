@@ -1,7 +1,7 @@
-import { AppState, PlayerData, ResourceCost, StateProps } from "../../util/types"
-import { v4 } from "uuid";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { AppState, ActionPrompts, GameActions, PlayerData, ResourceCost, StateProps } from "../../util/types";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { TurnOrderUtil } from "../../util/TurnOrderUtil";
+import { v4 } from "uuid";
 
 interface PlayerProps extends StateProps {
     player: PlayerData
@@ -11,17 +11,9 @@ interface PlayerProps extends StateProps {
     }
 }
 
-enum ActionPrompts {
-    "Choose your action type below:",
-    "Make a selection of three different available resources, or two of the same.",
-    "Choose a card to purchase above.",
-    "Select any card above to reserve. You will also automatically take a gold chip.",
-    "Select any card above to reserve. You have the maximum allowed number of chips, so you cannnot take a gold chip.",
-    "It is not your turn."
-}
-
 export default function Player({ player, state, setState, chipSelection }: PlayerProps) {
     const [actionPrompt, setActionPrompt] = useState(ActionPrompts[0]);
+    const [actionType, setActionType] = useState<GameActions>();
     const [dynamic, setDynamic] = useState<PlayerData>();
     const { selection, setSelection } = chipSelection;
 
@@ -30,18 +22,30 @@ export default function Player({ player, state, setState, chipSelection }: Playe
     }, [state]);
 
     useEffect(() => {
-        console.log(selection)
+        return;
     }, [selection, setSelection])
+
+    useEffect(() => {
+        switch (actionType) {
+            case GameActions.GETCHIPS:
+                console.log('get chips');
+                getChips();
+                setSelection([]);
+                setActionType(GameActions.AWAIT);
+                break;
+            case GameActions.AWAIT:
+                console.log('waiting for next action');
+                break;
+            default:
+                break;
+        }
+    }, [actionType]);
 
     const getChips = () => {
         if (!dynamic?.turnActive) return;
         setActionPrompt(ActionPrompts[1]);
 
-        console.log(selection);
-
         if (selection.length < 3) return;
-
-        console.log('conditions met!');
         
         setState((prev: AppState) => {
             const { newPlayers, roundIncrement } = TurnOrderUtil(prev, dynamic);
@@ -66,8 +70,6 @@ export default function Player({ player, state, setState, chipSelection }: Playe
                 },
             }
         })
-
-        setSelection([]);
     }
 
     return (
@@ -80,7 +82,7 @@ export default function Player({ player, state, setState, chipSelection }: Playe
             {/* Dynamic data from state */}
             <p>{dynamic?.turnActive ? actionPrompt : "..."}</p>
 
-            <button onClick={getChips}> {selection.length < 3 ? "Get Chips" : "Confirm"} </button>
+            <button onClick={() => setActionType(GameActions.GETCHIPS)}>Get Chips</button>
 
             <button onClick={()=>{}}>Buy a Card</button>
             <button onClick={()=>{}}>Reserve a Card</button>

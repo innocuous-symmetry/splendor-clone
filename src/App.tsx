@@ -2,12 +2,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
 import Gameboard from './components/Gameboard/Gameboard'
 import GameConstructor from './util/GameConstructor';
-import { PlayerData, NobleData, CardData } from './util/types';
+import { PlayerData, NobleData, CardData, AppState } from './util/types';
 import CardDeck from './data/cards.json';
 import './App.css'
 
 function App() {
-  const [state, setState] = useState({
+  const [state, setState] = useState<AppState>({
     gameboard: {
       nobles: new Array<NobleData>,
       cardRows: {
@@ -24,9 +24,20 @@ function App() {
           gold: 5
       },
       deck: CardDeck,
-  },
-  round: 1,
-  players: new Array<PlayerData>,
+    },
+    round: 1,
+    players: new Array<PlayerData>,
+    actions: {
+      getChips: {
+        active: false
+      },
+      buyCard: {
+        active: false
+      },
+      reserveCard: {
+        active: false
+      }
+    }
   })
 
   return (

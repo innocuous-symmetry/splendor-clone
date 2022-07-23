@@ -1,5 +1,5 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { CardData, FullDeck, NobleData, StateProps } from '../../util/types';
+import { useEffect, useState } from 'react';
+import { FullDeck, NobleData, StateProps } from '../../util/types';
 import AllPlayers from '../Player/AllPlayers';
 import AvailableChips from '../Resources/AvailableChips';
 import CardRow from './CardRow';

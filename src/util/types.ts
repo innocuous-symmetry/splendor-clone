@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../context/types"
 
 export interface AppState {
     gameboard: {
@@ -13,12 +12,44 @@ export interface AppState {
         deck: FullDeck,
     },
     round: number,
-    players: Array<PlayerData>
+    players: Array<PlayerData>,
+    actions?: {
+        getChips?: {
+            active: boolean
+            chips?: Array<keyof ResourceCost>
+            valid?: boolean
+        }
+        buyCard?: {
+            active: boolean
+            card?: CardData | null
+        }
+        reserveCard?: {
+            active: boolean
+            card?: CardData | null
+            includeGold?: boolean
+        }
+    }
 }
 
 export interface StateProps {
     state: AppState,
     setState: Dispatch<SetStateAction<AppState>>
+}
+
+export enum GameActions {
+    GETCHIPS,
+    BUYCARD,
+    RESERVECARD,
+    AWAIT
+}
+
+export enum ActionPrompts {
+    "Choose your action type below:",
+    "Make a selection of three different available resources, or two of the same.",
+    "Choose a card to purchase above.",
+    "Select any card above to reserve. You will also automatically take a gold chip.",
+    "Select any card above to reserve. You have the maximum allowed number of chips, so you cannnot take a gold chip.",
+    "It is not your turn."
 }
 
 export interface GameInformation {
