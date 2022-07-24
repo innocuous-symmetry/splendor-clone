@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { AppState, ResourceCost, StateProps } from '../../util/types';
+import { AppState, PlayerData, ResourceCost, SetActionType, StateProps } from '../../util/types';
 import initializeBoard from '../../util/initializeBoard';
 import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
@@ -8,9 +8,8 @@ import Nobles from './Nobles';
 
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>);
-    const [selection, setSelection] = useState<string>();
 
-    // callback for lifting state
+    // callbacks for lifting state
     const liftSelection = useCallback((value: keyof ResourceCost) => {
         console.log(value)
 
@@ -33,6 +32,11 @@ export default function Gameboard({ state, setState }: StateProps) {
         })
 
         console.log(state);
+    }, []);
+
+    const setActionState = useCallback((value: SetActionType, player: PlayerData) => {
+        if (!player?.turnActive) return;
+        console.log(player.name + SetActionType[value]);
     }, []);
 
     // util functions to set up initial board
@@ -58,7 +62,8 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />
                     <CardRow tier={1} cards={state.gameboard.cardRows.tierOne} />
                     <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
-                    <AllPlayers state={state} setState={setState} />
+                    {/* @ts-ignore */}
+                    <AllPlayers state={state} setState={setState} setActionState={setActionState} />
                 </div>
             )
         }

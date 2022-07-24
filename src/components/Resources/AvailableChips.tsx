@@ -1,7 +1,7 @@
 import { ResourceCost, StateProps } from "../../util/types";
+import { useEffect } from "react";
 import { v4 } from "uuid";
 import "./AvailableChips.css"
-import { useEffect } from "react";
 
 interface ResourceProps extends StateProps {
     liftSelection: (value: keyof ResourceCost) => void
@@ -19,7 +19,7 @@ export default function AvailableChips({ state, setState, liftSelection }: Resou
                     return (
                         <div key={v4()} className={`chips-${key}`}>
                             <button key={v4()} value={key} onClick={() => liftSelection(key as keyof ResourceCost)}>
-                                {key}: {state.gameboard.tradingResources[key]}
+                                {key}: {state.gameboard.tradingResources[key as keyof ResourceCost]}
                             </button>
                         </div>
                     )

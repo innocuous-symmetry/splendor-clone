@@ -1,5 +1,4 @@
 import { Dispatch, SetStateAction } from "react"
-import { AppState } from "../context/types"
 
 export interface AppState {
     gameboard: {
@@ -18,29 +17,39 @@ export interface AppState {
 }
 
 interface StateActions {
+    setAction?: (arg: SetActionType) => void
     getChips: {
         active: boolean
         selection?: Array<keyof ResourceCost>
         valid?: boolean
-        confirm: () => void
+        confirm?: () => void
     }
     buyCard: {
         active: boolean
         selection?: CardData
         valid?: boolean
-        confirm: () => void
+        confirm?: () => void
     }
     reserveCard: {
         active: boolean
         selection?: CardData
         includeGold?: boolean
-        confirm: () => void
+        confirm?: () => void
     }
 }
 
+export enum SetActionType {
+    GETCHIPS,
+    BUYCARD,
+    RESERVECARD,
+    AWAIT
+}
+
+export type setStateType = Dispatch<SetStateAction<AppState>>
+
 export interface StateProps {
     state: AppState,
-    setState: Dispatch<SetStateAction<AppState>>
+    setState: setStateType
 }
 
 export interface GameInformation {

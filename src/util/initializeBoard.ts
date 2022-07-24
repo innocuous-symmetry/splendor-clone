@@ -1,8 +1,7 @@
-import { Dispatch, SetStateAction } from "react";
-import { AppState, FullDeck, NobleData } from "./types";
+import { AppState, FullDeck, NobleData, setStateType } from "./types";
 import NobleStore from '../data/nobles.json';
 
-const shuffleDeck = (state: AppState, setState: Dispatch<SetStateAction<AppState>>) => {
+const shuffleDeck = (state: AppState, setState: setStateType) => {
     if (!state.gameboard.deck) return;
     let newDeck: FullDeck = state.gameboard.deck;
 
@@ -18,7 +17,7 @@ const shuffleDeck = (state: AppState, setState: Dispatch<SetStateAction<AppState
     setState({ ...state, gameboard: { ...state.gameboard, deck: newDeck }})
 }
 
-const setNobles = (state: AppState, setState: Dispatch<SetStateAction<AppState>>) => {
+const setNobles = (state: AppState, setState: setStateType) => {
     let newNobles = NobleStore.nobles;
     let shuffledNobles = new Array<NobleData>;
 
@@ -31,7 +30,7 @@ const setNobles = (state: AppState, setState: Dispatch<SetStateAction<AppState>>
     setState({ ...state, gameboard: { ...state.gameboard, nobles: shuffledNobles }})
 }
 
-export default function initializeBoard(state: AppState, setState: Dispatch<SetStateAction<AppState>>) {
+export default function initializeBoard(state: AppState, setState: setStateType) {
     shuffleDeck(state, setState);
 
     let newDeck = state.gameboard.cardRows;

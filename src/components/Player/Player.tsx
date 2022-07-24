@@ -1,38 +1,31 @@
-import { AppState, PlayerData, ResourceCost, StateProps } from "../../util/types"
-import { v4 } from "uuid";
+import { PlayerData, SetActionType, StateProps } from "../../util/types"
 import { useEffect, useState } from "react";
-import { TurnOrderUtil } from "../../util/TurnOrderUtil";
+import { getChips } from "./ActionMethods";
+import { v4 } from "uuid";
 
 interface PlayerProps extends StateProps {
-    player: PlayerData
+    player: PlayerData,
+    setActionState: (value: SetActionType, player?: PlayerData) => void
 }
 
-export default function Player({ player, state, setState }: PlayerProps) {
+export default function Player({ player, state, setState, setActionState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
 
-    useEffect(() => {
-        setDynamic(state.players.find((element: PlayerData) => element.id === player.id));
-    }, [state]);
+    useEffect(() => setDynamic(state.players.find((element: PlayerData) => element.id === player.id)), [state]);
 
-    const getChips = (resource: string) => {
-        if (!dynamic?.turnActive) return;
-
-        setState((prev: AppState) => {
-            const { newPlayers, roundIncrement } = TurnOrderUtil(prev, dynamic);
-
-            return {
-                ...prev,
-                round: (roundIncrement ? prev.round + 1 : prev.round),
-                gameboard: {
-                    ...prev.gameboard,
-                    tradingResources: {
-                        ...prev.gameboard.tradingResources,
-                        [resource as keyof ResourceCost]: prev.gameboard.tradingResources[resource as keyof ResourceCost] -= 1
-                    }
-                },
-                players: newPlayers
-            }
-        })
+    const handleSelection = (input: number) => {
+        switch (input) {
+            case 0:
+                setActionState(SetActionType.GETCHIPS, player);
+                getChips('ruby', dynamic, setState);
+                break;
+            case 1:
+                setActionState(SetActionType.BUYCARD, player);
+                break;
+            default:
+                setActionState(SetActionType.AWAIT, player);
+                break;
+        }
     }
 
     return (
@@ -44,7 +37,9 @@ export default function Player({ player, state, setState }: PlayerProps) {
 
             {/* Dynamic data from state */}
             <p>{dynamic?.turnActive ? "My turn!" : "..."}</p>
-            <button onClick={() => getChips('ruby')}>Get Chips</button>
+            <button onClick={() => handleSelection(0)}>Get Chips</button>
+            <button onClick={() => handleSelection(1)}>Buy Card</button>
+            <button onClick={() => handleSelection(2)}>Reserve Card</button>
             <div className="player-cards"></div>
             <div className="player-resources"></div>
         </div>
