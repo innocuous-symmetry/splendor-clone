@@ -1,26 +1,17 @@
 import Player from "./Player";
 import { v4 } from "uuid";
-import { PlayerData, StateProps } from "../../util/types";
-import { Dispatch, SetStateAction, useEffect } from "react";
 import "./AllPlayers.css"
+import { PlayerData, SetActionType, StateProps } from "../../util/types";
 
 interface AllPlayersProps extends StateProps {
-    liftFromChildren?: any,
-    chipSelection: {
-        selection: String[],
-        setSelection: Dispatch<SetStateAction<Array<String>>>
-    }
+    setActionState: (value: SetActionType, player?: PlayerData) => void
 }
 
-export default function AllPlayers({ state, setState, chipSelection, liftFromChildren }: AllPlayersProps) {
-    useEffect(() => {
-        return;
-    }, [state])
-
+export default function AllPlayers({ state, setState, setActionState }: AllPlayersProps) {
     return (
         <div className="all-players">
             {
-                state.players?.map((player: PlayerData) => <Player key={v4()} liftFromChildren={liftFromChildren} chipSelection={chipSelection} player={player} state={state} setState={setState} />)
+                state.players?.map((player: PlayerData) => <Player key={v4()} player={player} state={state} setState={setState} setActionState={setActionState} />)
             }
         </div>
     )

@@ -1,21 +1,71 @@
+// types, data, utils
+import { AppState, PlayerData, ResourceCost, SetActionType, StateProps } from '../../util/types';
+import { setStateBuyCard, setStateGetChips, setStateReserveCard } from '../../util/stateSetters';
 import { useCallback, useEffect, useState } from 'react';
-import { AppState, FullDeck, NobleData, StateProps } from '../../util/types';
-import AllPlayers from '../Player/AllPlayers';
-import AvailableChips from '../Resources/AvailableChips';
-import CardRow from './CardRow';
 import Nobles from './Nobles';
-import NobleStore from '../../data/nobles.json';
-import useActionStatus from '../../util/useActionStatus';
+
+// components
+import initializeBoard from '../../util/initializeBoard';
+import AvailableChips from '../Resources/AvailableChips';
+import AllPlayers from '../Player/AllPlayers';
+import CardRow from '../Card/CardRow';
+import { validateChips } from '../Player/ActionMethods';
+import SelectionView from '../Resources/SelectionView';
 
 export default function Gameboard({ state, setState }: StateProps) {
-    const [view, setView] = useState(<p>Loading...</p>)
-    const [selection, setSelection] = useState<Array<String>>([]);
-    const chipSelection = { selection, setSelection };
+    const [view, setView] = useState(<p>Loading...</p>);
 
+    // callbacks for lifting state
+    const liftSelection = useCallback((value: keyof ResourceCost) => {
+        if (!state.actions.getChips.active) return;
+
+        setState((prev: AppState) => {
+            let newSelection = prev.actions.getChips.selection;
+            newSelection?.push(value);
+
+            let newState = {
+                ...prev,
+                actions: {
+                    ...state.actions,
+                    getChips: {
+                        active: true,
+                        selection: newSelection,
+                        valid: false
+                    }
+                }
+            }
+
+            const result = validateChips(newState);
+            newState.actions.getChips.valid = result;
+
+            return newState;
+        })
+    }, [state]);
+
+    const setActionState = useCallback((value: SetActionType, player: PlayerData) => {
+        if (!player?.turnActive) return;
+
+        switch (value) {
+            case 0:
+                if (!state.actions.getChips.active) setState((prev) => setStateGetChips(prev));
+                break;
+            case 1:
+                if (!state.actions.buyCard.active) setState((prev) => setStateBuyCard(prev));
+                break;
+            case 2:
+                if (!state.actions.reserveCard.active) setState((prev) => setStateReserveCard(prev));
+                break;
+            default:
+                break;
+        }
+    }, []);
+
+    // util functions, setup on mount
     useEffect(() => {
-        initializeBoard();
+        initializeBoard(state, setState);
     }, [])
 
+    // displays state of board if data is populated
     useEffect(() => {
         if (!state.players.length) {
             setView(
@@ -32,61 +82,15 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <CardRow tier={3} cards={state.gameboard.cardRows.tierThree} />
                     <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />
                     <CardRow tier={1} cards={state.gameboard.cardRows.tierOne} />
-                    <AvailableChips liftFromChildren={liftFromChildren} chipSelection={chipSelection} state={state} setState={setState} />
-                    <AllPlayers liftFromChildren={liftFromChildren} chipSelection={chipSelection} state={state} setState={setState} />
+                    <SelectionView state={state} setState={setState} />
+                    <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
+                    {/* @ts-ignore */}
+                    <AllPlayers state={state} setState={setState} setActionState={setActionState} />
                 </div>
             )
         }
     }, [state]);
 
-    const shuffleDeck = () => {
-        if (!state.gameboard.deck) return;
-        let newDeck: FullDeck = state.gameboard.deck;
-
-        for (const [key, value] of Object.entries(newDeck)) {
-            for (let i = value.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1))
-                const temp = value[i];
-                value[i] = value[j];
-                value[j] = temp;
-            }
-        }
-
-        setState({ ...state, gameboard: { ...state.gameboard, deck: newDeck }})
-    }
-
-    const setNobles = () => {
-        let newNobles = NobleStore.nobles;
-        let shuffledNobles = new Array<NobleData>;
-
-        while (shuffledNobles.length < 4) {
-            const rand = Math.floor(Math.random() * newNobles.length);
-            const randNoble = newNobles.splice(rand,1)[0];
-            shuffledNobles.push(randNoble);
-        }
-        
-        setState({ ...state, gameboard: { ...state.gameboard, nobles: shuffledNobles }})
-    }
-
-    const initializeBoard = () => {
-        shuffleDeck();
-
-        let newDeck = state.gameboard.cardRows;
-        for (const [key, value] of Object.entries(state.gameboard.deck)) {
-            while (newDeck[key as keyof FullDeck].length < 4) {
-                // @ts-ignore
-                const nextCard = value.shift();
-                newDeck[key as keyof FullDeck].push(nextCard);
-            }
-        }
-
-        setState({ ...state, gameboard: { ...state.gameboard, cardRows: newDeck } })
-        setNobles();
-    }
-
-    const liftFromChildren = useCallback((childState: AppState) => {
-        setState(childState);
-    }, [state]);
-
+    // render
     return view
 }

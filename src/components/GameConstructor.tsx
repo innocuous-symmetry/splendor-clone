@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { v4 } from "uuid";
-import { CardData, NobleData, PlayerData, StateProps } from "./types";
+import { CardData, NobleData, PlayerData, StateProps } from "../util/types";
 
 interface InputState {
     playerOne: PlayerInput

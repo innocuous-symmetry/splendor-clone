@@ -1,51 +1,21 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Gameboard from './components/Gameboard/Gameboard'
-import GameConstructor from './util/GameConstructor';
-import { PlayerData, NobleData, CardData, AppState } from './util/types';
-import CardDeck from './data/cards.json';
+import GameConstructor from './components/GameConstructor';
+import { initialState } from './util/stateSetters';
 import './App.css'
 
 function App() {
-  const [state, setState] = useState<AppState>({
-    gameboard: {
-      nobles: new Array<NobleData>,
-      cardRows: {
-          tierOne: new Array<CardData>,
-          tierTwo: new Array<CardData>,
-          tierThree: new Array<CardData>,
-      },
-      tradingResources: {
-          ruby: 7,
-          sapphire: 7,
-          emerald: 7,
-          diamond: 7,
-          onyx: 7,
-          gold: 5
-      },
-      deck: CardDeck,
-    },
-    round: 1,
-    players: new Array<PlayerData>,
-    actions: {
-      getChips: {
-        active: false
-      },
-      buyCard: {
-        active: false
-      },
-      reserveCard: {
-        active: false
-      }
-    }
-  })
+  const [state, setState] = useState(initialState);
 
   return (
     <div className="App">
       <h1>SPLENDOR</h1>
       <BrowserRouter>
         <Routes>
+          {/* @ts-ignore */}
           <Route path="/" element={<GameConstructor state={state} setState={setState} />} />
+          {/* @ts-ignore */}
           <Route path="/game" element={<Gameboard state={state} setState={setState} />} />
         </Routes>
       </BrowserRouter>
