@@ -38,10 +38,8 @@ export const validateChips = (state: AppState): boolean => {
 export const getChips = (state: AppState, setState: setStateType): boolean => {
     /**
      * features:
-     * identify player to receive currently selected chips
      * update their inventory state
      * update the total available resources
-     * change turn order
     */
 
     let targetPlayer: PlayerData;
@@ -54,19 +52,44 @@ export const getChips = (state: AppState, setState: setStateType): boolean => {
 
     setState((prev) => {
         const { newPlayers, roundIncrement } = turnOrderUtil(state, targetPlayer);
+        const idx = newPlayers.indexOf(targetPlayer);
+        const resources = state.actions.getChips.selection;
+        let newResources = prev.gameboard.tradingResources;
 
-        console.log(newPlayers[newPlayers.indexOf(targetPlayer)]);
+        if (resources) {
+            for (let value of resources) {
+
+                // update player inventory
+                for (let each in newPlayers[idx].inventory) {
+                    if (value === each) {
+                        newPlayers[idx].inventory[value] += 1;
+                    }
+                }
+
+                // update globally available resources 
+                for (let each in newResources) {
+                    if (value === each) {
+                        newResources[value] -= 1;
+                    }
+                }
+            }
+
+        }
+
 
         return {
             ...prev,
             round: (roundIncrement ? prev.round + 1 : prev.round),
             gameboard: {
-                ...prev.gameboard
+                ...prev.gameboard,
+                tradingResources: newResources
             },
             players: newPlayers,
             actions: initialActions
         }
     })
+
+    console.log(state.players);
 
     return true;
 }
