@@ -34,6 +34,7 @@ interface StateActions {
         active: boolean
         selection?: CardData
         includeGold?: boolean
+        valid?: boolean
         confirm?: () => void
     }
 }

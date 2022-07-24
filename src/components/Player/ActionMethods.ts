@@ -1,7 +1,7 @@
 import { AppState, PlayerData, ResourceCost, setStateType } from "../../util/types";
 import { TurnOrderUtil } from "../../util/TurnOrderUtil";
 
-export const getChips = (resource: string, dynamic: PlayerData | undefined, setState: setStateType) => {
+export const getChips = (resource: string | Array<keyof ResourceCost>, dynamic: PlayerData | undefined, setState: setStateType) => {
     if (!dynamic || !dynamic?.turnActive) return;
 
     setState((prev: AppState) => {
