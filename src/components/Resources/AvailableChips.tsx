@@ -1,9 +1,11 @@
 import { ResourceCost, StateProps } from "../../util/types";
 import { v4 } from "uuid";
 import "./AvailableChips.css"
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
-export default function AvailableChips({ state }: StateProps) {
+export default function AvailableChips({ state, setState }: StateProps) {
+    const [selection, setSelection] = useState([]);
+
     useEffect(() => {
         return;
     }, [state])
@@ -14,7 +16,9 @@ export default function AvailableChips({ state }: StateProps) {
                 Object.keys(state.gameboard.tradingResources).map((key: string) => {
                     return (
                         <div key={v4()} className={`chips-${key}`}>
-                            <p>{key}: {state.gameboard.tradingResources[key as keyof ResourceCost]}</p>
+                            <button key={v4()} value={key} onClick={() => console.log(key)}>
+                                {key}: {state.gameboard.tradingResources[key as keyof ResourceCost]}
+                            </button>
                         </div>
                     )
                 })

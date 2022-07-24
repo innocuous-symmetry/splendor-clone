@@ -27,6 +27,11 @@ function App() {
   },
   round: 1,
   players: new Array<PlayerData>,
+  actions: {
+    buyCard: { active: false },
+    getChips: { active: false },
+    reserveCard: { active: false }
+  }
   })
 
   return (

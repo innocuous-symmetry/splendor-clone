@@ -13,7 +13,29 @@ export interface AppState {
         deck: FullDeck,
     },
     round: number,
-    players: Array<PlayerData>
+    players: Array<PlayerData>,
+    actions: StateActions
+}
+
+interface StateActions {
+    getChips: {
+        active: boolean
+        selection?: Array<keyof ResourceCost>
+        valid?: boolean
+        confirm: () => void
+    }
+    buyCard: {
+        active: boolean
+        selection?: CardData
+        valid?: boolean
+        confirm: () => void
+    }
+    reserveCard: {
+        active: boolean
+        selection?: CardData
+        includeGold?: boolean
+        confirm: () => void
+    }
 }
 
 export interface StateProps {
