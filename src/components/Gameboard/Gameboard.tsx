@@ -9,6 +9,7 @@ import initializeBoard from '../../util/initializeBoard';
 import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
+import { validateChips } from '../Player/ActionMethods';
 
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>);
@@ -23,18 +24,24 @@ export default function Gameboard({ state, setState }: StateProps) {
             let newSelection = prev.actions.getChips.selection;
             newSelection?.push(value);
 
-            return {
+            let newState = {
                 ...prev,
                 actions: {
                     ...state.actions,
                     getChips: {
                         active: true,
-                        selection: newSelection
+                        selection: newSelection,
+                        valid: false
                     }
                 }
             }
+
+            const result = validateChips(newState);
+            newState.actions.getChips.valid = result;
+
+            return newState;
         })
-    }, []);
+    }, [state]);
 
     const setActionState = useCallback((value: SetActionType, player: PlayerData) => {
         if (!player?.turnActive) return;
@@ -83,11 +90,6 @@ export default function Gameboard({ state, setState }: StateProps) {
             )
         }
     }, [state]);
-
-    // DEBUG
-    useEffect(() => {
-        console.log(state);
-    }, [state])
 
     // render
     return view

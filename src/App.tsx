@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Gameboard from './components/Gameboard/Gameboard'
-import GameConstructor from './util/GameConstructor';
+import GameConstructor from './components/GameConstructor';
 import { initialState } from './util/stateSetters';
 import './App.css'
 

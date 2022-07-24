@@ -9,29 +9,24 @@ interface PlayerProps extends StateProps {
 
 export default function Player({ player, state, setState, setActionState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
-    const [prompt, setPrompt] = useState("My turn!");
+    const [prompt, setPrompt] = useState("Your turn! Select an action type below.");
     const [actionSelection, setActionSelection] = useState(-1);
 
     useEffect(() => setDynamic(state.players.find((element: PlayerData) => element.id === player.id)), [state]);
 
     useEffect(() => {
         setActionState(actionSelection, dynamic);
-        setPrompt(() => {
-            switch (actionSelection) {
-                case -1:
-                    return "My turn!"
-                case 0:
-                    return "Select up to three different chips, or two of the same color."
-                case 1:
-                    return "Buy a card from the ones above using your available resources."
-                case 2:
-                    return "Choose a card from the ones above to reserve for later purchase. \
-                    If you have less than ten chips, you may also pick up a gold chip."
-                default:
-                    return ""
-            }
-        })
-    }, [actionSelection, prompt])
+
+        if (state.actions.getChips.active) {
+            setPrompt('Make your selection of up to three chips.');
+        } else if (state.actions.buyCard.active) {
+            setPrompt('Choose a card above to purchase.');
+        } else if (state.actions.reserveCard.active) {
+            setPrompt('Choose a card above to reserve.');
+        } else {
+            setPrompt("Your turn! Select an action type below.");
+        }
+    }, [actionSelection])
 
     return (
         <div className="player-ui" key={v4()}>
@@ -41,7 +36,7 @@ export default function Player({ player, state, setState, setActionState }: Play
             <p>Is {player.starter || "not"} round starter</p>
 
             {/* Dynamic data from state */}
-            {dynamic?.turnActive ? <p>{prompt}</p> : <p>...</p>}
+            <p>{dynamic?.turnActive ? prompt : '...'}</p>
             <button onClick={() => setActionSelection(0)}>Get Chips</button>
             <button onClick={() => setActionSelection(1)}>Buy Card</button>
             <button onClick={() => setActionSelection(2)}>Reserve Card</button>
