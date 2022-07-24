@@ -16,7 +16,7 @@ interface PlayerProps extends StateProps {
 export default function Player({ player, state, setState, chipSelection, liftFromChildren }: PlayerProps) {
     const [actionPrompt, setActionPrompt] = useState(ActionPrompts[0]);
     const [actionType, setActionType] = useState<GameActions>(GameActions.AWAIT);
-    const [dynamic, setDynamic] = useState<PlayerData | undefined>(state.players.find((element: PlayerData) => element.id === player.id));
+    const [dynamic, setDynamic] = useState<PlayerData | undefined>();
     const { selection, setSelection } = chipSelection;
 
     useEffect(() => {
@@ -24,13 +24,16 @@ export default function Player({ player, state, setState, chipSelection, liftFro
     }, [selection, setSelection])
 
     useEffect(() => {
+        setDynamic(state.players.find((element: PlayerData) => element.id === player.id));
+    }, [state, setState]);
+
+    useEffect(() => {
         const newState = useActionType(state, actionType);
-        console.log(newState);
 
         switch (actionType) {
             case GameActions.GETCHIPS:
                 setActionPrompt(ActionPrompts[1]);
-                getChips();
+                getChips(newState);
                 setSelection([]);
                 break;
             case GameActions.BUYCARD:
@@ -44,15 +47,16 @@ export default function Player({ player, state, setState, chipSelection, liftFro
         }
     }, [actionType]);
 
-    const getChips = () => {
+    const getChips = (newState: AppState) => {
         if (!dynamic?.turnActive) return;
         setActionPrompt(ActionPrompts[1]);
 
         if (selection.length < 3) return;
         
-        setState((prev: AppState) => {
-            const { newPlayers, roundIncrement } = TurnOrderUtil(prev, dynamic);
-            let newResources = prev.gameboard.tradingResources;
+        setState(() => {
+            const { newPlayers, roundIncrement } = TurnOrderUtil(newState, dynamic);
+            console.log(newPlayers)
+            let newResources = newState.gameboard.tradingResources;
 
             for (let item of selection) {
                 for (let [key, value] of Object.entries(newResources)) {
@@ -64,11 +68,11 @@ export default function Player({ player, state, setState, chipSelection, liftFro
             }
             
             return {
-                ...prev,
-                round: (roundIncrement ? prev.round + 1 : prev.round),
+                ...newState,
+                round: (roundIncrement ? newState.round + 1 : newState.round),
                 players: newPlayers,
                 gameboard: {
-                    ...prev.gameboard,
+                    ...newState.gameboard,
                     tradingResources: newResources
                 },
             }

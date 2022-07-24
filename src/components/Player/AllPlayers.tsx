@@ -14,7 +14,7 @@ interface AllPlayersProps extends StateProps {
 
 export default function AllPlayers({ state, setState, chipSelection, liftFromChildren }: AllPlayersProps) {
     useEffect(() => {
-        console.log(state);
+        return;
     }, [state])
 
     return (
