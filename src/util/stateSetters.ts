@@ -1,6 +1,12 @@
 import { AppState, CardData, NobleData, PlayerData, ResourceCost } from "./types";
 import CardDeck from '../data/cards.json';
 
+export const initialActions = {
+    buyCard: { active: false },
+    getChips: { active: false },
+    reserveCard: { active: false }
+}
+
 export const initialState = {
     gameboard: {
         nobles: new Array<NobleData>,
@@ -21,10 +27,13 @@ export const initialState = {
     },
     round: 1,
     players: new Array<PlayerData>,
-    actions: {
-        buyCard: { active: false },
-        getChips: { active: false },
-        reserveCard: { active: false }
+    actions: initialActions
+}
+
+export const setStateAwaitAction = (prev: AppState) => {
+    return {
+        ...prev,
+        actions: initialActions
     }
 }
 

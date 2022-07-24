@@ -10,14 +10,13 @@ import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
 import { validateChips } from '../Player/ActionMethods';
+import SelectionView from '../Resources/SelectionView';
 
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>);
 
     // callbacks for lifting state
     const liftSelection = useCallback((value: keyof ResourceCost) => {
-        console.log(value)
-
         if (!state.actions.getChips.active) return;
 
         setState((prev: AppState) => {
@@ -83,6 +82,7 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <CardRow tier={3} cards={state.gameboard.cardRows.tierThree} />
                     <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />
                     <CardRow tier={1} cards={state.gameboard.cardRows.tierOne} />
+                    <SelectionView state={state} setState={setState} />
                     <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
                     {/* @ts-ignore */}
                     <AllPlayers state={state} setState={setState} setActionState={setActionState} />

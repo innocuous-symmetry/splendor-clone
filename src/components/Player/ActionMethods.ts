@@ -1,5 +1,6 @@
 import { AppState, PlayerData, ResourceCost, setStateType } from "../../util/types";
 import { turnOrderUtil } from "../../util/TurnOrderUtil";
+import { initialActions } from "../../util/stateSetters";
 
 export const _getChips = (resource: string | Array<keyof ResourceCost>, dynamic: PlayerData | undefined, setState: setStateType) => {
     if (!dynamic || !dynamic?.turnActive) return;
@@ -27,7 +28,7 @@ export const validateChips = (state: AppState): boolean => {
 
     const selection = state.actions.getChips.selection;
     
-    if (selection.length < 2 || selection.length > 3) return false;
+    if (selection.length === 0 || selection.length > 3) return false;
     const unique = new Set(selection);
 
     if (selection.length === 3 && selection.length > unique.size) return false;
@@ -43,8 +44,28 @@ export const getChips = (state: AppState, setState: setStateType): boolean => {
      * change turn order
     */
 
-    setState((prev: AppState) => {
-        return prev;
+    let targetPlayer: PlayerData;
+
+    for (let each in state.players) {
+        if (state.players[each].turnActive) {
+            targetPlayer = state.players[each];
+        }
+    }
+
+    setState((prev) => {
+        const { newPlayers, roundIncrement } = turnOrderUtil(state, targetPlayer);
+
+        console.log(newPlayers[newPlayers.indexOf(targetPlayer)]);
+
+        return {
+            ...prev,
+            round: (roundIncrement ? prev.round + 1 : prev.round),
+            gameboard: {
+                ...prev.gameboard
+            },
+            players: newPlayers,
+            actions: initialActions
+        }
     })
 
     return true;
