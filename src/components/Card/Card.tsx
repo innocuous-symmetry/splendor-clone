@@ -1,5 +1,6 @@
-import { CardData, StateProps } from '../../util/types';
 import { v4 } from 'uuid';
+import { CardData, StateProps } from '../../util/types';
+import { tooExpensive } from '../Player/ActionMethods';
 
 interface CardProps extends StateProps {
     data: CardData
@@ -13,12 +14,12 @@ export default function Card({ data, state, setState }: CardProps) {
                 <p>Point value: {data.points || 0}</p>
                 <p>Cost:</p>
                 {
-                    Object.keys(data.resourceCost).map((key, value) => {
+                    Object.keys(data.resourceCost).map((key) => {
                         // @ts-ignore
                         return (data.resourceCost[key] > 0) && <p key={v4()}>{key}: {data.resourceCost[key]}</p>
                     })
                 }
-                { state.actions.buyCard.active && <button>Buy This Card</button> }
+                { state.actions.buyCard.active && <button disabled={tooExpensive(data, state)}>Buy This Card</button> }
             </div>
         </div>
     )

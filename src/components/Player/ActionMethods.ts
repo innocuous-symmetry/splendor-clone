@@ -1,7 +1,9 @@
-import { AppState, PlayerData, ResourceCost, setStateType } from "../../util/types";
+import { AppState, CardData, PlayerData, setStateType } from "../../util/types";
 import { turnOrderUtil } from "../../util/TurnOrderUtil";
 import { initialActions } from "../../util/stateSetters";
+import { useCurrentPlayer } from "../../util/useCurrentPlayer";
 
+// GET CHIPS ACTION HANDLERS
 export const validateChips = (state: AppState): boolean => {
     if (!state.actions.getChips.active || !state.actions.getChips.selection) return false;
 
@@ -30,15 +32,11 @@ export const validateChips = (state: AppState): boolean => {
 }
 
 export const getChips = (state: AppState, setState: setStateType) => {
-    let targetPlayer: PlayerData;
-
-    for (let each in state.players) {
-        if (state.players[each].turnActive) {
-            targetPlayer = state.players[each];
-        }
-    }
+    let targetPlayer = useCurrentPlayer(state);
 
     setState((prev) => {
+        if (!targetPlayer) return prev;
+
         const { newPlayers, roundIncrement } = turnOrderUtil(state, targetPlayer);
         const idx = newPlayers.indexOf(targetPlayer);
         const resources = state.actions.getChips.selection;
@@ -74,6 +72,22 @@ export const getChips = (state: AppState, setState: setStateType) => {
             actions: initialActions
         }
     })
+}
+
+// BUY CARDS ACTION HANDLERS
+export const tooExpensive = (card: CardData, state: AppState): boolean => {
+    const currentPlayer = useCurrentPlayer(state);
+    if (!currentPlayer) return true;
+
+    for (let [gemType, cost] of Object.entries(card.resourceCost)) {
+        for (let [heldResource, quantity] of Object.entries(currentPlayer.inventory)) {
+            if (gemType === heldResource && quantity < cost) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 export const buyCard = () => {
