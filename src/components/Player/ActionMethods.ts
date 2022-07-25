@@ -32,6 +32,21 @@ export const validateChips = (state: AppState): boolean => {
     const unique = new Set(selection);
 
     if (selection.length === 3 && selection.length > unique.size) return false;
+
+    let globalResourceCopy = { ...state.gameboard.tradingResources }
+
+    for (let item of selection) {
+        for (let key of Object.keys(globalResourceCopy)) {
+            if (item === key) {
+                globalResourceCopy[key] -= 1;
+            }
+        }
+    }
+
+    for (let value of Object.values(globalResourceCopy)) {
+        if (value < 0) return false;
+    }
+
     return true;
 }
 
