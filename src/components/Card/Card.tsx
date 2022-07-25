@@ -1,11 +1,11 @@
-import { CardData } from '../../util/types';
+import { CardData, StateProps } from '../../util/types';
 import { v4 } from 'uuid';
 
-type CardProps = {
+interface CardProps extends StateProps {
     data: CardData
 }
 
-export default function Card({ data }: CardProps) {
+export default function Card({ data, state, setState }: CardProps) {
     return (
         <div className={`card`}>
             <div className="top-row">
@@ -18,6 +18,7 @@ export default function Card({ data }: CardProps) {
                         return (data.resourceCost[key] > 0) && <p key={v4()}>{key}: {data.resourceCost[key]}</p>
                     })
                 }
+                { state.actions.buyCard.active && <button>Buy This Card</button> }
             </div>
         </div>
     )

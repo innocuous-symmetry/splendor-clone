@@ -79,9 +79,9 @@ export default function Gameboard({ state, setState }: StateProps) {
                 <div className="gameboard-rows">
                     <strong>Round: {state.round}</strong>
                     <Nobles state={state} setState={setState} />
-                    <CardRow tier={3} cards={state.gameboard.cardRows.tierThree} />
-                    <CardRow tier={2} cards={state.gameboard.cardRows.tierTwo} />
-                    <CardRow tier={1} cards={state.gameboard.cardRows.tierOne} />
+                    <CardRow tier={3} state={state} setState={setState} />
+                    <CardRow tier={2} state={state} setState={setState} />
+                    <CardRow tier={1} state={state} setState={setState} />
                     <SelectionView state={state} setState={setState} />
                     <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
                     {/* @ts-ignore */}

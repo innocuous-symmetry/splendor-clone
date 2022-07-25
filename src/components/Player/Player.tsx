@@ -12,7 +12,9 @@ export default function Player({ player, state, setState, setActionState }: Play
     const [prompt, setPrompt] = useState("Your turn! Select an action type below.");
     const [actionSelection, setActionSelection] = useState(-1);
 
-    useEffect(() => setDynamic(state.players.find((element: PlayerData) => element.id === player.id)), [state]);
+    useEffect(() => {
+        setDynamic(state.players.find((element: PlayerData) => element.id === player.id))
+    }, [state]);
 
     useEffect(() => {
         setActionState(actionSelection, dynamic);
@@ -40,7 +42,12 @@ export default function Player({ player, state, setState, setActionState }: Play
             <button onClick={() => setActionSelection(0)}>Get Chips</button>
             <button onClick={() => setActionSelection(1)}>Buy Card</button>
             <button onClick={() => setActionSelection(2)}>Reserve Card</button>
-            <div className="player-cards"></div>
+            <div className="player-cards">
+                <strong>{dynamic?.name}'s Resources</strong>
+                { dynamic && Object.entries(dynamic?.inventory).map(([key,value]) => {
+                    return value > 0 && <p key={v4()}>{key}: {value}</p>
+                })}
+            </div>
             <div className="player-resources"></div>
         </div>
     )

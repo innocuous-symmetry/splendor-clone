@@ -2,27 +2,6 @@ import { AppState, PlayerData, ResourceCost, setStateType } from "../../util/typ
 import { turnOrderUtil } from "../../util/TurnOrderUtil";
 import { initialActions } from "../../util/stateSetters";
 
-export const _getChips = (resource: string | Array<keyof ResourceCost>, dynamic: PlayerData | undefined, setState: setStateType) => {
-    if (!dynamic || !dynamic?.turnActive) return;
-
-    setState((prev: AppState) => {
-        const { newPlayers, roundIncrement } = turnOrderUtil(prev, dynamic);
-
-        return {
-            ...prev,
-            round: (roundIncrement ? prev.round + 1 : prev.round),
-            gameboard: {
-                ...prev.gameboard,
-                tradingResources: {
-                    ...prev.gameboard.tradingResources,
-                    [resource as keyof ResourceCost]: prev.gameboard.tradingResources[resource as keyof ResourceCost] -= 1
-                }
-            },
-            players: newPlayers
-        }
-    })
-}
-
 export const validateChips = (state: AppState): boolean => {
     if (!state.actions.getChips.active || !state.actions.getChips.selection) return false;
 
@@ -50,13 +29,7 @@ export const validateChips = (state: AppState): boolean => {
     return true;
 }
 
-export const getChips = (state: AppState, setState: setStateType): boolean => {
-    /**
-     * features:
-     * update their inventory state
-     * update the total available resources
-    */
-
+export const getChips = (state: AppState, setState: setStateType) => {
     let targetPlayer: PlayerData;
 
     for (let each in state.players) {
@@ -88,9 +61,7 @@ export const getChips = (state: AppState, setState: setStateType): boolean => {
                     }
                 }
             }
-
         }
-
 
         return {
             ...prev,
@@ -103,10 +74,6 @@ export const getChips = (state: AppState, setState: setStateType): boolean => {
             actions: initialActions
         }
     })
-
-    console.log(state.players);
-
-    return true;
 }
 
 export const buyCard = () => {
