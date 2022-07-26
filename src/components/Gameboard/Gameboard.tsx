@@ -2,14 +2,15 @@
 import { AppState, PlayerData, ResourceCost, SetActionType, StateProps } from '../../util/types';
 import { setStateBuyCard, setStateGetChips, setStateReserveCard } from '../../util/stateSetters';
 import { useCallback, useEffect, useState } from 'react';
-import Nobles from './Nobles';
+import { getChipsActions } from '../Player/ActionMethods';
+const { validateChips } = getChipsActions;
 
 // components
+import Nobles from './Nobles';
 import initializeBoard from '../../util/initializeBoard';
 import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
-import { validateChips } from '../Player/ActionMethods';
 import SelectionView from '../Resources/SelectionView';
 
 export default function Gameboard({ state, setState }: StateProps) {

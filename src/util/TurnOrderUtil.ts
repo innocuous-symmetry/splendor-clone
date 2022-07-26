@@ -5,7 +5,6 @@ export const turnOrderUtil = (prev: AppState, dynamic: PlayerData) => {
     const newPlayers = prev.players;
 
     for (let each of newPlayers) {
-        console.log(each);
         if (each.id === dynamic.id) {
             each.turnActive = false;
         } else if (each.id === dynamic.id + 1) {

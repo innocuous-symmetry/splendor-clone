@@ -30,9 +30,5 @@ export default function SelectionView({ state, setState }: StateProps) {
         })
     }, [state])
 
-    return (
-        <div className="selection-view">
-            { view }
-        </div>
-    )
+    return view
 }

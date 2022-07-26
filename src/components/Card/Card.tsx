@@ -1,6 +1,7 @@
 import { v4 } from 'uuid';
 import { CardData, StateProps } from '../../util/types';
-import { tooExpensive, buyCard } from '../Player/ActionMethods';
+import { buyCardActions } from '../Player/ActionMethods';
+const { buyCard, tooExpensive } = buyCardActions;
 
 interface CardProps extends StateProps {
     data: CardData

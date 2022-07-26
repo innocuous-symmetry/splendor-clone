@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { v4 } from "uuid";
 import "./AvailableChips.css"
 import { setStateGetChips } from "../../util/stateSetters";
-import { validateChips } from "../Player/ActionMethods";
+// import { validateChips } from "../Player/ActionMethods";
 
 interface ResourceProps extends StateProps {
     liftSelection: (value: keyof ResourceCost) => void
