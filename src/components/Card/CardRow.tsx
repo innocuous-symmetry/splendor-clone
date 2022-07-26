@@ -1,10 +1,7 @@
-import { v4 } from 'uuid';
-import { CardData, StateProps } from "../../util/types"
+import { CardRowProps } from '../../util/propTypes';
+import { CardData } from "../../util/types"
 import Card from "../Card/Card"
-
-interface CardRowProps extends StateProps {
-    tier: number
-}
+import { v4 } from 'uuid';
 
 export default function CardRow({tier, state, setState}: CardRowProps) {
     let cards: Array<CardData>

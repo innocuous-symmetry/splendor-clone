@@ -1,8 +1,9 @@
 // types, data, utils
-import { AppState, PlayerData, ResourceCost, SetActionType, StateProps } from '../../util/types';
+import { AppState, PlayerData, ResourceCost, SetActionType } from '../../util/types';
 import { setStateBuyCard, setStateGetChips, setStateReserveCard } from '../../util/stateSetters';
 import { useCallback, useEffect, useState } from 'react';
 import { getChipsActions } from '../Player/ActionMethods';
+import { StateProps } from '../../util/propTypes';
 const { validateChips } = getChipsActions;
 
 // components

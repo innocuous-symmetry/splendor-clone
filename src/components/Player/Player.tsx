@@ -1,11 +1,7 @@
-import { PlayerData, SetActionType, StateProps } from "../../util/types"
+import { PlayerProps } from "../../util/propTypes";
+import { PlayerData } from "../../util/types"
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
-
-interface PlayerProps extends StateProps {
-    player: PlayerData,
-    setActionState: (value: SetActionType, player?: PlayerData) => void
-}
 
 export default function Player({ player, state, setState, setActionState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
@@ -33,22 +29,37 @@ export default function Player({ player, state, setState, setActionState }: Play
     return (
         <div className="player-ui" key={v4()}>
             {/* Static Data */}
-            <p>Name: {player.name}</p>
-            <p>Score: {player.points}</p>
-            <p>Is {player.starter || "not"} round starter</p>
+            <section className="player-constants">
+                <p>Name: {player.name}</p>
+                <p>Score: {player.points}</p>
+                <p>Is {player.starter || "not"} round starter</p>
+            </section>
 
             {/* Dynamic data from state */}
-            <p>{dynamic?.turnActive ? prompt : '...'}</p>
-            <button onClick={() => setActionSelection(0)}>Get Chips</button>
-            <button onClick={() => setActionSelection(1)}>Buy Card</button>
-            <button onClick={() => setActionSelection(2)}>Reserve Card</button>
-            <div className="player-cards">
+            <section className="turn-and-action-based">
+                <p>{dynamic?.turnActive ? prompt : '...'}</p>
+                <button onClick={() => setActionSelection(0)}>Get Chips</button>
+                <button onClick={() => setActionSelection(1)}>Buy Card</button>
+                <button onClick={() => setActionSelection(2)}>Reserve Card</button>
+            </section>
+
+            <section className="resources">
                 <strong>{dynamic?.name}'s Resources</strong>
-                { dynamic && Object.entries(dynamic?.inventory).map(([key,value]) => {
-                    return value > 0 && <p key={v4()}>{key}: {value}</p>
-                })}
-            </div>
-            <div className="player-resources"></div>
+
+                <div className="player-chips">
+                    { dynamic && Object.entries(dynamic?.inventory).map(([key,value]) => {
+                        return value > 0 && <p key={v4()}>{key}: {value}</p>
+                    })}
+                </div>
+
+                <div className="player-cards">
+                    { dynamic && dynamic.cards.length > 0 && Object.entries(dynamic.cards).map(([key, value]) => {
+                        return (
+                            <p key={v4()}></p>
+                        )
+                    })}
+                </div>
+            </section>
         </div>
     )
 }

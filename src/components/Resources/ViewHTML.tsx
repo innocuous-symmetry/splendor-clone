@@ -1,7 +1,8 @@
 import { v4 } from "uuid";
 import { useEffect, useState } from "react";
 import { setStateGetChips } from "../../util/stateSetters";
-import { ResourceCost, StateProps } from "../../util/types";
+import { StateProps } from "../../util/propTypes";
+import { ResourceCost } from "../../util/types";
 import { getChipsActions } from "../Player/ActionMethods";
 const { getChips } = getChipsActions;
 

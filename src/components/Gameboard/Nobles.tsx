@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { v4 } from "uuid";
-import { NobleData, ResourceCost, StateProps } from "../../util/types";
+import { NobleData, ResourceCost } from "../../util/types";
+import { StateProps } from "../../util/propTypes";
 import "./Nobles.css"
 
 export default function Nobles({ state, setState }: StateProps) {

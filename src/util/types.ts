@@ -48,11 +48,6 @@ export enum SetActionType {
 
 export type setStateType = Dispatch<SetStateAction<AppState>>
 
-export interface StateProps {
-    state: AppState,
-    setState: setStateType
-}
-
 export interface GameInformation {
     players: PlayerData[],
     nobles: NobleData[],

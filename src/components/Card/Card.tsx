@@ -1,11 +1,8 @@
 import { v4 } from 'uuid';
-import { CardData, StateProps } from '../../util/types';
+import { CardProps } from '../../util/propTypes';
+import { ResourceCost } from '../../util/types';
 import { buyCardActions } from '../Player/ActionMethods';
 const { buyCard, tooExpensive } = buyCardActions;
-
-interface CardProps extends StateProps {
-    data: CardData
-}
 
 export default function Card({ data, state, setState }: CardProps) {
     return (
@@ -15,9 +12,9 @@ export default function Card({ data, state, setState }: CardProps) {
                 <p>Point value: {data.points || 0}</p>
                 <p>Cost:</p>
                 {
-                    Object.keys(data.resourceCost).map((key) => {
+                    Object.keys(data.resourceCost).map((key: keyof ResourceCost | string) => {
                         // @ts-ignore
-                        return (data.resourceCost[key] > 0) && <p key={v4()}>{key}: {data.resourceCost[key]}</p>
+                        return (data.resourceCost[key as keyof ResourceCost] > 0) && <p key={v4()}>{key}: {data.resourceCost[key as keyof ResourceCost]}</p>
                     })
                 }
                 { state.actions.buyCard.active &&
