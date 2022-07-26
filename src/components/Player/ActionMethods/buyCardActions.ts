@@ -26,8 +26,6 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
      * @param card -> the target card, @param state -> current app state
     */
 
-    console.log('called')
-
     let currentPlayer = useCurrentPlayer(state);
     console.log(currentPlayer);
     
@@ -35,19 +33,27 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
         if (!currentPlayer) return prev;
 
         const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
-        let newInventory = currentPlayer.inventory;
+
+        let newPlayerInventory = currentPlayer.inventory;
+        let newResourcePool = prev.gameboard.tradingResources;
 
         for (let [gem, cost] of Object.entries(card.resourceCost)) {
             if (cost < 1) continue;
+            
+            let resourceToReplenish = newResourcePool[gem as keyof ResourceCost];
+            let newInventoryValue = newPlayerInventory[gem as keyof ResourceCost];
+            if (!newInventoryValue || !resourceToReplenish) continue;
+            
             let i = cost;
-            let newInventoryValue = newInventory[gem as keyof ResourceCost];
-            if (!newInventoryValue) continue;
-
             while (i > 0) {
                 newInventoryValue--;
                 i--;
             }
-            newInventory[gem as keyof ResourceCost] = newInventoryValue;
+
+            resourceToReplenish += cost;
+
+            newPlayerInventory[gem as keyof ResourceCost] = newInventoryValue;
+            newResourcePool[gem as keyof ResourceCost] = resourceToReplenish;
         }
 
         let updatedPlayer: PlayerData = {
@@ -56,7 +62,7 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
                 ...currentPlayer.cards,
                 card
             ],
-            inventory: newInventory
+            inventory: newPlayerInventory
         }
 
         let newScore = updatedPlayer.points;
@@ -71,10 +77,12 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
 
         return {
             ...prev,
+            gameboard: {
+                ...prev.gameboard,
+                tradingResources: prev.gameboard.tradingResources
+            },
             round: (roundIncrement ? prev.round + 1 : prev.round),
             players: newPlayers
         }
     })
-
-    console.log(state);
 }

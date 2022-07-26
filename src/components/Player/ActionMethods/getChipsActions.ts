@@ -6,16 +6,20 @@ import { initialActions } from "../../../util/stateSetters";
 
 export const validateChips = (state: AppState): boolean => {
     if (!state.actions.getChips.active || !state.actions.getChips.selection) return false;
-
     const selection = state.actions.getChips.selection;
-    
-    if (selection.length === 0 || selection.length > 3) return false;
-    const unique = new Set(selection);
 
+    // requires a selection to be made, and less than three chips to be selected
+    if (selection.length === 0 || selection.length > 3) return false;
+
+    // ensures correct handling of duplicate chips
+    const unique = new Set(selection);
     if (selection.length === 3 && selection.length > unique.size) return false;
 
-    let globalResourceCopy = { ...state.gameboard.tradingResources }
+    // allows only one gold chip to be collected at a time
+    if (selection.includes('gold') && unique.size > 1) return false; 
 
+    // ensures the player cannot collect unavailable resources
+    let globalResourceCopy = { ...state.gameboard.tradingResources }
     for (let item of selection) {
         for (let key of Object.keys(globalResourceCopy)) {
             if (item === key) {
