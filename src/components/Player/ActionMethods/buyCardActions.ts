@@ -1,4 +1,4 @@
-import { AppState, CardData, setStateType } from "../../../util/types";
+import { AppState, CardData, PlayerData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
@@ -25,20 +25,49 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
      * @param card -> the target card, @param state -> current app state
     */
 
-    const currentPlayer = useCurrentPlayer(state);
-    if (!currentPlayer) return;
+    console.log('called')
 
+    let currentPlayer = useCurrentPlayer(state);
+    console.log(currentPlayer);
+    
     setState((prev: AppState) => {
-        let updatedPlayer = {
+        if (!currentPlayer) return prev;
+
+        let newInventory = currentPlayer.inventory;
+        for (let [gem, cost] of Object.entries(card.resourceCost)) {
+            if (cost < 1) continue;
+            
+            let i = cost;
+            let newInventoryValue = newInventory[gem as keyof ResourceCost];
+            if (!newInventoryValue) continue;
+
+            while (i > 0) {
+                newInventoryValue--;
+                i--;
+            }
+
+            newInventory[gem as keyof ResourceCost] = newInventoryValue;
+        }
+
+        let updatedPlayer: PlayerData = {
             ...currentPlayer,
             cards: [
                 ...currentPlayer.cards,
                 card
-            ]
+            ],
+            inventory: newInventory
         }
 
+        let allPlayers = prev.players;
+        const idx = allPlayers.findIndex((one: PlayerData) => one.id === currentPlayer?.id);
+
+        allPlayers[idx] = updatedPlayer;
+
         return {
-            ...prev
+            ...prev,
+            players: allPlayers
         }
     })
+
+    console.log(state);
 }
