@@ -37,7 +37,7 @@ export const getChips = (state: AppState, setState: setStateType) => {
     setState((prev) => {
         if (!targetPlayer) return prev;
 
-        const { newPlayers, roundIncrement } = turnOrderUtil(state, targetPlayer);
+        const { newPlayers, roundIncrement } = turnOrderUtil(prev, targetPlayer);
         const idx = newPlayers.indexOf(targetPlayer);
         const resources = state.actions.getChips.selection;
         let newResources = prev.gameboard.tradingResources;

@@ -1,3 +1,4 @@
+import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, PlayerData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 
@@ -33,10 +34,11 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
     setState((prev: AppState) => {
         if (!currentPlayer) return prev;
 
+        const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
         let newInventory = currentPlayer.inventory;
+
         for (let [gem, cost] of Object.entries(card.resourceCost)) {
             if (cost < 1) continue;
-            
             let i = cost;
             let newInventoryValue = newInventory[gem as keyof ResourceCost];
             if (!newInventoryValue) continue;
@@ -45,7 +47,6 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
                 newInventoryValue--;
                 i--;
             }
-
             newInventory[gem as keyof ResourceCost] = newInventoryValue;
         }
 
@@ -58,14 +59,20 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
             inventory: newInventory
         }
 
-        let allPlayers = prev.players;
-        const idx = allPlayers.findIndex((one: PlayerData) => one.id === currentPlayer?.id);
+        let newScore = updatedPlayer.points;
+        for (let each of updatedPlayer.cards) {
+            newScore += each.points || 0;
+        }
 
-        allPlayers[idx] = updatedPlayer;
+        updatedPlayer.points = newScore;
+
+        const idx = newPlayers.findIndex((one: PlayerData) => one.id === currentPlayer?.id);
+        newPlayers[idx] = updatedPlayer;
 
         return {
             ...prev,
-            players: allPlayers
+            round: (roundIncrement ? prev.round + 1 : prev.round),
+            players: newPlayers
         }
     })
 
