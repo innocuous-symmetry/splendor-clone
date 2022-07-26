@@ -1,7 +1,8 @@
 import { PlayerProps } from "../../util/propTypes";
-import { PlayerData } from "../../util/types"
+import { CardData, PlayerData } from "../../util/types"
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
+import { MiniCard } from "../Card/MiniCard";
 
 export default function Player({ player, state, setState, setActionState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
@@ -47,17 +48,22 @@ export default function Player({ player, state, setState, setActionState }: Play
                 <strong>{dynamic?.name}'s Resources</strong>
 
                 <div className="player-chips">
+                    <p>Chips:</p>
                     { dynamic && Object.entries(dynamic?.inventory).map(([key,value]) => {
                         return value > 0 && <p key={v4()}>{key}: {value}</p>
                     })}
                 </div>
 
                 <div className="player-cards">
-                    { dynamic && dynamic.cards.length > 0 && Object.entries(dynamic.cards).map(([key, value]) => {
+                    <p>Cards:</p>
+                    { dynamic && dynamic.cards.length > 0 && dynamic.cards.map((data: CardData) => {
                         return (
-                            <p key={v4()}></p>
-                        )
-                    })}
+                            <div className="mini-card" style={{backgroundColor: 'white'}}>
+                                <p>{data.gemValue} card</p>
+                                <p>{data.points || null}</p>
+                            </div>
+                        )})
+                    }
                 </div>
             </section>
         </div>
