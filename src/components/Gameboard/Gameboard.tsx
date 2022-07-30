@@ -8,7 +8,7 @@ const { validateChips } = getChipsActions;
 
 // components
 import Nobles from './Nobles';
-import initializeBoard from '../../util/initializeBoard';
+import initializeBoard, { setCardRows } from '../../util/initializeBoard';
 import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
@@ -44,7 +44,7 @@ export default function Gameboard({ state, setState }: StateProps) {
         })
     }, [state]);
 
-    const setActionState = useCallback((value: SetActionType, player: PlayerData) => {
+    const setActionState = useCallback((value: SetActionType, player?: PlayerData) => {
         if (!player?.turnActive) return;
 
         switch (value) {
@@ -67,6 +67,10 @@ export default function Gameboard({ state, setState }: StateProps) {
         initializeBoard(state, setState);
     }, [])
 
+    useEffect(() => {
+        setCardRows(state);
+    }, [state])
+
     // displays state of board if data is populated
     useEffect(() => {
         if (!state.players.length) {
@@ -86,7 +90,6 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <CardRow tier={1} state={state} setState={setState} />
                     <SelectionView state={state} setState={setState} />
                     <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
-                    {/* @ts-ignore */}
                     <AllPlayers state={state} setState={setState} setActionState={setActionState} />
                 </div>
             )

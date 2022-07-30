@@ -1,998 +1,1089 @@
 {
     "tierOne": [
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 1,
-                "emerald": 1,
-                "onyx": 1,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 0
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 1,
+          "emerald": 1,
+          "onyx": 1,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 1,
-                "emerald": 0,
-                "onyx": 1,
-                "diamond": 1
-            },
-            "gemValue": "emerald",
-            "points": 0
+        "gemValue": "diamond",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 1,
+          "emerald": 0,
+          "onyx": 1,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 1,
-                "emerald": 1,
-                "onyx": 0,
-                "diamond": 1
-            },
-            "gemValue": "onyx",
-            "points": 0
+        "gemValue": "emerald",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 1,
+          "emerald": 1,
+          "onyx": 0,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 0,
-                "emerald": 1,
-                "onyx": 1,
-                "diamond": 1
-            },
-            "gemValue": "sapphire",
-            "points": 0
+        "gemValue": "onyx",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 0,
+          "emerald": 1,
+          "onyx": 1,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 1,
-                "emerald": 1,
-                "onyx": 1,
-                "diamond": 1
-            },
-            "gemValue": "ruby",
-            "points": 0
+        "gemValue": "sapphire",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 1,
+          "emerald": 1,
+          "onyx": 1,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 2,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 2
-            },
-            "gemValue": "onyx",
-            "points": 0
+        "gemValue": "ruby",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 2,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 0,
-                "emerald": 2,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 0
+        "gemValue": "onyx",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 0,
+          "emerald": 2,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 3,
-                "emerald": 1,
-                "onyx": 0,
-                "diamond": 1
-            },
-            "gemValue": "emerald",
-            "points": 0
+        "gemValue": "onyx",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 3,
+          "emerald": 1,
+          "onyx": 0,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 1,
-                "emerald": 3,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 0
+        "gemValue": "emerald",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 1,
+          "emerald": 3,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 2,
-                "diamond": 1
-            },
-            "gemValue": "sapphire",
-            "points": 0
+        "gemValue": "sapphire",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 2,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 1,
-                "emerald": 2,
-                "onyx": 1,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 0
+        "gemValue": "sapphire",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 1,
+          "emerald": 2,
+          "onyx": 1,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 1,
-                "emerald": 1,
-                "onyx": 1,
-                "diamond": 2
-            },
-            "gemValue": "ruby",
-            "points": 0
+        "gemValue": "diamond",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 1,
+          "emerald": 1,
+          "onyx": 1,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 1,
-                "onyx": 1,
-                "diamond": 2
-            },
-            "gemValue": "ruby",
-            "points": 0
+        "gemValue": "ruby",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 1,
+          "onyx": 1,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 0,
-                "emerald": 1,
-                "onyx": 1,
-                "diamond": 1
-            },
-            "gemValue": "sapphire",
-            "points": 0
+        "gemValue": "ruby",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 0,
+          "emerald": 1,
+          "onyx": 1,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 2,
-                "emerald": 2,
-                "onyx": 1,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 0
+        "gemValue": "sapphire",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 2,
+          "emerald": 2,
+          "onyx": 1,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 2,
-                "emerald": 1,
-                "onyx": 0,
-                "diamond": 1
-            },
-            "gemValue": "onyx",
-            "points": 0
+        "gemValue": "diamond",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 2,
+          "emerald": 1,
+          "onyx": 0,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 2,
-                "emerald": 1,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "ruby",
-            "points": 0
+        "gemValue": "onyx",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 2,
+          "emerald": 1,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 1
-            },
-            "gemValue": "ruby",
-            "points": 0
+        "gemValue": "ruby",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 1,
-                "emerald": 0,
-                "onyx": 1,
-                "diamond": 3
-            },
-            "gemValue": "diamond",
-            "points": 0
+        "gemValue": "ruby",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 1,
+          "emerald": 0,
+          "onyx": 1,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 1,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 0
+        "gemValue": "diamond",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 1,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 1,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 2
-            },
-            "gemValue": "emerald",
-            "points": 0
+        "gemValue": "diamond",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 1,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 1,
-                "emerald": 0,
-                "onyx": 2,
-                "diamond": 1
-            },
-            "gemValue": "emerald",
-            "points": 0
+        "gemValue": "emerald",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 1,
+          "emerald": 0,
+          "onyx": 2,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 1,
-                "emerald": 0,
-                "onyx": 1,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 0
+        "gemValue": "emerald",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 1,
+          "emerald": 0,
+          "onyx": 1,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 0,
-                "emerald": 1,
-                "onyx": 1,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 0
+        "gemValue": "emerald",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 0,
+          "emerald": 1,
+          "onyx": 1,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 0,
-                "emerald": 2,
-                "onyx": 0,
-                "diamond": 1
-            },
-            "gemValue": "sapphire",
-            "points": 0
+        "gemValue": "onyx",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 0,
+          "emerald": 2,
+          "onyx": 0,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 2,
-                "onyx": 0,
-                "diamond": 2
-            },
-            "gemValue": "onyx",
-            "points": 0
+        "gemValue": "sapphire",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 2,
+          "onyx": 0,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 2,
-                "emerald": 0,
-                "onyx": 2,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 0
+        "gemValue": "onyx",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 2,
+          "emerald": 0,
+          "onyx": 2,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 2,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 0
+        "gemValue": "diamond",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 2,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 2
-            },
-            "gemValue": "ruby",
-            "points": 0
+        "gemValue": "emerald",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 2,
-                "onyx": 2,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 0
+        "gemValue": "ruby",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 2,
+          "onyx": 2,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 0
+        "gemValue": "sapphire",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 3
-            },
-            "gemValue": "ruby",
-            "points": 0
+        "gemValue": "sapphire",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 3,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 0
+        "gemValue": "ruby",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 3,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 0
+        "gemValue": "onyx",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 0
+        "gemValue": "emerald",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 4,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 1
+        "gemValue": "diamond",
+        "points": 0,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 4,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 4
-            },
-            "gemValue": "ruby",
-            "points": 1
+        "gemValue": "sapphire",
+        "points": 1,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 4
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 4,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 1
+        "gemValue": "ruby",
+        "points": 1,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 4,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 4,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 1
+        "gemValue": "onyx",
+        "points": 1,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 4,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 4,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 1
-        }
+        "gemValue": "diamond",
+        "points": 1,
+        "tier": 1
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 4,
+          "diamond": 0
+        },
+        "gemValue": "emerald",
+        "points": 1,
+        "tier": 1
+      }
     ],
     "tierTwo": [
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 5,
-                "diamond": 3
-            },
-            "gemValue": "ruby",
-            "points": 2
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 5,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 0,
-                "emerald": 5,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 2
+        "gemValue": "ruby",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 0,
+          "emerald": 5,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 2,
-                "diamond": 2
-            },
-            "gemValue": "emerald",
-            "points": 1
+        "gemValue": "onyx",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 2,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 5
-            },
-            "gemValue": "onyx",
-            "points": 2
+        "gemValue": "emerald",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 5
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 5,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 2
+        "gemValue": "onyx",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 5,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 5,
-                "diamond": 0
-            },
-            "gemValue": "ruby",
-            "points": 2
+        "gemValue": "emerald",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 5,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 5,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 2
+        "gemValue": "ruby",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 5,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 5,
-                "emerald": 3,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 2
+        "gemValue": "diamond",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 5,
+          "emerald": 3,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 5,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 2
+        "gemValue": "emerald",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 5,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 5,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 2
+        "gemValue": "diamond",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 5,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 2
-            },
-            "gemValue": "diamond",
-            "points": 1
+        "gemValue": "sapphire",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 1,
-                "emerald": 4,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 2
+        "gemValue": "diamond",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 1,
+          "emerald": 4,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 1,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 4,
-                "diamond": 2
-            },
-            "gemValue": "sapphire",
-            "points": 2
+        "gemValue": "onyx",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 1,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 4,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 6,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 3
+        "gemValue": "sapphire",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 6,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 2,
-                "emerald": 0,
-                "onyx": 1,
-                "diamond": 4
-            },
-            "gemValue": "emerald",
-            "points": 2
+        "gemValue": "emerald",
+        "points": 3,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 2,
+          "emerald": 0,
+          "onyx": 1,
+          "diamond": 4
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 6
-            },
-            "gemValue": "diamond",
-            "points": 3
+        "gemValue": "emerald",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 6
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 4,
-                "emerald": 2,
-                "onyx": 0,
-                "diamond": 1
-            },
-            "gemValue": "ruby",
-            "points": 2
+        "gemValue": "diamond",
+        "points": 3,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 4,
+          "emerald": 2,
+          "onyx": 0,
+          "diamond": 1
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 2,
-                "emerald": 2,
-                "onyx": 0,
-                "diamond": 3
-            },
-            "gemValue": "onyx",
-            "points": 1
+        "gemValue": "ruby",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 2,
+          "emerald": 2,
+          "onyx": 0,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 3,
-                "onyx": 2,
-                "diamond": 3
-            },
-            "gemValue": "onyx",
-            "points": 1
+        "gemValue": "onyx",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 3,
+          "onyx": 2,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 6,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 3
+        "gemValue": "onyx",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 6,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 2
-            },
-            "gemValue": "ruby",
-            "points": 1
+        "gemValue": "onyx",
+        "points": 3,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 2
         },
-        {
-            "resourceCost": {
-                "ruby": 4,
-                "sapphire": 0,
-                "emerald": 1,
-                "onyx": 2,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 2
+        "gemValue": "ruby",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 4,
+          "sapphire": 0,
+          "emerald": 1,
+          "onyx": 2,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 0,
-                "emerald": 2,
-                "onyx": 0,
-                "diamond": 3
-            },
-            "gemValue": "emerald",
-            "points": 1
+        "gemValue": "diamond",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 0,
+          "emerald": 2,
+          "onyx": 0,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 0,
-                "emerald": 3,
-                "onyx": 2,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 1
+        "gemValue": "emerald",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 0,
+          "emerald": 3,
+          "onyx": 2,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 2,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 0
-            },
-            "gemValue": "ruby",
-            "points": 1
+        "gemValue": "diamond",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 2,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 2,
-                "emerald": 2,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 1
+        "gemValue": "ruby",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 2,
+          "emerald": 2,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 6,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "ruby",
-            "points": 3
+        "gemValue": "sapphire",
+        "points": 1,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 6,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 6,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 3
+        "gemValue": "ruby",
+        "points": 3,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 6,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 5
-            },
-            "gemValue": "sapphire",
-            "points": 2
+        "gemValue": "sapphire",
+        "points": 3,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 5
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 2,
-                "emerald": 3,
-                "onyx": 3,
-                "diamond": 0
-            },
-            "gemValue": "sapphire",
-            "points": 1
-        }
+        "gemValue": "sapphire",
+        "points": 2,
+        "tier": 2
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 2,
+          "emerald": 3,
+          "onyx": 3,
+          "diamond": 0
+        },
+        "gemValue": "sapphire",
+        "points": 1,
+        "tier": 2
+      }
     ],
     "tierThree": [
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 7,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "ruby",
-            "points": 4
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 7,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 7,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 4
+        "gemValue": "ruby",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 7,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 6,
-                "diamond": 3
-            },
-            "gemValue": "diamond",
-            "points": 4
+        "gemValue": "diamond",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 6,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 3,
-                "emerald": 6,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 4
+        "gemValue": "diamond",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 3,
+          "emerald": 6,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 7,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 4
+        "gemValue": "emerald",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 7,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 6
-            },
-            "gemValue": "sapphire",
-            "points": 4
+        "gemValue": "onyx",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 6
         },
-        {
-            "resourceCost": {
-                "ruby": 6,
-                "sapphire": 0,
-                "emerald": 3,
-                "onyx": 3,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 4
+        "gemValue": "sapphire",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 6,
+          "sapphire": 0,
+          "emerald": 3,
+          "onyx": 3,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 7
-            },
-            "gemValue": "sapphire",
-            "points": 4
+        "gemValue": "onyx",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 7
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 7,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 4
+        "gemValue": "sapphire",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 7,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 6,
-                "emerald": 3,
-                "onyx": 0,
-                "diamond": 3
-            },
-            "gemValue": "emerald",
-            "points": 4
+        "gemValue": "emerald",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 6,
+          "emerald": 3,
+          "onyx": 0,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 5,
-                "emerald": 3,
-                "onyx": 3,
-                "diamond": 3
-            },
-            "gemValue": "ruby",
-            "points": 3
+        "gemValue": "emerald",
+        "points": 4,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 5,
+          "emerald": 3,
+          "onyx": 3,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 5
-            },
-            "gemValue": "emerald",
-            "points": 3
+        "gemValue": "ruby",
+        "points": 3,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 5
         },
-        {
-            "resourceCost": {
-                "ruby": 5,
-                "sapphire": 3,
-                "emerald": 3,
-                "onyx": 3,
-                "diamond": 0
-            },
-            "gemValue": "diamond",
-            "points": 3
+        "gemValue": "emerald",
+        "points": 3,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 5,
+          "sapphire": 3,
+          "emerald": 3,
+          "onyx": 3,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 3,
-                "emerald": 5,
-                "onyx": 0,
-                "diamond": 3
-            },
-            "gemValue": "onyx",
-            "points": 3
+        "gemValue": "diamond",
+        "points": 3,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 3,
+          "emerald": 5,
+          "onyx": 0,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 0,
-                "emerald": 3,
-                "onyx": 5,
-                "diamond": 3
-            },
-            "gemValue": "sapphire",
-            "points": 3
+        "gemValue": "onyx",
+        "points": 3,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 0,
+          "emerald": 3,
+          "onyx": 5,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 3,
-                "emerald": 0,
-                "onyx": 0,
-                "diamond": 7
-            },
-            "gemValue": "sapphire",
-            "points": 5
+        "gemValue": "sapphire",
+        "points": 3,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 3,
+          "emerald": 0,
+          "onyx": 0,
+          "diamond": 7
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 7,
-                "diamond": 3
-            },
-            "gemValue": "diamond",
-            "points": 5
+        "gemValue": "sapphire",
+        "points": 5,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 7,
+          "diamond": 3
         },
-        {
-            "resourceCost": {
-                "ruby": 3,
-                "sapphire": 0,
-                "emerald": 7,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "ruby",
-            "points": 5
+        "gemValue": "diamond",
+        "points": 5,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 3,
+          "sapphire": 0,
+          "emerald": 7,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 0,
-                "sapphire": 7,
-                "emerald": 3,
-                "onyx": 0,
-                "diamond": 0
-            },
-            "gemValue": "emerald",
-            "points": 5
+        "gemValue": "ruby",
+        "points": 5,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 0,
+          "sapphire": 7,
+          "emerald": 3,
+          "onyx": 0,
+          "diamond": 0
         },
-        {
-            "resourceCost": {
-                "ruby": 7,
-                "sapphire": 0,
-                "emerald": 0,
-                "onyx": 3,
-                "diamond": 0
-            },
-            "gemValue": "onyx",
-            "points": 5
-        }
+        "gemValue": "emerald",
+        "points": 5,
+        "tier": 3
+      },
+      {
+        "resourceCost": {
+          "ruby": 7,
+          "sapphire": 0,
+          "emerald": 0,
+          "onyx": 3,
+          "diamond": 0
+        },
+        "gemValue": "onyx",
+        "points": 5,
+        "tier": 3
+      }
     ]
-}
+  }
+  

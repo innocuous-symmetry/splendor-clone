@@ -30,18 +30,21 @@ const setNobles = (state: AppState, setState: setStateType) => {
     setState({ ...state, gameboard: { ...state.gameboard, nobles: shuffledNobles }})
 }
 
-export default function initializeBoard(state: AppState, setState: setStateType) {
-    shuffleDeck(state, setState);
-
+export const setCardRows = (state: AppState) => {
+    console.log('set cards');
     let newDeck = state.gameboard.cardRows;
     for (const [key, value] of Object.entries(state.gameboard.deck)) {
         while (newDeck[key as keyof FullDeck].length < 4) {
-            // @ts-ignore
             const nextCard = value.shift();
             newDeck[key as keyof FullDeck].push(nextCard);
         }
     }
+    return newDeck;
+}
 
+export default function initializeBoard(state: AppState, setState: setStateType) {
+    shuffleDeck(state, setState);
+    const newDeck = setCardRows(state);
     setState({ ...state, gameboard: { ...state.gameboard, cardRows: newDeck } })
     setNobles(state, setState);
 }

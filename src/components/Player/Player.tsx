@@ -58,7 +58,7 @@ export default function Player({ player, state, setState, setActionState }: Play
                     <p>Cards:</p>
                     { dynamic && dynamic.cards.length > 0 && dynamic.cards.map((data: CardData) => {
                         return (
-                            <div className="mini-card" style={{backgroundColor: 'white'}}>
+                            <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
                                 <p>{data.gemValue} card</p>
                                 <p>{data.points || null}</p>
                             </div>

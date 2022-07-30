@@ -1,5 +1,5 @@
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
-import { AppState, CardData, PlayerData, ResourceCost, setStateType } from "../../../util/types";
+import { AppState, CardData, FullDeck, PlayerData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
@@ -27,7 +27,7 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
     */
 
     let currentPlayer = useCurrentPlayer(state);
-    console.log(currentPlayer);
+    console.log(card);
     
     setState((prev: AppState) => {
         if (!currentPlayer) return prev;
@@ -75,14 +75,37 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
         const idx = newPlayers.findIndex((one: PlayerData) => one.id === currentPlayer?.id);
         newPlayers[idx] = updatedPlayer;
 
+        let updatedRows = { ...prev.gameboard.cardRows }
+
+        if (card.tier) {
+            let tierKey;
+            switch (card.tier) {
+                case 1:
+                    tierKey = "tierOne"
+                    break;
+                case 2:
+                    tierKey = "tierTwo"
+                    break;
+                case 3:
+                    tierKey = "tierThree"
+                    break;
+                default:
+                    break;
+            }
+
+            updatedRows[tierKey as keyof FullDeck] = 
+            prev.gameboard.cardRows[tierKey as keyof FullDeck].filter((found: CardData) => found.resourceCost !== card.resourceCost);
+        }
+
         return {
             ...prev,
+            round: (roundIncrement ? prev.round + 1 : prev.round),
+            players: newPlayers,
             gameboard: {
                 ...prev.gameboard,
-                tradingResources: prev.gameboard.tradingResources
-            },
-            round: (roundIncrement ? prev.round + 1 : prev.round),
-            players: newPlayers
+                tradingResources: prev.gameboard.tradingResources,
+                cardRows: updatedRows
+            }
         }
     })
 }
