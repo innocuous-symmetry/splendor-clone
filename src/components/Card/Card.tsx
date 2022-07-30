@@ -2,6 +2,7 @@ import { v4 } from 'uuid';
 import { CardProps } from '../../util/propTypes';
 import { ResourceCost } from '../../util/types';
 import { buyCardActions } from '../Player/ActionMethods';
+import { reserveCard } from '../Player/ActionMethods/reserveCardActions';
 const { buyCard, tooExpensive } = buyCardActions;
 
 export default function Card({ data, state, setState }: CardProps) {
@@ -23,6 +24,12 @@ export default function Card({ data, state, setState }: CardProps) {
                         disabled={tooExpensive(data, state)}
                         >
                         Buy This Card
+                    </button>
+                }
+                { state.actions.reserveCard.active &&
+                    <button
+                        onClick={() => reserveCard(state)}>
+                        Reserve This Card
                     </button>
                 }
             </div>

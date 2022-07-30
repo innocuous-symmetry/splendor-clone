@@ -2,7 +2,6 @@ import { PlayerProps } from "../../util/propTypes";
 import { CardData, PlayerData } from "../../util/types"
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
-import { MiniCard } from "../Card/MiniCard";
 
 export default function Player({ player, state, setState, setActionState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
@@ -64,6 +63,18 @@ export default function Player({ player, state, setState, setActionState }: Play
                             </div>
                         )})
                     }
+                </div>
+
+                <div className="reserved-cards">
+                    <p>Reserved cards:</p>
+                    { dynamic?.reservedCards && dynamic.reservedCards?.map((data: CardData) => {
+                        return (
+                            <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
+                                <p>{data.gemValue} cards</p>
+                                <p>{data.points + " points" || null}</p>
+                            </div>
+                        )
+                    })}
                 </div>
             </section>
         </div>

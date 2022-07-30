@@ -63,6 +63,7 @@ export interface PlayerData {
     points: number,
     nobles: NobleData[],
     cards: CardData[],
+    reservedCards?: CardData[],
     inventory: {
         [Property in keyof ResourceCost]: number
     }

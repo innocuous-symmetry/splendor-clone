@@ -5,7 +5,6 @@ import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
     if (!currentPlayer) return true;
-
     for (let [gemType, cost] of Object.entries(card.resourceCost)) {
         let totalBuyingPower = {
             ruby: 0,
@@ -44,13 +43,11 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
     */
 
     let currentPlayer = useCurrentPlayer(state);
-    console.log(card);
     
     setState((prev: AppState) => {
         if (!currentPlayer) return prev;
 
         const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
-
         let newPlayerInventory = currentPlayer.inventory;
         let newResourcePool = prev.gameboard.tradingResources;
 
@@ -68,7 +65,6 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
             }
 
             resourceToReplenish += cost;
-
             newPlayerInventory[gem as keyof ResourceCost] = newInventoryValue;
             newResourcePool[gem as keyof ResourceCost] = resourceToReplenish;
         }
@@ -88,10 +84,8 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
         }
 
         updatedPlayer.points = newScore;
-
         const idx = newPlayers.findIndex((one: PlayerData) => one.id === currentPlayer?.id);
         newPlayers[idx] = updatedPlayer;
-
         let updatedRows = { ...prev.gameboard.cardRows }
 
         if (card.tier) {
