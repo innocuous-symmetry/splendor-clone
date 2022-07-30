@@ -31,7 +31,6 @@ const setNobles = (state: AppState, setState: setStateType) => {
 }
 
 export const setCardRows = (state: AppState) => {
-    console.log('set cards');
     let newDeck = state.gameboard.cardRows;
     for (const [key, value] of Object.entries(state.gameboard.deck)) {
         while (newDeck[key as keyof FullDeck].length < 4) {

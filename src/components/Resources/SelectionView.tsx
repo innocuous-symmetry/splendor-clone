@@ -1,7 +1,5 @@
-import { v4 } from "uuid";
 import { useEffect, useState } from "react";
-import { ResourceCost, StateProps } from "../../util/types";
-import { setStateGetChips } from "../../util/stateSetters";
+import { StateProps } from "../../util/propTypes";
 import { GetChipsHTML } from "./ViewHTML";
 
 export default function SelectionView({ state, setState }: StateProps) {

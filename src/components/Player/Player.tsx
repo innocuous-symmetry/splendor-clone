@@ -32,12 +32,12 @@ export default function Player({ player, state, setState, setActionState }: Play
             {/* Static Data */}
             <section className="player-constants">
                 <p>Name: {player.name}</p>
-                <p>Score: {player.points}</p>
                 <p>Is {player.starter || "not"} round starter</p>
             </section>
 
             {/* Dynamic data from state */}
             <section className="turn-and-action-based">
+                <p>Score: {dynamic?.points}</p>
                 <p>{dynamic?.turnActive ? prompt : '...'}</p>
                 <button onClick={() => setActionSelection(0)}>Get Chips</button>
                 <button onClick={() => setActionSelection(1)}>Buy Card</button>
@@ -49,7 +49,7 @@ export default function Player({ player, state, setState, setActionState }: Play
 
                 <div className="player-chips">
                     <p>Chips:</p>
-                    { dynamic && Object.entries(dynamic?.inventory).map(([key,value]) => {
+                    { dynamic && Object.entries(dynamic.inventory).map(([key,value]) => {
                         return value > 0 && <p key={v4()}>{key}: {value}</p>
                     })}
                 </div>
@@ -60,7 +60,7 @@ export default function Player({ player, state, setState, setActionState }: Play
                         return (
                             <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
                                 <p>{data.gemValue} card</p>
-                                <p>{data.points || null}</p>
+                                <p>{data.points + " points" || null}</p>
                             </div>
                         )})
                     }

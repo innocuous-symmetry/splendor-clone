@@ -3,7 +3,6 @@ import { ResourceCost } from "../../util/types";
 import { useEffect } from "react";
 import { v4 } from "uuid";
 import "./AvailableChips.css"
-import { setStateGetChips } from "../../util/stateSetters";
 
 export default function AvailableChips({ state, setState, liftSelection }: ResourceProps) {
     useEffect(() => {

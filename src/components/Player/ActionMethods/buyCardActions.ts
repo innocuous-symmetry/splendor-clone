@@ -7,7 +7,24 @@ export const tooExpensive = (card: CardData, state: AppState): boolean => {
     if (!currentPlayer) return true;
 
     for (let [gemType, cost] of Object.entries(card.resourceCost)) {
-        for (let [heldResource, quantity] of Object.entries(currentPlayer.inventory)) {
+        let totalBuyingPower = {
+            ruby: 0,
+            sapphire: 0,
+            emerald: 0,
+            diamond: 0,
+            onyx: 0,
+            gold: 0,
+        }
+
+        for (let [key,quantity] of Object.entries(currentPlayer.inventory)) {
+            totalBuyingPower[key as keyof ResourceCost] += quantity;
+        }
+
+        for (let each of currentPlayer.cards) {
+            totalBuyingPower[each.gemValue as keyof ResourceCost] += 1;
+        }
+        
+        for (let [heldResource, quantity] of Object.entries(totalBuyingPower)) {
             if (gemType === heldResource && quantity < cost) {
                 return true;
             }
