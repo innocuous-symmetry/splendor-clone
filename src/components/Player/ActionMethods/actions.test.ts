@@ -1,6 +1,6 @@
 import { buyCard, getTotalBuyingPower, tooExpensive, updateResources } from './buyCardActions';
 import { test, expect, describe } from 'vitest';
-import { expensiveCard, mockPlayerOne, mockPlayerTwo, mockState } from '../../../util/testUtils';
+import { expensiveCard, midGameCardOne, midGameState, mockPlayerOne, mockPlayerTwo, mockState } from '../../../util/testUtils';
 import { useCurrentPlayer } from '../../../util/useCurrentPlayer';
 
 describe('buy cards', () => {
@@ -44,10 +44,10 @@ describe('buy cards', () => {
     })
 
     test('updateResources', () => {
-        const currentPlayer = useCurrentPlayer(mockState);
+        const currentPlayer = useCurrentPlayer(midGameState);
         if (!currentPlayer) return;
 
-        const { newTradingResources, updatedPlayer } = updateResources(mockState, expensiveCard);
+        const { newTradingResources, updatedPlayer } = updateResources(midGameState, midGameCardOne);
         expect(newTradingResources).toBeDefined();
         expect(updatedPlayer).toBeDefined();
     })
@@ -57,3 +57,6 @@ describe('buy cards', () => {
         expect(output).toBe(1);
     })
 })
+
+describe('get chips', () => {})
+describe('reserve card', () => {})
