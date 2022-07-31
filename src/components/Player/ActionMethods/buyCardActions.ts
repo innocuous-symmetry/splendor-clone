@@ -1,6 +1,7 @@
 import cardTierToKey from "../../../util/cardTierToKey";
+import { initialActions } from "../../../util/stateSetters";
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
-import { AppState, CardData, FullDeck, PlayerData, ResourceCost, setStateType } from "../../../util/types";
+import { AppState, CardData, PlayerData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
@@ -99,7 +100,8 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
                 ...prev.gameboard,
                 tradingResources: prev.gameboard.tradingResources,
                 cardRows: updatedRows
-            }
+            },
+            actions: initialActions
         }
     })
 }

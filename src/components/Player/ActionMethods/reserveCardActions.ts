@@ -1,4 +1,5 @@
 import cardTierToKey from "../../../util/cardTierToKey";
+import { initialActions } from "../../../util/stateSetters";
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, FullDeck, PlayerData, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
@@ -53,6 +54,7 @@ export const reserveCard = (state: AppState, setState: setStateType, card: CardD
             ...prev,
             round: (roundIncrement ? prev.round + 1 : prev.round),
             players: newPlayers,
+            actions: initialActions,
             gameboard: {
                 ...prev.gameboard,
                 cardRows: newCardRows

@@ -1,19 +1,15 @@
-import Player from "./Player";
 import { v4 } from "uuid";
-import "./AllPlayers.css"
+import Player from "./Player";
 import { PlayerData } from "../../util/types";
-import { useState } from "react";
-import { AllPlayersProps } from "../../util/propTypes";
+import { StateProps } from "../../util/propTypes";
+import "./AllPlayers.css"
 
-export default function AllPlayers({ state, setState, setActionState }: AllPlayersProps) {
-    const [activePlayer, setActivePlayer] = useState();
-    const playerPool = state.players?.map((player: PlayerData) => <Player key={v4()} player={player} state={state} setState={setState} setActionState={setActionState} />);
+export default function AllPlayers({ state, setState }: StateProps) {
+    const playerPool = state.players?.map((player: PlayerData) => <Player key={v4()} player={player} state={state} setState={setState} />);
 
     return (
         <div className="all-players">
-            {
-                playerPool
-            }
+            { playerPool }
         </div>
     )
 }

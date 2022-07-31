@@ -4,34 +4,36 @@ import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { hasMaxReserved } from "./ActionMethods/reserveCardActions";
 import { hasMaxChips } from "./ActionMethods/getChipsActions";
+import { setStateAwaitAction, setStateBuyCard, setStateGetChips, setStateReserveCard } from "../../util/stateSetters";
 
-export default function Player({ player, state, setState, setActionState }: PlayerProps) {
+export default function Player({ player, state, setState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
     const [prompt, setPrompt] = useState("Your turn! Select an action type below.");
-    const [actionSelection, setActionSelection] = useState(-1);
 
     useEffect(() => {
         setDynamic(state.players.find((element: PlayerData) => element.id === player.id))
     }, [state]);
 
-    // sets action label back to default on setstate (round change)
-    useEffect(() => {
-        setActionState(-1, dynamic);
-    }, [setState])
-
-    useEffect(() => {
-        setActionState(actionSelection, dynamic);
-
-        if (state.actions.getChips.active) {
-            setPrompt('Make your selection of up to three chips.');
-        } else if (state.actions.buyCard.active) {
-            setPrompt('Choose a card above to purchase.');
-        } else if (state.actions.reserveCard.active) {
-            setPrompt('Choose a card above to reserve.');
-        } else {
-            setPrompt("Your turn! Select an action type below.");
+    const handleClick = (actionSelection: number) => {
+        switch (actionSelection) {
+            case 0:
+                setState((prev) => setStateGetChips(prev));
+                setPrompt('Make your selection of up to three chips.');
+                break;
+            case 1:
+                setState((prev) => setStateBuyCard(prev));
+                setPrompt('Choose a card above to purchase.');
+                break;
+            case 2:
+                setState((prev) => setStateReserveCard(prev));
+                setPrompt('Choose a card above to reserve.');
+                break;
+            default:
+                setState((prev) => setStateAwaitAction(prev));
+                setPrompt("Your turn! Select an action type below.");
+                break;
         }
-    }, [actionSelection])
+    }
 
     return (
         <div className="player-ui" key={v4()}>
@@ -45,9 +47,9 @@ export default function Player({ player, state, setState, setActionState }: Play
             <section className="turn-and-action-based">
                 <p>Score: {dynamic?.points}</p>
                 <p>{dynamic?.turnActive ? prompt : '...'}</p>
-                <button disabled={dynamic && hasMaxChips(dynamic)} onClick={() => setActionSelection(0)}>Get Chips</button>
-                <button onClick={() => setActionSelection(1)}>Buy Card</button>
-                <button disabled={dynamic && hasMaxReserved(dynamic)} onClick={() => setActionSelection(2)}>Reserve Card</button>
+                <button disabled={dynamic && hasMaxChips(dynamic)} onClick={() => handleClick(0)}>Get Chips</button>
+                <button onClick={() => handleClick(1)}>Buy Card</button>
+                <button disabled={dynamic && hasMaxReserved(dynamic)} onClick={() => handleClick(2)}>Reserve Card</button>
             </section>
 
             <section className="resources">

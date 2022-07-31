@@ -17,7 +17,7 @@ export interface AllPlayersProps extends StateProps {
     setActionState: (value: SetActionType, player?: PlayerData) => void
 }
 
-export interface PlayerProps extends AllPlayersProps {
+export interface PlayerProps extends StateProps {
     player: PlayerData
 }
 

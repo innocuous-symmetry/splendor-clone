@@ -1,6 +1,5 @@
 // types, data, utils
-import { AppState, PlayerData, ResourceCost, SetActionType } from '../../util/types';
-import { setStateBuyCard, setStateGetChips, setStateReserveCard } from '../../util/stateSetters';
+import { AppState, ResourceCost } from '../../util/types';
 import { useCallback, useEffect, useState } from 'react';
 import { getChipsActions } from '../Player/ActionMethods';
 import { StateProps } from '../../util/propTypes';
@@ -44,24 +43,6 @@ export default function Gameboard({ state, setState }: StateProps) {
         })
     }, [state]);
 
-    const setActionState = useCallback((value: SetActionType, player?: PlayerData) => {
-        if (!player?.turnActive) return;
-
-        switch (value) {
-            case 0:
-                if (!state.actions.getChips.active) setState((prev) => setStateGetChips(prev));
-                break;
-            case 1:
-                if (!state.actions.buyCard.active) setState((prev) => setStateBuyCard(prev));
-                break;
-            case 2:
-                if (!state.actions.reserveCard.active) setState((prev) => setStateReserveCard(prev));
-                break;
-            default:
-                break;
-        }
-    }, []);
-
     // util functions, setup on mount
     useEffect(() => {
         initializeBoard(state, setState);
@@ -90,7 +71,7 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <CardRow tier={1} state={state} setState={setState} />
                     <SelectionView state={state} setState={setState} />
                     <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
-                    <AllPlayers state={state} setState={setState} setActionState={setActionState} />
+                    <AllPlayers state={state} setState={setState} />
                 </div>
             )
         }

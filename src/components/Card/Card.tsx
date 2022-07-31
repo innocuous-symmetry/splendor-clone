@@ -1,11 +1,14 @@
 import { v4 } from 'uuid';
 import { CardProps } from '../../util/propTypes';
 import { ResourceCost } from '../../util/types';
+import { useCurrentPlayer } from '../../util/useCurrentPlayer';
 import { buyCardActions } from '../Player/ActionMethods';
-import { reserveCard } from '../Player/ActionMethods/reserveCardActions';
+import { hasMaxReserved, reserveCard } from '../Player/ActionMethods/reserveCardActions';
 const { buyCard, tooExpensive } = buyCardActions;
 
 export default function Card({ data, state, setState }: CardProps) {
+    const currentPlayer = useCurrentPlayer(state);
+
     return (
         <div className={`card`}>
             <div className="top-row">
@@ -21,14 +24,14 @@ export default function Card({ data, state, setState }: CardProps) {
                 { state.actions.buyCard.active &&
                     <button
                         onClick={() => buyCard(data, state, setState)}
-                        disabled={tooExpensive(data, state)}
-                        >
+                        disabled={tooExpensive(data, state)}>
                         Buy This Card
                     </button>
                 }
                 { state.actions.reserveCard.active &&
                     <button
-                        onClick={() => reserveCard(state, setState, data)}>
+                        onClick={() => reserveCard(state, setState, data)}
+                        disabled={hasMaxReserved(currentPlayer)}>
                         Reserve This Card
                     </button>
                 }
