@@ -49,7 +49,7 @@ const setResources = (state: AppState) => {
             break;
     }
 
-    console.log(newResources);
+    newResources['gold'] = 5;
     return newResources;
 }
 
