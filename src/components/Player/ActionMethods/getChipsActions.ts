@@ -1,7 +1,18 @@
-import { AppState, setStateType } from '../../../util/types';
+import { AppState, PlayerData, setStateType } from '../../../util/types';
 import { useCurrentPlayer } from '../../../util/useCurrentPlayer';
+// @ts-ignore
 import { turnOrderUtil } from '../../../util/turnOrderUtil';
 import { initialActions } from "../../../util/stateSetters";
+
+export const hasMaxChips = (player: PlayerData | null): boolean => {
+    if (!player) return true;
+    let sum = 0;
+    for (let count of Object.values(player.inventory)) {
+        sum += count;
+    }
+    if (sum >= 10) return true;
+    return false;
+}
 
 export const validateChips = (state: AppState): boolean => {
     if (!state.actions.getChips.active || !state.actions.getChips.selection) return false;

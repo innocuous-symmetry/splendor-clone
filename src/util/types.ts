@@ -77,7 +77,7 @@ export interface FullDeck {
 
 export interface CardData {
     gemValue: GemValue | string
-    tier?: number
+    tier: number
     points?: number
     resourceCost: ResourceCost
 }

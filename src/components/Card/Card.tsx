@@ -28,7 +28,7 @@ export default function Card({ data, state, setState }: CardProps) {
                 }
                 { state.actions.reserveCard.active &&
                     <button
-                        onClick={() => reserveCard(state)}>
+                        onClick={() => reserveCard(state, setState, data)}>
                         Reserve This Card
                     </button>
                 }

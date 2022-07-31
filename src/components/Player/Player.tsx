@@ -2,6 +2,8 @@ import { PlayerProps } from "../../util/propTypes";
 import { CardData, PlayerData } from "../../util/types"
 import { useEffect, useState } from "react";
 import { v4 } from "uuid";
+import { hasMaxReserved } from "./ActionMethods/reserveCardActions";
+import { hasMaxChips } from "./ActionMethods/getChipsActions";
 
 export default function Player({ player, state, setState, setActionState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
@@ -11,6 +13,11 @@ export default function Player({ player, state, setState, setActionState }: Play
     useEffect(() => {
         setDynamic(state.players.find((element: PlayerData) => element.id === player.id))
     }, [state]);
+
+    // sets action label back to default on setstate (round change)
+    useEffect(() => {
+        setActionState(-1, dynamic);
+    }, [setState])
 
     useEffect(() => {
         setActionState(actionSelection, dynamic);
@@ -38,9 +45,9 @@ export default function Player({ player, state, setState, setActionState }: Play
             <section className="turn-and-action-based">
                 <p>Score: {dynamic?.points}</p>
                 <p>{dynamic?.turnActive ? prompt : '...'}</p>
-                <button onClick={() => setActionSelection(0)}>Get Chips</button>
+                <button disabled={dynamic && hasMaxChips(dynamic)} onClick={() => setActionSelection(0)}>Get Chips</button>
                 <button onClick={() => setActionSelection(1)}>Buy Card</button>
-                <button onClick={() => setActionSelection(2)}>Reserve Card</button>
+                <button disabled={dynamic && hasMaxReserved(dynamic)} onClick={() => setActionSelection(2)}>Reserve Card</button>
             </section>
 
             <section className="resources">

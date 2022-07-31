@@ -1,3 +1,4 @@
+import cardTierToKey from "../../../util/cardTierToKey";
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, FullDeck, PlayerData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
@@ -71,10 +72,7 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
 
         let updatedPlayer: PlayerData = {
             ...currentPlayer,
-            cards: [
-                ...currentPlayer.cards,
-                card
-            ],
+            cards: [...currentPlayer.cards, card],
             inventory: newPlayerInventory
         }
 
@@ -86,26 +84,11 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
         updatedPlayer.points = newScore;
         const idx = newPlayers.findIndex((one: PlayerData) => one.id === currentPlayer?.id);
         newPlayers[idx] = updatedPlayer;
-        let updatedRows = { ...prev.gameboard.cardRows }
+        let updatedRows = prev.gameboard.cardRows;
 
         if (card.tier) {
-            let tierKey;
-            switch (card.tier) {
-                case 1:
-                    tierKey = "tierOne"
-                    break;
-                case 2:
-                    tierKey = "tierTwo"
-                    break;
-                case 3:
-                    tierKey = "tierThree"
-                    break;
-                default:
-                    break;
-            }
-
-            updatedRows[tierKey as keyof FullDeck] = 
-            prev.gameboard.cardRows[tierKey as keyof FullDeck].filter((found: CardData) => found.resourceCost !== card.resourceCost);
+            const tierKey = cardTierToKey(card.tier);
+            updatedRows[tierKey] = prev.gameboard.cardRows[tierKey].filter((found: CardData) => found.resourceCost !== card.resourceCost);
         }
 
         return {
