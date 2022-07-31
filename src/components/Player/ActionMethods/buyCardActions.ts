@@ -4,27 +4,37 @@ import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, PlayerData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 
+const getTotalBuyingPower = (state: AppState) => {
+    const currentPlayer = useCurrentPlayer(state);
+    
+    let totalBuyingPower = {
+        ruby: 0,
+        sapphire: 0,
+        emerald: 0,
+        diamond: 0,
+        onyx: 0,
+        gold: 0,
+    }
+
+    if (!currentPlayer) return totalBuyingPower;
+    
+    for (let [key,quantity] of Object.entries(currentPlayer.inventory)) {
+        totalBuyingPower[key as keyof ResourceCost] += quantity;
+    }
+
+    for (let each of currentPlayer.cards) {
+        totalBuyingPower[each.gemValue as keyof ResourceCost] += 1;
+    }
+
+    return totalBuyingPower;
+}
+
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
     if (!currentPlayer) return true;
+
     for (let [gemType, cost] of Object.entries(card.resourceCost)) {
-        let totalBuyingPower = {
-            ruby: 0,
-            sapphire: 0,
-            emerald: 0,
-            diamond: 0,
-            onyx: 0,
-            gold: 0,
-        }
-
-        for (let [key,quantity] of Object.entries(currentPlayer.inventory)) {
-            totalBuyingPower[key as keyof ResourceCost] += quantity;
-        }
-
-        for (let each of currentPlayer.cards) {
-            totalBuyingPower[each.gemValue as keyof ResourceCost] += 1;
-        }
-        
+        let totalBuyingPower = getTotalBuyingPower(state);
         for (let [heldResource, quantity] of Object.entries(totalBuyingPower)) {
             if (gemType === heldResource && quantity < cost) {
                 return true;
@@ -52,23 +62,33 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
         const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
         let newPlayerInventory = currentPlayer.inventory;
         let newResourcePool = prev.gameboard.tradingResources;
+        const totalBuyingPower = getTotalBuyingPower(state);
 
+        // iterate through cost values of card to purchase
         for (let [gem, cost] of Object.entries(card.resourceCost)) {
             if (cost < 1) continue;
+            let inventoryValue = newPlayerInventory[gem as keyof ResourceCost];
+            let globalResource = newResourcePool[gem as keyof ResourceCost];
             
-            let resourceToReplenish = newResourcePool[gem as keyof ResourceCost];
-            let newInventoryValue = newPlayerInventory[gem as keyof ResourceCost];
-            if (!newInventoryValue || !resourceToReplenish) continue;
-            
-            let i = cost;
-            while (i > 0) {
-                newInventoryValue--;
-                i--;
-            }
+            if (!inventoryValue || !globalResource) {
+                continue;
+            } else {
+                let i = cost;
 
-            resourceToReplenish += cost;
-            newPlayerInventory[gem as keyof ResourceCost] = newInventoryValue;
-            newResourcePool[gem as keyof ResourceCost] = resourceToReplenish;
+                // prevents duplication of resources when purchasing a card using permanent resources from cards
+                if (totalBuyingPower[gem as keyof ResourceCost] !== inventoryValue) {
+                    console.log('caught');
+                }
+
+                while (i > 0) {
+                    inventoryValue -= 1;
+                    globalResource += 1;
+                    i--;
+                }
+    
+                newResourcePool[gem as keyof ResourceCost] = globalResource;
+                newPlayerInventory[gem as keyof ResourceCost] = inventoryValue;
+            }
         }
 
         let updatedPlayer: PlayerData = {
@@ -77,7 +97,7 @@ export const buyCard = (card: CardData, state: AppState, setState: setStateType)
             inventory: newPlayerInventory
         }
 
-        let newScore = updatedPlayer.points;
+        let newScore = 0;
         for (let each of updatedPlayer.cards) {
             newScore += each.points || 0;
         }

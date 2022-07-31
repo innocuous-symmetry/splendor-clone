@@ -1,4 +1,4 @@
-import { AppState, FullDeck, NobleData, setStateType } from "./types";
+import { AppState, FullDeck, NobleData, ResourceCost, setStateType } from "./types";
 import NobleStore from '../data/nobles.json';
 
 const shuffleDeck = (state: AppState, setState: setStateType) => {
@@ -30,6 +30,29 @@ const setNobles = (state: AppState, setState: setStateType) => {
     setState({ ...state, gameboard: { ...state.gameboard, nobles: shuffledNobles }})
 }
 
+const setResources = (state: AppState) => {
+    let newResources = state.gameboard.tradingResources;
+
+    console.log(state.players.length);
+    switch (state.players.length) {
+        case 2:
+            for (let [key, value] of Object.entries(newResources)) {
+                newResources[key as keyof ResourceCost] = value - 3;
+            }
+            break;
+        case 3:
+            for (let [key, value] of Object.entries(newResources)) {
+                newResources[key as keyof ResourceCost] = value - 2;
+            }
+            break;
+        default:
+            break;
+    }
+
+    console.log(newResources);
+    return newResources;
+}
+
 export const setCardRows = (state: AppState) => {
     let newDeck = state.gameboard.cardRows;
     for (const [key, value] of Object.entries(state.gameboard.deck)) {
@@ -43,7 +66,18 @@ export const setCardRows = (state: AppState) => {
 
 export default function initializeBoard(state: AppState, setState: setStateType) {
     shuffleDeck(state, setState);
+    
     const newDeck = setCardRows(state);
-    setState({ ...state, gameboard: { ...state.gameboard, cardRows: newDeck } })
+    const newResources = setResources(state);
+    
+    setState({
+        ...state,
+        gameboard: {
+            ...state.gameboard,
+            tradingResources: newResources,
+            cardRows: newDeck
+        }
+    });
+
     setNobles(state, setState);
 }
