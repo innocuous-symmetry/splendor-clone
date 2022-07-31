@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StateProps } from "../../util/propTypes";
-import { GetChipsHTML } from "./ViewHTML";
+import { GetChipsHTML, ReserveCardHTML } from "./ViewHTML";
 
 export default function SelectionView({ state, setState }: StateProps) {
     const actionTypes = [
@@ -16,12 +16,9 @@ export default function SelectionView({ state, setState }: StateProps) {
                 case (actionTypes[0].active):
                     return <GetChipsHTML state={state} setState={setState} />
                 case (actionTypes[1].active):
-                    return (
-                        <>
-                        {actionTypes[1].active && <strong>Your selection is {actionTypes[1].valid || "not"} valid</strong>}
-                        <p>Card will display here</p>
-                        </>
-                    )
+                    return <strong>Please make your selection above:</strong>;
+                case (actionTypes[2].active):
+                    return <ReserveCardHTML state={state} setState={setState} />;
                 default:
                     return <></>;
             }

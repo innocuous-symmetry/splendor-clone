@@ -4,6 +4,8 @@ import { setStateGetChips } from "../../util/stateSetters";
 import { StateProps } from "../../util/propTypes";
 import { ResourceCost } from "../../util/types";
 import { getChipsActions } from "../Player/ActionMethods";
+import { useCurrentPlayer } from "../../util/useCurrentPlayer";
+import { hasMaxChips } from "../Player/ActionMethods/getChipsActions";
 const { getChips } = getChipsActions;
 
 export const GetChipsHTML = ({ state, setState }: StateProps) => {
@@ -33,6 +35,44 @@ export const GetChipsHTML = ({ state, setState }: StateProps) => {
                     :
                 <button key={v4()} onClick={() => setState((prev) => setStateGetChips(prev))}>Reset Selection</button>
             }
+        </div>
+    )
+}
+
+export const ReserveCardHTML = ({ state, setState }: StateProps) => {
+    const [takeGold, setTakeGold] = useState("");
+    const currentPlayer = useCurrentPlayer(state);
+
+    useEffect(() => {
+
+    })
+
+    return (
+        <div className="selection-view">
+            <strong>Please make your selection above.</strong>
+            { !hasMaxChips(currentPlayer) && (
+                <div className="take-gold">
+                    <p>Take a gold chip with your card? {takeGold}</p>
+                    <label htmlFor="take-gold-yes">Yes</label>
+                    <input
+                        id="take-gold-yes"
+                        value="Yes"
+                        checked={takeGold === "Yes"}
+                        onChange={() => setTakeGold("Yes")}
+                        type="radio"
+                    >
+                    </input>
+
+                    <label htmlFor="take-gold-no">No</label>
+                    <input
+                        id="take-gold-no"
+                        value="No"
+                        checked={takeGold === "No"}
+                        onChange={() => setTakeGold("No")}
+                        type="radio">
+                    </input>
+                </div>
+            )}
         </div>
     )
 }
