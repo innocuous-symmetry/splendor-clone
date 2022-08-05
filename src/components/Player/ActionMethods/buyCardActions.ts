@@ -2,31 +2,32 @@ import { initialActions } from "../../../util/stateSetters";
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
+import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
 
-export const getTotalBuyingPower = (state: AppState) => {
-    const currentPlayer = useCurrentPlayer(state);
+// export const _getTotalBuyingPower = (state: AppState) => {
+//     const currentPlayer = useCurrentPlayer(state);
     
-    let totalBuyingPower = {
-        ruby: 0,
-        sapphire: 0,
-        emerald: 0,
-        diamond: 0,
-        onyx: 0,
-        gold: 0,
-    }
+//     let totalBuyingPower = {
+//         ruby: 0,
+//         sapphire: 0,
+//         emerald: 0,
+//         diamond: 0,
+//         onyx: 0,
+//         gold: 0,
+//     }
 
-    if (!currentPlayer) return totalBuyingPower;
+//     if (!currentPlayer) return totalBuyingPower;
     
-    for (let [key,quantity] of Object.entries(currentPlayer.inventory)) {
-        totalBuyingPower[key as keyof ResourceCost] += quantity;
-    }
+//     for (let [key,quantity] of Object.entries(currentPlayer.inventory)) {
+//         totalBuyingPower[key as keyof ResourceCost] += quantity;
+//     }
 
-    for (let each of currentPlayer.cards) {
-        totalBuyingPower[each.gemValue as keyof ResourceCost] += 1;
-    }
+//     for (let each of currentPlayer.cards) {
+//         totalBuyingPower[each.gemValue as keyof ResourceCost] += 1;
+//     }
 
-    return totalBuyingPower;
-}
+//     return totalBuyingPower;
+// }
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
@@ -44,6 +45,7 @@ export const tooExpensive = (card: CardData, state: AppState): boolean => {
 }
 
 export const updateResources = (state: AppState, card: CardData) => {
+    console.log('updateResources called');
     let currentPlayer = useCurrentPlayer(state);
     let newTradingResources = state.gameboard.tradingResources;
     let updatedPlayer = currentPlayer;
@@ -64,6 +66,8 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
     let currentPlayer = useCurrentPlayer(state);
     if (!currentPlayer) return;
     const { newPlayers, roundIncrement } = turnOrderUtil(state, currentPlayer);
+
+    console.log('cleared to setstate');
     
     setState((prev: AppState) => {
         if (!currentPlayer) return prev;
@@ -84,4 +88,7 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             actions: initialActions
         }
     })
+
+    // for testing?
+    return state;
 }

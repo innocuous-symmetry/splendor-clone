@@ -23,7 +23,7 @@ export default function Card({ data, state, setState }: CardProps) {
                 }
                 { state.actions.buyCard.active &&
                     <button
-                        onClick={() => buyCard(data, state, setState)}
+                        onClick={() => buyCard(state, setState, data)}
                         disabled={tooExpensive(data, state)}>
                         Buy This Card
                     </button>

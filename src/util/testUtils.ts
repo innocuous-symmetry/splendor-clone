@@ -44,6 +44,7 @@ export const mockState: AppState = {
 }
 
 // mock data for midgame
+// playerOneMidGame buys high diamond cost card
 export const playerOneMidGame = {
     ...mockPlayerOne,
     cards: [
@@ -83,6 +84,7 @@ export const playerOneMidGame = {
     }
 }
 
+// playerTwoMidGame buys high ruby cost card
 export const playerTwoMidGame = {
     ...mockPlayerTwo,
     cards: [
@@ -126,7 +128,7 @@ export const midGameState: AppState = {
     gameboard: {
         ...initialState.gameboard,
         tradingResources: {
-            ruby: 1,
+            ruby: 0,
             sapphire: 1,
             emerald: 1,
             onyx: 1,
