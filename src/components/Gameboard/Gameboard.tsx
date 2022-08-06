@@ -3,7 +3,7 @@ import { AppState, ResourceCost } from '../../util/types';
 import { useCallback, useEffect, useState } from 'react';
 import { getChipsActions } from '../Player/ActionMethods';
 import { StateProps } from '../../util/propTypes';
-const { validateChips } = getChipsActions;
+import { Link } from 'react-router-dom';
 
 // components
 import Nobles from './Nobles';
@@ -12,6 +12,7 @@ import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
 import SelectionView from '../Resources/SelectionView';
+const { validateChips } = getChipsActions;
 
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>);
@@ -50,17 +51,13 @@ export default function Gameboard({ state, setState }: StateProps) {
         setCardRows(state);
     }, [state])
 
-    useEffect(() => {
-        console.log(state)
-    }, [state])
-
-    // displays state of board if data is populated
+    // displays state of board if data is populated, otherwise points to game constructor
     useEffect(() => {
         if (!state.players.length) {
             setView(
                 <div className="error-page">
                     <strong>Sorry! It appears we've lost track of your game data.</strong>
-                    <p>Please head back to the <a href="/">home page</a> to start a fresh game.</p>
+                    <p>Please head back to the <Link to="/">home page</Link> to start a fresh game.</p>
                 </div>
             );
         } else {
