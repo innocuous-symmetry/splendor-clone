@@ -50,6 +50,10 @@ export default function Gameboard({ state, setState }: StateProps) {
         setCardRows(state);
     }, [state])
 
+    useEffect(() => {
+        console.log(state)
+    }, [state])
+
     // displays state of board if data is populated
     useEffect(() => {
         if (!state.players.length) {

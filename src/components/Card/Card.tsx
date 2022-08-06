@@ -11,7 +11,7 @@ export default function Card({ data, state, setState }: CardProps) {
     const currentPlayer = useCurrentPlayer(state);
 
     return (
-        <div className={`card`}>
+        <div className="card">
             <div className="top-row">
                 <p>Counts as: {data.gemValue}</p>
                 <p>Point value: {data.points || 0}</p>
