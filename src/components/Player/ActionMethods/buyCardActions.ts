@@ -2,12 +2,13 @@ import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
+import { initialActions } from "../../../util/stateSetters";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
     if (!currentPlayer) return true;
     for (let [gemType, cost] of Object.entries(card.resourceCost)) {
-        let totalBuyingPower = getTotalBuyingPower(state);
+        let totalBuyingPower = getTotalBuyingPower(currentPlayer);
         for (let [heldResource, quantity] of Object.entries(totalBuyingPower)) {
             if (gemType === heldResource && quantity < cost) {
                 return true;
@@ -28,6 +29,7 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         const updatedPlayer = newPlayers[idx];
 
         const cardCost = card.resourceCost;
+        const playerBuyingPower = getTotalBuyingPower(currentPlayer);
         const newPlayerInventory = updatedPlayer.inventory;
         const newResourcePool = prev.gameboard.tradingResources;
 
@@ -40,10 +42,14 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
 
             if (!adjustedCost || !adjustedInventoryValue || !adjustedResourcePoolValue) continue;
 
+            const buyingPowerDifference = playerBuyingPower[typedKey] - adjustedInventoryValue;
+            adjustedCost -= buyingPowerDifference;
+
             while (adjustedCost > 0) {
-                adjustedCost--;
                 adjustedInventoryValue--;
                 adjustedResourcePoolValue++;
+
+                adjustedCost--;
             }
             
             newPlayerInventory[typedKey] = adjustedInventoryValue;
@@ -58,6 +64,7 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             ...prev,
             players: newPlayers,
             round: (roundIncrement ? prev.round + 1 : prev.round),
+            actions: initialActions,
             gameboard: {
                 ...prev.gameboard,
                 tradingResources: newResourcePool

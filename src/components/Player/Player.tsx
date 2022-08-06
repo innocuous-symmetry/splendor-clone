@@ -27,6 +27,11 @@ export default function Player({ player, state, setState }: PlayerProps) {
                         <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
                             <p>{data.gemValue} card</p>
                             <p>{data.points + " points" || null}</p>
+                            {
+                                Object.entries(data.resourceCost).map(([key, value]) => {
+                                    return value > 0 && <p key={v4()}>{key}: {value}</p>
+                                })
+                            }
                         </div>
                     )
                 })

@@ -1,9 +1,6 @@
-import { AppState, CardData, ResourceCost } from "./types";
-import { useCurrentPlayer } from "./useCurrentPlayer";
+import { PlayerData, ResourceCost } from "./types";
 
-export default function getTotalBuyingPower(state: AppState) {
-    const currentPlayer = useCurrentPlayer(state);
-    
+export default function getTotalBuyingPower(currentPlayer: PlayerData) {
     let totalBuyingPower = {
         ruby: 0,
         sapphire: 0,

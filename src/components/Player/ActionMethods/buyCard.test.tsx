@@ -2,10 +2,11 @@ import { expensiveCard, midGameCardOne, midGameCardTwo, midGameState, mockPlayer
 import { buyCard, tooExpensive } from './buyCardActions';
 import getTotalBuyingPower from '../../../util/getTotalBuyingPower';
 import { useCurrentPlayer } from '../../../util/useCurrentPlayer';
-import { AppState, PlayerData } from '../../../util/types';
+import { AppState, CardData, PlayerData, ResourceCost } from '../../../util/types';
 import { test, expect, describe, vi, afterEach } from 'vitest';
 import { renderHook } from "@testing-library/react";
 import React, { useState } from 'react';
+import { turnOrderUtil } from '../../../util/turnOrderUtil';
 
 afterEach(() => {
     vi.restoreAllMocks();
@@ -37,7 +38,7 @@ describe('buy cards', () => {
             ]
         }
         
-        const totalBuyingPower = getTotalBuyingPower(modifiedState);
+        const totalBuyingPower = getTotalBuyingPower(mockPlayerOne);
 
         const expectedValue = {
             ruby: 3,
@@ -49,25 +50,6 @@ describe('buy cards', () => {
         }
 
         expect(totalBuyingPower).toStrictEqual(expectedValue);
-    })
-
-    test('use state', () => {
-        const { result } = renderHook(() => {
-            const [state, setState] = useState('me');
-            setState('you');
-            return state;
-        })
-
-        expect(result.current).toBe('you');
-    })
-
-    test('buyCard and updateResources', () => {
-        /**
-         * actions in test:
-         * player triggers "buy card" action
-         * corresponding chips come out of player's hand
-         * 
-        */
     })
 })
 
