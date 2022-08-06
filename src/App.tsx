@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { initialState } from './util/stateSetters';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import Gameboard from './components/Gameboard/Gameboard'
 import GameConstructor from './components/GameConstructor';
@@ -8,6 +8,10 @@ import './App.css'
 
 function App() {
   const [state, setState] = useState(initialState);
+
+  useEffect(() => {
+    return;
+  }, [state]);
 
   return (
     <div className="App">

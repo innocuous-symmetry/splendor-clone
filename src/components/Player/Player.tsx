@@ -10,9 +10,46 @@ export default function Player({ player, state, setState }: PlayerProps) {
     const [dynamic, setDynamic] = useState<PlayerData>();
     const [prompt, setPrompt] = useState("Your turn! Select an action type below.");
 
+    const [cardView, setCardView] = useState(<p>Cards:</p>);
+    const [reservedView, setReservedView] = useState(<p>Reserved cards:</p>);
+
     useEffect(() => {
         setDynamic(state.players.find((element: PlayerData) => element.id === player.id))
     }, [state]);
+
+    useEffect(() => {
+        dynamic && setCardView(
+            <>
+            <p>Cards:</p>
+            {
+                dynamic.cards.map((data: CardData) => {
+                    return (
+                        <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
+                            <p>{data.gemValue} card</p>
+                            <p>{data.points + " points" || null}</p>
+                        </div>
+                    )
+                })
+            }
+            </>
+        )
+
+        dynamic && setReservedView(
+            <>
+            <p>Reserved cards:</p>
+            {
+                dynamic.reservedCards?.map((data: CardData) => {
+                    return (
+                        <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
+                            <p>{data.gemValue} cards</p>
+                            <p>{data.points + " points" || null}</p>
+                        </div>
+                    )
+                })
+            }
+            </>
+        )
+    }, [dynamic, setState])
 
     const handleClick = (actionSelection: number) => {
         switch (actionSelection) {
@@ -63,27 +100,11 @@ export default function Player({ player, state, setState }: PlayerProps) {
                 </div>
 
                 <div className="player-cards">
-                    <p>Cards:</p>
-                    { dynamic && dynamic.cards.length > 0 && dynamic.cards.map((data: CardData) => {
-                        return (
-                            <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
-                                <p>{data.gemValue} card</p>
-                                <p>{data.points + " points" || null}</p>
-                            </div>
-                        )})
-                    }
+                    {dynamic && cardView}
                 </div>
 
                 <div className="reserved-cards">
-                    <p>Reserved cards:</p>
-                    { dynamic?.reservedCards && dynamic.reservedCards?.map((data: CardData) => {
-                        return (
-                            <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
-                                <p>{data.gemValue} cards</p>
-                                <p>{data.points + " points" || null}</p>
-                            </div>
-                        )
-                    })}
+                    {dynamic && reservedView}
                 </div>
             </section>
         </div>
