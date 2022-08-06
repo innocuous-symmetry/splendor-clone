@@ -86,7 +86,7 @@ export default function Player({ player, state, setState }: PlayerProps) {
 
             {/* Dynamic data from state */}
             <section className="turn-and-action-based">
-                <p>Score: {dynamic?.points}</p>
+                <p>Score: {dynamic && dynamic.points}</p>
                 <p>{dynamic?.turnActive ? "It's your turn!" : "..."}</p>
                 <button disabled={dynamic && hasMaxChips(dynamic)} onClick={() => handleClick(0)}>Get Chips</button>
                 <button onClick={() => handleClick(1)}>Buy Card</button>

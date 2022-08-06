@@ -1,4 +1,3 @@
-
 import { v4 } from 'uuid';
 import { CardProps } from '../../util/propTypes';
 import { ResourceCost } from '../../util/types';
@@ -9,6 +8,8 @@ const { buyCard, tooExpensive } = buyCardActions;
 
 export default function Card({ data, state, setState }: CardProps) {
     const currentPlayer = useCurrentPlayer(state);
+
+    if (!data) return <div className="card"></div>;
 
     return (
         <div className="card">

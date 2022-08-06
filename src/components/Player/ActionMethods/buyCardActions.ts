@@ -57,12 +57,10 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             newResourcePool[typedKey] = adjustedResourcePoolValue;
         }
 
-        console.log(newResourcePool);
-        console.log(newPlayerInventory);
-
         // connect modified player state to updated list of all players
         updatedPlayer.inventory = newPlayerInventory;
         updatedPlayer.cards = [...updatedPlayer.cards, card];
+        updatedPlayer.points = updatedPlayer.points + (card.points || 0);
         newPlayers[idx] = updatedPlayer;
 
         // attempt to queue replacement card from full deck
