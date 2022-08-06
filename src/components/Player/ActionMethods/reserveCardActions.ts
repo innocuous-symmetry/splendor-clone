@@ -31,9 +31,7 @@ export const reserveCard = (state: AppState, setState: setStateType, card: CardD
 
         const updatedPlayer = {
             ...currentPlayer,
-            reservedCards: currentPlayer.reservedCards ? [
-                ...currentPlayer.reservedCards, card
-            ] : [card],
+            reservedCards: currentPlayer.reservedCards ? [...currentPlayer.reservedCards, card] : [card],
             inventory: goldAllowable(currentPlayer) ? {
                 ...currentPlayer.inventory,
                 gold: currentPlayer.inventory.gold && currentPlayer.inventory.gold + 1

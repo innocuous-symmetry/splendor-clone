@@ -10,6 +10,7 @@ const { getChips } = getChipsActions;
 
 export const GetChipsHTML = ({ state, setState }: StateProps) => {
     const [prompt, setPrompt] = useState("");
+    const currentPlayer = useCurrentPlayer(state);
 
     useEffect(() => {
         if (!state.actions.getChips.active) setPrompt("");
@@ -22,6 +23,7 @@ export const GetChipsHTML = ({ state, setState }: StateProps) => {
 
     return (
         <div className="selection-view">
+            <h2>{currentPlayer?.name} has elected to collect resources!</h2> 
             <strong>{prompt}</strong>
             <div className="current-selections">
                 {
@@ -49,6 +51,7 @@ export const ReserveCardHTML = ({ state, setState }: StateProps) => {
 
     return (
         <div className="selection-view">
+            <h2>{currentPlayer?.name} has elected to reserve a card!</h2>
             <strong>Please make your selection above.</strong>
             { !hasMaxChips(currentPlayer) && (
                 <div className="take-gold">

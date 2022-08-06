@@ -19,7 +19,6 @@ export default function Gameboard({ state, setState }: StateProps) {
     // callbacks for lifting state
     const liftSelection = useCallback((value: keyof ResourceCost) => {
         if (!state.actions.getChips.active) return;
-
         setState((prev: AppState) => {
             let newSelection = prev.actions.getChips.selection;
             newSelection?.push(value);
@@ -38,7 +37,6 @@ export default function Gameboard({ state, setState }: StateProps) {
 
             const result = validateChips(newState);
             newState.actions.getChips.valid = result;
-
             return newState;
         })
     }, [state]);

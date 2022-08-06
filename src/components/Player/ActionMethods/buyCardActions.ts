@@ -1,5 +1,5 @@
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
-import { AppState, CardData, ResourceCost, setStateType } from "../../../util/types";
+import { AppState, CardData, FullDeck, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
 import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
 import { initialActions } from "../../../util/stateSetters";
@@ -24,10 +24,12 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
     if (!currentPlayer) return;
 
     setState((prev) => {
+        // shift turn order and identify current player in new player state
         const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
         const idx = newPlayers.indexOf(currentPlayer);
         const updatedPlayer = newPlayers[idx];
 
+        // pointers for each value to be modified
         const cardCost = card.resourceCost;
         const playerBuyingPower = getTotalBuyingPower(currentPlayer);
         const newPlayerInventory = updatedPlayer.inventory;
@@ -35,30 +37,44 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
 
         for (let key of Object.keys(cardCost)) {
             const typedKey = key as keyof ResourceCost;
-
             let adjustedCost = cardCost[typedKey];
             let adjustedInventoryValue = newPlayerInventory[typedKey];
             let adjustedResourcePoolValue = newResourcePool[typedKey];
-
             if (!adjustedCost || !adjustedInventoryValue || !adjustedResourcePoolValue) continue;
 
+            // before decrementing player inventory values, account for total buying power
             const buyingPowerDifference = playerBuyingPower[typedKey] - adjustedInventoryValue;
             adjustedCost -= buyingPowerDifference;
 
             while (adjustedCost > 0) {
                 adjustedInventoryValue--;
                 adjustedResourcePoolValue++;
-
                 adjustedCost--;
             }
             
+            // assign modified values to player inventory and resource pool
             newPlayerInventory[typedKey] = adjustedInventoryValue;
             newResourcePool[typedKey] = adjustedResourcePoolValue;
         }
 
+        // connect modified player state to updated list of all players
         updatedPlayer.inventory = newPlayerInventory;
         updatedPlayer.cards = [...updatedPlayer.cards, card];
         newPlayers[idx] = updatedPlayer;
+
+        // attempt to queue replacement card from full deck
+        const typedCardTier = ["tierThree", "tierTwo", "tierOne"][card.tier + 1] as keyof FullDeck;
+        let newFullDeckTargetTier = prev.gameboard.deck[typedCardTier];
+        const replacementCard = newFullDeckTargetTier.shift();
+
+        // isolate the affected row of face up cards, remove the purchased card
+        let newTargetCardRow = prev.gameboard.cardRows[typedCardTier];
+        newTargetCardRow = newTargetCardRow.filter((data: CardData) => data.resourceCost !== card.resourceCost);
+        // push replacement card to face up card, if exists
+        if (replacementCard) newTargetCardRow.push(replacementCard);
+
+        console.log(newTargetCardRow);
+        console.log(newFullDeckTargetTier);
 
         return {
             ...prev,
@@ -67,7 +83,15 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             actions: initialActions,
             gameboard: {
                 ...prev.gameboard,
-                tradingResources: newResourcePool
+                tradingResources: newResourcePool,
+                cardRows: {
+                    ...prev.gameboard.cardRows,
+                    [typedCardTier]: newTargetCardRow
+                },
+                deck: {
+                    ...prev.gameboard.deck,
+                    [typedCardTier]: newFullDeckTargetTier
+                }
             }
         }
     })
