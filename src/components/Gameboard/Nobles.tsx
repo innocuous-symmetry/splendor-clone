@@ -43,14 +43,14 @@ export default function Nobles({ state, setState }: StateProps) {
         return true;
     }
 
-    useEffect(() => {
-        const currentPlayer = useCurrentPlayer(state);
-        if (!currentPlayer) return;
+    // useEffect(() => {
+    //     const currentPlayer = useCurrentPlayer(state);
+    //     if (!currentPlayer) return;
 
-        for (let each of state.gameboard.nobles) {
-            console.log(`${currentPlayer.name} can pick up noble ${state.gameboard.nobles.indexOf(each) + 1}? ${canPickUpNoble(currentPlayer, each) ? "yes" : "no"}`)
-        }
-    }, [state])
+    //     for (let each of state.gameboard.nobles) {
+    //         console.log(`${currentPlayer.name} can pick up noble ${state.gameboard.nobles.indexOf(each) + 1}? ${canPickUpNoble(currentPlayer, each) ? "yes" : "no"}`)
+    //     }
+    // }, [state])
 
     return (
         <div className="nobles-panel">
