@@ -49,6 +49,12 @@ export default function Gameboard({ state, setState }: StateProps) {
 
     useEffect(() => {
         setCardRows(state);
+
+        for (let player of state.players) {
+            if (player.points >= 15) {
+                console.log('trigger endgame');
+            }
+        }
     }, [state])
 
     // displays state of board if data is populated, otherwise points to game constructor

@@ -10,10 +10,6 @@ import ResumeGame from './components/ResumeGame';
 function App() {
   const [state, setState] = useState(initialState);
 
-  useEffect(() => {
-    return;
-  }, [state]);
-
   return (
     <div className="App">
       <h1>SPLENDOR</h1>
