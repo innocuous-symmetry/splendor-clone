@@ -33,7 +33,6 @@ const setNobles = (state: AppState, setState: setStateType) => {
 const setResources = (state: AppState) => {
     let newResources = state.gameboard.tradingResources;
 
-    console.log(state.players.length);
     switch (state.players.length) {
         case 2:
             for (let [key, value] of Object.entries(newResources)) {

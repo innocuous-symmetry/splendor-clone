@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { CardData, NobleData, PlayerData } from "../util/types";
 import { StateProps } from '../util/propTypes';
 
@@ -103,7 +103,9 @@ export default function GameConstructor({ state, setState }: StateProps) {
 
     return (
         <div className="game-constructor App">
-            <h1>Configure a new game:</h1>
+            <strong>Start a new game</strong>
+            <h2>OR</h2>
+            <strong>Enter your previous game data <Link to={'/resume-game'}>here</Link> to pick up where you left off.</strong>
 
             <div>
                 <label htmlFor="P1-NAME">Player 1 Name:</label>
@@ -162,7 +164,7 @@ export default function GameConstructor({ state, setState }: StateProps) {
                 </input>
                 <input
                     type="radio"
-                    id="P1-START"
+                    id="P4-START"
                     onChange={() => handleRadio(4)}
                     checked={starter === 3 && input.playerFour.name.length > 0}>
                 </input>

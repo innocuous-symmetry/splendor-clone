@@ -1,21 +1,16 @@
-import { useEffect } from "react";
 import { v4 } from "uuid";
 import { NobleData, ResourceCost } from "../../util/types";
 import { StateProps } from "../../util/propTypes";
 import "./Nobles.css"
 
-export default function Nobles({ state, setState }: StateProps) {
-    const removeNoble = (noble: NobleData) => {
-        console.log(noble);
-        setState((prev) => {
-            return {
-                ...prev,
-                gameboard: {
-                    ...prev.gameboard,
-                    nobles: prev.gameboard.nobles.filter((each) => each.nobleid !== noble.nobleid)
-                }
-            }
-        })
+export default function Nobles({ state }: StateProps) {
+    if (!state.gameboard.nobles.length) {
+        return (
+            <div className="nobles-panel">
+                <strong>NOBLES</strong>
+                <p>All nobles have been acquired!</p>
+            </div>
+        )
     }
 
     return (

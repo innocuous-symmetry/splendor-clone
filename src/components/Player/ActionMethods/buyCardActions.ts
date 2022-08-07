@@ -1,40 +1,17 @@
-import { initialActions } from "../../../util/stateSetters";
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
-import { AppState, CardData, ResourceCost, setStateType } from "../../../util/types";
+import { AppState, CardData, FullDeck, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
-
-export const getTotalBuyingPower = (state: AppState) => {
-    const currentPlayer = useCurrentPlayer(state);
-    
-    let totalBuyingPower = {
-        ruby: 0,
-        sapphire: 0,
-        emerald: 0,
-        diamond: 0,
-        onyx: 0,
-        gold: 0,
-    }
-
-    if (!currentPlayer) return totalBuyingPower;
-    
-    for (let [key,quantity] of Object.entries(currentPlayer.inventory)) {
-        totalBuyingPower[key as keyof ResourceCost] += quantity;
-    }
-
-    for (let each of currentPlayer.cards) {
-        totalBuyingPower[each.gemValue as keyof ResourceCost] += 1;
-    }
-
-    return totalBuyingPower;
-}
+import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
+import { initialActions, setStateGetNoble } from "../../../util/stateSetters";
+import { canPickUpNoble } from "../../../util/canPickUpNoble";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
     if (!currentPlayer) return true;
-    for (let [gemType, cost] of Object.entries(card.resourceCost)) {
-        let totalBuyingPower = getTotalBuyingPower(state);
+    for (let [cardGemType, cardCost] of Object.entries(card.resourceCost)) {
+        let totalBuyingPower = getTotalBuyingPower(currentPlayer);
         for (let [heldResource, quantity] of Object.entries(totalBuyingPower)) {
-            if (gemType === heldResource && quantity < cost) {
+            if (cardGemType === heldResource && quantity < cardCost) {
                 return true;
             }
         }
@@ -43,45 +20,85 @@ export const tooExpensive = (card: CardData, state: AppState): boolean => {
     return false;
 }
 
-export const updateResources = (state: AppState, card: CardData) => {
-    let currentPlayer = useCurrentPlayer(state);
-    let newTradingResources = state.gameboard.tradingResources;
-    let updatedPlayer = currentPlayer;
-    const totalBuyingPower = getTotalBuyingPower(state);
-
-    let difference = 0;
-    for (let [key, value] of Object.entries(card.resourceCost)) {
-        if (value < 1) continue;
-        if (value !== totalBuyingPower[key as keyof ResourceCost]) {
-            difference += Math.abs(totalBuyingPower[key as keyof ResourceCost] - value);
-        }
-    }
-
-    return { newTradingResources, updatedPlayer }
-}
-
 export const buyCard = (state: AppState, setState: setStateType, card: CardData) => {
-    let currentPlayer = useCurrentPlayer(state);
+    const currentPlayer = useCurrentPlayer(state);
     if (!currentPlayer) return;
-    const { newPlayers, roundIncrement } = turnOrderUtil(state, currentPlayer);
-    
-    setState((prev: AppState) => {
-        if (!currentPlayer) return prev;
 
-        const { newTradingResources, updatedPlayer } = updateResources(state, card);
+    setState((prev) => {
+        // shift turn order and identify current player in new player state
+        const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
         const idx = newPlayers.indexOf(currentPlayer);
-        updatedPlayer && (newPlayers[idx] = updatedPlayer);
-        
+        const updatedPlayer = newPlayers[idx];
+
+        // pointers for each value to be modified
+        const cardCost = card.resourceCost;
+        const playerBuyingPower = getTotalBuyingPower(currentPlayer);
+        const newPlayerInventory = updatedPlayer.inventory;
+        const newResourcePool = prev.gameboard.tradingResources;
+
+        for (let key of Object.keys(cardCost)) {
+            const typedKey = key as keyof ResourceCost;
+            let adjustedCost = cardCost[typedKey];
+            let adjustedInventoryValue = newPlayerInventory[typedKey];
+            let adjustedResourcePoolValue = newResourcePool[typedKey] || 0;
+            if (!adjustedCost || !adjustedInventoryValue) continue;
+
+            // before decrementing player inventory values, account for total buying power
+            const buyingPowerDifference = playerBuyingPower[typedKey] - adjustedInventoryValue;
+            adjustedCost -= buyingPowerDifference;
+
+            while (adjustedCost > 0) {
+                adjustedInventoryValue--;
+                adjustedCost--;
+                adjustedResourcePoolValue++;
+            }
+            
+            // assign modified values to player inventory and resource pool
+            newPlayerInventory[typedKey] = adjustedInventoryValue;
+            newResourcePool[typedKey] = adjustedResourcePoolValue;
+        }
+
+        // connect modified player state to updated list of all players
+        updatedPlayer.inventory = newPlayerInventory;
+        updatedPlayer.cards = [...updatedPlayer.cards, card];
+        updatedPlayer.points = updatedPlayer.points + (card.points || 0);
+        newPlayers[idx] = updatedPlayer;
+
+        // attempt to queue replacement card from full deck
+        const typedCardTier = ["tierThree", "tierTwo", "tierOne"][2 - (card.tier-1)] as keyof FullDeck;
+        let newFullDeckTargetTier = prev.gameboard.deck[typedCardTier];
+        const replacementCard = newFullDeckTargetTier.shift();
+
+        // isolate the affected row of face up cards, remove the purchased card
+        let newTargetCardRow = prev.gameboard.cardRows[typedCardTier];
+        newTargetCardRow = newTargetCardRow.filter((data: CardData) => data.resourceCost !== card.resourceCost);
+        // push replacement card to face up card, if exists
+        if (replacementCard) newTargetCardRow.push(replacementCard);
+
         return {
             ...prev,
+            players: newPlayers,
+            round: (roundIncrement ? prev.round + 1 : prev.round),
+            actions: initialActions,
             gameboard: {
                 ...prev.gameboard,
-                cardRows: prev.gameboard.cardRows,
-                tradingResources: newTradingResources
-            },
-            round: (roundIncrement ? prev.round + 1 : prev.round),
-            players: newPlayers,
-            actions: initialActions
+                tradingResources: newResourcePool,
+                cardRows: {
+                    ...prev.gameboard.cardRows,
+                    [typedCardTier]: newTargetCardRow
+                },
+                deck: {
+                    ...prev.gameboard.deck,
+                    [typedCardTier]: newFullDeckTargetTier
+                }
+            }
         }
-    })
+    });
+
+    for (let each of state.gameboard.nobles) {
+        if (canPickUpNoble(currentPlayer, each)) {
+            console.log(`${currentPlayer.name} can pick up noble ${state.gameboard.nobles.indexOf(each)}`);
+            setState((prev) => setStateGetNoble(prev, each));
+        }
+    }
 }

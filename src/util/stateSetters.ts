@@ -1,5 +1,6 @@
 import { AppState, CardData, NobleData, PlayerData, ResourceCost } from "./types";
 import CardDeck from '../data/cards.json';
+import { useCurrentPlayer } from "./useCurrentPlayer";
 
 export const initialActions = {
     buyCard: { active: false },
@@ -74,6 +75,32 @@ export const setStateReserveCard = (prev: AppState) => {
                 includeGold: false,
                 valid: false
             }
+        }
+    }
+}
+
+export const setStateGetNoble = (prev: AppState, noble: NobleData) => {
+    const currentPlayer = useCurrentPlayer(prev);
+    if (!currentPlayer) return prev;
+
+    const updatedPlayer = {
+        ...currentPlayer,
+        nobles: [...currentPlayer.nobles, noble],
+        points: currentPlayer.points + 3
+    }
+
+    const idx = prev.players.indexOf(currentPlayer);
+    const newPlayers = prev.players;
+    newPlayers[idx] = updatedPlayer;
+
+    const newNobles = prev.gameboard.nobles.filter((x: NobleData) => x.resourceCost !== noble.resourceCost);
+
+    return {
+        ...prev,
+        players: newPlayers,
+        gameboard: {
+            ...prev.gameboard,
+            nobles: newNobles
         }
     }
 }

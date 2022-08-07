@@ -2,8 +2,11 @@ import { CardRowProps } from '../../util/propTypes';
 import { CardData } from "../../util/types"
 import Card from "../Card/Card"
 import { v4 } from 'uuid';
+import cardTierToKey from '../../util/cardTierToKey';
 
 export default function CardRow({tier, state, setState}: CardRowProps) {
+    const typedTier = cardTierToKey(tier);
+
     let cards: Array<CardData>
     switch (tier) {
         case 1:
@@ -24,6 +27,9 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
         <div className={`card-row tier-${tier}`}>
             <p>Tier: {tier}</p>
             <div className="card-row-cards-visible">
+                <div className="card card-count">
+                    <p>Remaining: {state.gameboard.deck[typedTier].length}</p>
+                </div>
                 { cards && cards.map((cardData: CardData) => {
                     return <Card key={v4()} data={cardData} state={state} setState={setState} />
                 })}
