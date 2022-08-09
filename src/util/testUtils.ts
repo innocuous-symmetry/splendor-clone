@@ -1,4 +1,4 @@
-import { initialState } from "./stateSetters"
+import { initialState } from "../hooks/stateSetters"
 import { AppState, CardData, NobleData, PlayerData } from "./types"
 
 // mock data for early game

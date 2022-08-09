@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from "vitest";
-import { initialActions } from "../../../util/stateSetters";
+import { initialActions } from "../../../hooks/stateSetters";
 import { mockPlayerOne, mockState } from "../../../util/testUtils";
 import { AppState, PlayerData } from "../../../util/types";
 import { hasMaxChips, validateChips } from "./getChipsActions";

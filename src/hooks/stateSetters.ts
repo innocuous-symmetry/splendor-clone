@@ -1,6 +1,5 @@
-import { AppState, CardData, NobleData, PlayerData, ResourceCost } from "./types";
+import { AppState, CardData, NobleData, PlayerData, ResourceCost } from "../util/types";
 import CardDeck from '../data/cards.json';
-import { useCurrentPlayer } from "./useCurrentPlayer";
 
 export const initialActions = {
     buyCard: { active: false },
@@ -79,17 +78,14 @@ export const setStateReserveCard = (prev: AppState) => {
     }
 }
 
-export const setStateGetNoble = (prev: AppState, noble: NobleData) => {
-    const currentPlayer = useCurrentPlayer(prev);
-    if (!currentPlayer) return prev;
-
+export const setStateGetNoble = (prev: AppState, noble: NobleData, prevPlayer: PlayerData) => {
     const updatedPlayer = {
-        ...currentPlayer,
-        nobles: [...currentPlayer.nobles, noble],
-        points: currentPlayer.points + 3
+        ...prevPlayer,
+        nobles: [...prevPlayer.nobles, noble],
+        points: prevPlayer.points + 3
     }
 
-    const idx = prev.players.indexOf(currentPlayer);
+    const idx = prev.players.indexOf(prevPlayer);
     const newPlayers = prev.players;
     newPlayers[idx] = updatedPlayer;
 

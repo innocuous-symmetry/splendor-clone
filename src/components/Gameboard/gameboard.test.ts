@@ -1,6 +1,6 @@
 import { expect, it, describe, vi } from 'vitest';
 import initializeBoard from '../../util/initializeBoard';
-import { initialState } from '../../util/stateSetters';
+import { initialState } from '../../hooks/stateSetters';
 import { AppState, setStateType } from '../../util/types';
 
 describe('game config', () => {

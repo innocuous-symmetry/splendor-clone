@@ -1,9 +1,10 @@
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, FullDeck, ResourceCost, setStateType } from "../../../util/types";
-import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
+import { useCurrentPlayer } from "../../../hooks/useCurrentPlayer";
 import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
-import { initialActions, setStateGetNoble } from "../../../util/stateSetters";
-import { canPickUpNoble } from "../../../util/canPickUpNoble";
+import { initialActions, setStateGetNoble } from "../../../hooks/stateSetters";
+import { canPickUpNoble } from "../../Nobles/canPickUpNoble";
+import usePreviousPlayer from "../../../hooks/usePreviousPlayer";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
@@ -95,10 +96,13 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         }
     });
 
-    for (let each of state.gameboard.nobles) {
-        if (canPickUpNoble(currentPlayer, each)) {
-            console.log(`${currentPlayer.name} can pick up noble ${state.gameboard.nobles.indexOf(each)}`);
-            setState((prev) => setStateGetNoble(prev, each));
+    // iterates through gameboard nobles to determine if any can be acquired
+    for (let noble of state.gameboard.nobles) {
+        const previousPlayer = usePreviousPlayer(state);
+        if (!previousPlayer) return;
+        
+        if (canPickUpNoble(previousPlayer, noble)) {
+            setState((prev) => setStateGetNoble(prev, noble, previousPlayer));
         }
     }
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { StateProps } from "../../util/propTypes";
-import { useCurrentPlayer } from "../../util/useCurrentPlayer";
+import { useCurrentPlayer } from "../../hooks/useCurrentPlayer";
 import { GetChipsHTML, ReserveCardHTML } from "./ViewHTML";
 
 export default function SelectionView({ state, setState }: StateProps) {

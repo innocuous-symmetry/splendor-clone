@@ -1,4 +1,4 @@
-import { AppState, PlayerData } from "./types";
+import { AppState, PlayerData } from "../util/types";
 
 export const useCurrentPlayer = (state: AppState): PlayerData | null => {
     /**

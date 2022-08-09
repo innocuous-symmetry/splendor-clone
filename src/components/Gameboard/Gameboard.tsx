@@ -6,7 +6,7 @@ import { StateProps } from '../../util/propTypes';
 import { Link } from 'react-router-dom';
 
 // components
-import Nobles from './Nobles';
+import Nobles from '../Nobles/Nobles';
 import initializeBoard, { setCardRows } from '../../util/initializeBoard';
 import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';

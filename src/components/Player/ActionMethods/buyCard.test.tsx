@@ -1,7 +1,7 @@
 import { expensiveCard, midGameCardOne, midGameCardTwo, midGameState, mockPlayerOne, mockPlayerTwo, mockState } from '../../../util/testUtils';
 import { buyCard, tooExpensive } from './buyCardActions';
 import getTotalBuyingPower from '../../../util/getTotalBuyingPower';
-import { useCurrentPlayer } from '../../../util/useCurrentPlayer';
+import { useCurrentPlayer } from '../../../hooks/useCurrentPlayer';
 import { AppState, CardData, PlayerData, ResourceCost } from '../../../util/types';
 import { test, expect, describe, vi, afterEach } from 'vitest';
 import { renderHook } from "@testing-library/react";

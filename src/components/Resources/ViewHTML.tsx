@@ -1,10 +1,10 @@
 import { v4 } from "uuid";
 import { useEffect, useState } from "react";
-import { setStateGetChips } from "../../util/stateSetters";
+import { setStateGetChips } from "../../hooks/stateSetters";
 import { StateProps } from "../../util/propTypes";
 import { ResourceCost } from "../../util/types";
 import { getChipsActions } from "../Player/ActionMethods";
-import { useCurrentPlayer } from "../../util/useCurrentPlayer";
+import { useCurrentPlayer } from "../../hooks/useCurrentPlayer";
 import { hasMaxChips } from "../Player/ActionMethods/getChipsActions";
 const { getChips } = getChipsActions;
 

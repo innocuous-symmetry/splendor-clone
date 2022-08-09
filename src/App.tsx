@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { initialState } from './util/stateSetters';
-import { useEffect, useState } from 'react'
+import { initialState } from './hooks/stateSetters';
+import { useState } from 'react'
 
 import Gameboard from './components/Gameboard/Gameboard'
 import GameConstructor from './components/GameConstructor';
-import './App.css'
 import ResumeGame from './components/ResumeGame';
+import './App.css'
 
 function App() {
   const [state, setState] = useState(initialState);

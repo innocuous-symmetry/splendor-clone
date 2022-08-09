@@ -1,8 +1,8 @@
 import cardTierToKey from "../../../util/cardTierToKey";
-import { initialActions } from "../../../util/stateSetters";
+import { initialActions } from "../../../hooks/stateSetters";
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
 import { AppState, CardData, FullDeck, PlayerData, setStateType } from "../../../util/types";
-import { useCurrentPlayer } from "../../../util/useCurrentPlayer";
+import { useCurrentPlayer } from "../../../hooks/useCurrentPlayer";
 
 export const goldAllowable = (player: PlayerData | null): boolean => {
     if (!player) return false;

@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest"
 import cardTierToKey from "./cardTierToKey";
 import { mockPlayerOne, mockState } from "./testUtils";
 import { turnOrderUtil } from "./turnOrderUtil";
-import { useCurrentPlayer } from "./useCurrentPlayer";
+import { useCurrentPlayer } from "../hooks/useCurrentPlayer";
 
 describe('app utilities', () => {
     test('useCurrentPlayer', () => {

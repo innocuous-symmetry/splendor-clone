@@ -1,4 +1,4 @@
-import { setStateAwaitAction, setStateBuyCard, setStateGetChips, setStateReserveCard } from "../../util/stateSetters";
+import { setStateAwaitAction, setStateBuyCard, setStateGetChips, setStateReserveCard } from "../../hooks/stateSetters";
 import { useEffect, useState } from "react";
 import { PlayerProps } from "../../util/propTypes";
 import { CardData, PlayerData } from "../../util/types"
@@ -88,9 +88,26 @@ export default function Player({ player, state, setState }: PlayerProps) {
             <section className="turn-and-action-based">
                 <p>Score: {dynamic && dynamic.points}</p>
                 <p>{dynamic?.turnActive ? "It's your turn!" : "..."}</p>
-                <button disabled={dynamic && hasMaxChips(dynamic)} onClick={() => handleClick(0)}>Get Chips</button>
-                <button onClick={() => handleClick(1)}>Buy Card</button>
-                <button disabled={dynamic && hasMaxReserved(dynamic)} onClick={() => handleClick(2)}>Reserve Card</button>
+
+                {/* Player actions */}
+                <button
+                    disabled={(dynamic && hasMaxChips(dynamic)) || (!dynamic?.turnActive)}
+                    onClick={() => handleClick(0)}>
+                        Get Chips
+                </button>
+
+                <button
+                    disabled={!dynamic?.turnActive}
+                    onClick={() => handleClick(1)}>
+                        Buy Card
+                </button>
+
+                <button
+                    disabled={(dynamic && hasMaxReserved(dynamic)) || (!dynamic?.turnActive)}
+                    onClick={() => handleClick(2)}>
+                        Reserve Card
+                </button>
+
             </section>
 
             <section className="resources">

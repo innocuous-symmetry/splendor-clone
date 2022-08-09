@@ -1,7 +1,7 @@
 import { v4 } from 'uuid';
 import { CardProps } from '../../util/propTypes';
 import { ResourceCost } from '../../util/types';
-import { useCurrentPlayer } from '../../util/useCurrentPlayer';
+import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
 import { buyCardActions } from '../Player/ActionMethods';
 import { hasMaxReserved, reserveCard } from '../Player/ActionMethods/reserveCardActions';
 const { buyCard, tooExpensive } = buyCardActions;
