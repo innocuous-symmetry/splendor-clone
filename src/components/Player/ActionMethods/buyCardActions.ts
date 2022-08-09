@@ -9,11 +9,23 @@ import usePreviousPlayer from "../../../hooks/usePreviousPlayer";
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
     if (!currentPlayer) return true;
+
+    let availableGold = currentPlayer.inventory.gold || 0;
     for (let [cardGemType, cardCost] of Object.entries(card.resourceCost)) {
         let totalBuyingPower = getTotalBuyingPower(currentPlayer);
         for (let [heldResource, quantity] of Object.entries(totalBuyingPower)) {
             if (cardGemType === heldResource && quantity < cardCost) {
-                return true;
+                let adjustedQuantity = quantity;
+                while (availableGold > 0) {
+                    adjustedQuantity++;
+                    availableGold--;
+                }
+
+                if (adjustedQuantity > cardCost) {
+                    continue;
+                } else {
+                    return true;
+                }
             }
         }
     }
@@ -32,10 +44,11 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         const updatedPlayer = newPlayers[idx];
 
         // pointers for each value to be modified
-        const cardCost = card.resourceCost;
+        const cardCost: ResourceCost = card.resourceCost;
         const playerBuyingPower = getTotalBuyingPower(currentPlayer);
         const newPlayerInventory = updatedPlayer.inventory;
         const newResourcePool = prev.gameboard.tradingResources;
+        let availableGold = updatedPlayer.inventory.gold || 0;
 
         for (let key of Object.keys(cardCost)) {
             const typedKey = key as keyof ResourceCost;

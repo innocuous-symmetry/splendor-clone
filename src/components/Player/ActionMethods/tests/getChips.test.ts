@@ -1,8 +1,8 @@
 import { describe, expect, it, test } from "vitest";
-import { initialActions } from "../../../hooks/stateSetters";
-import { mockPlayerOne, mockState } from "../../../util/testUtils";
-import { AppState, PlayerData } from "../../../util/types";
-import { hasMaxChips, validateChips } from "./getChipsActions";
+import { initialActions } from "../../../../hooks/stateSetters";
+import { mockPlayerOne, mockState } from "../../../../util/testUtils";
+import { AppState, PlayerData } from "../../../../util/types";
+import { hasMaxChips, validateChips } from "../getChipsActions";
 
 const getChipsState: AppState = {
     ...mockState,
