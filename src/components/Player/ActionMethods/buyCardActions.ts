@@ -5,6 +5,7 @@ import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
 import { initialActions, setStateGetNoble } from "../../../hooks/stateSetters";
 import { canPickUpNoble } from "../../Nobles/canPickUpNoble";
 import usePreviousPlayer from "../../../hooks/usePreviousPlayer";
+import cardTierToKey from "../../../util/cardTierToKey";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
@@ -45,75 +46,54 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         const idx = newPlayers.indexOf(currentPlayer);
         const updatedPlayer = newPlayers[idx];
 
-        // pointers for each value to be modified
-        const cardCost: ResourceCost = card.resourceCost;
-        const playerBuyingPower = getTotalBuyingPower(currentPlayer);
-        const newPlayerInventory = updatedPlayer.inventory;
         const newResourcePool = prev.gameboard.tradingResources;
-        let availableGold = updatedPlayer.inventory.gold || 0;
+        const cardCost = card.resourceCost;
+        const totalBuyingPower = getTotalBuyingPower(updatedPlayer);
 
-        // evaluate whether gold must be used, assign to boolean
-        let buyingPowerTotal = 0;
-        let cardCostTotal = 0;
-        for (let key of Object.keys(playerBuyingPower)) {
-            if (key === 'gold') continue;
-            buyingPowerTotal += playerBuyingPower[key as keyof ResourceCost];
-            cardCostTotal += cardCost[key as keyof ResourceCost] || 0;
-        }
+        let availableGold = updatedPlayer.inventory['gold'] || 0;
 
-        let useGold = buyingPowerTotal < cardCostTotal;
-
-        for (let key of Object.keys(cardCost)) {
+        for (let key of Object.keys(totalBuyingPower)) {
             const typedKey = key as keyof ResourceCost;
-            let adjustedCost = cardCost[typedKey];
-            let adjustedInventoryValue = newPlayerInventory[typedKey];
-            let adjustedResourcePoolValue = newResourcePool[typedKey] || 0;
-            if (!adjustedCost || !adjustedInventoryValue) continue;
+            if (key === 'gold') continue;
+            if (cardCost[typedKey] === 0) continue;
 
-            // before decrementing player inventory values, account for total buying power
-            const buyingPowerDifference = playerBuyingPower[typedKey] - adjustedInventoryValue;
-            adjustedCost -= buyingPowerDifference;
+            let tempPlayerInventory = updatedPlayer.inventory[typedKey] || 0;
+            let tempResourcePool = newResourcePool[typedKey] || 0;
+            let cardCostPointer = cardCost[typedKey] || 0;
+            let goldToReturn = 0;
 
-            // logic to handle the use of a gold chip
-            let newGoldCount = newResourcePool['gold'] || 0;
-            while (useGold) {
+            // @ts-ignore
+            if (cardCost[typedKey] > totalBuyingPower[typedKey]) {
                 availableGold--;
-                adjustedCost--;
-                buyingPowerTotal++;
-                newGoldCount++;
-                useGold = buyingPowerTotal < cardCostTotal;
+                goldToReturn++;
+                tempPlayerInventory++;
             }
 
-            while (adjustedCost > 0) {
-                adjustedInventoryValue--;
-                adjustedCost--;
-                adjustedResourcePoolValue++;
+            while (cardCostPointer > 0) {
+                if (tempPlayerInventory === 0) {
+                    availableGold--;
+                    goldToReturn++;
+                } else {
+                    tempPlayerInventory--;
+                    tempResourcePool++;
+                }
+
+                cardCostPointer--;
             }
-            
-            // assign modified values to player inventory and resource pool
-            newPlayerInventory[typedKey] = adjustedInventoryValue;
-            newResourcePool[typedKey] = adjustedResourcePoolValue;
-            newResourcePool['gold'] = newGoldCount;
+
+            newResourcePool[typedKey] = tempResourcePool - goldToReturn;
+            newResourcePool['gold'] = (newResourcePool['gold'] || 0) + goldToReturn;
+            updatedPlayer.inventory[typedKey] = tempPlayerInventory - goldToReturn;
+            updatedPlayer.inventory['gold'] = availableGold;
         }
 
-        newPlayerInventory['gold'] = availableGold;
+        updatedPlayer.cards = { ...updatedPlayer.cards, [card.gemValue]: [...updatedPlayer.cards[card.gemValue as keyof PlayerCards], card] }
 
-        // connect modified player state to updated list of all players
-        const typeofCard = card.gemValue as keyof PlayerCards;
-        updatedPlayer.cards[typeofCard] = [...updatedPlayer.cards[typeofCard], card]
-        updatedPlayer.inventory = newPlayerInventory;
-        updatedPlayer.points = updatedPlayer.points + (card.points || 0);
-        newPlayers[idx] = updatedPlayer;
-
-        // attempt to queue replacement card from full deck
-        const typedCardTier = ["tierThree", "tierTwo", "tierOne"][2 - (card.tier-1)] as keyof FullDeck;
+        const typedCardTier = cardTierToKey(card.tier);
         let newFullDeckTargetTier = prev.gameboard.deck[typedCardTier];
         const replacementCard = newFullDeckTargetTier.shift();
-
-        // isolate the affected row of face up cards, remove the purchased card
         let newTargetCardRow = prev.gameboard.cardRows[typedCardTier];
         newTargetCardRow = newTargetCardRow.filter((data: CardData) => data.resourceCost !== card.resourceCost);
-        // push replacement card to face up card, if exists
         if (replacementCard) newTargetCardRow.push(replacementCard);
 
         return {
