@@ -1,5 +1,5 @@
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
-import { AppState, CardData, FullDeck, ResourceCost, setStateType } from "../../../util/types";
+import { AppState, CardData, FullDeck, PlayerCards, ResourceCost, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../hooks/useCurrentPlayer";
 import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
 import { initialActions, setStateGetNoble } from "../../../hooks/stateSetters";
@@ -75,8 +75,9 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         }
 
         // connect modified player state to updated list of all players
+        const typeofCard = card.gemValue as keyof PlayerCards;
+        updatedPlayer.cards[typeofCard] = [...updatedPlayer.cards[typeofCard], card]
         updatedPlayer.inventory = newPlayerInventory;
-        updatedPlayer.cards = [...updatedPlayer.cards, card];
         updatedPlayer.points = updatedPlayer.points + (card.points || 0);
         newPlayers[idx] = updatedPlayer;
 

@@ -1,7 +1,7 @@
 import { setStateAwaitAction, setStateBuyCard, setStateGetChips, setStateReserveCard } from "../../hooks/stateSetters";
 import { useEffect, useState } from "react";
 import { PlayerProps } from "../../util/propTypes";
-import { CardData, PlayerData } from "../../util/types"
+import { CardData, GemValue, PlayerData } from "../../util/types"
 import { hasMaxReserved } from "./ActionMethods/reserveCardActions";
 import { hasMaxChips } from "./ActionMethods/getChipsActions";
 import { v4 } from "uuid";
@@ -17,25 +17,34 @@ export default function Player({ player, state, setState }: PlayerProps) {
 
     useEffect(() => {
         dynamic && setCardView(
-            <>
-            <p>Cards:</p>
-            {
-                dynamic.cards.map((data: CardData) => {
-                    return (
-                        <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
-                            <p>{data.gemValue} card</p>
-                            <p>{data.points + " points" || null}</p>
-                            {
-                                Object.entries(data.resourceCost).map(([key, value]) => {
-                                    return value > 0 && <p key={v4()}>{key}: {value}</p>
-                                })
-                            }
-                        </div>
-                    )
-                })
-            }
-            </>
+            <div className="card-view">
+                <p>Cards:</p>
+                {
+                    Object.entries(dynamic.cards).map(([key, value]) => value.length > 0 && <p key={v4()}>{key}: {value.length}</p>)
+                }
+            </div>
         )
+
+        // dynamic && setCardView(
+        //     <div className="card-view">
+        //     <p>Cards:</p>
+        //     {
+        //         dynamic.cards.map((data: CardData) => {
+        //             return (
+        //                 <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
+        //                     <p>{data.gemValue} card</p>
+        //                     <p>{data.points + " points" || null}</p>
+        //                     {
+        //                         Object.entries(data.resourceCost).map(([key, value]) => {
+        //                             return value > 0 && <p key={v4()}>{key}: {value}</p>
+        //                         })
+        //                     }
+        //                 </div>
+        //             )
+        //         })
+        //     }
+        //     </div>
+        // )
 
         dynamic && setReservedView(
             <>

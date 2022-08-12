@@ -65,7 +65,13 @@ export default function GameConstructor({ state, setState }: StateProps) {
                 turnActive: val.starter,
                 points: 0,
                 nobles: new Array<NobleData>,
-                cards: new Array<CardData>,
+                cards: {
+                    ruby: new Array<CardData>,
+                    sapphire: new Array<CardData>,
+                    emerald: new Array<CardData>,
+                    diamond: new Array<CardData>,
+                    onyx: new Array<CardData>,
+                },
                 inventory: {
                     ruby: 0,
                     sapphire: 0,

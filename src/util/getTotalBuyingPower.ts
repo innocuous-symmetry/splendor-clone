@@ -16,8 +16,8 @@ export default function getTotalBuyingPower(currentPlayer: PlayerData) {
         totalBuyingPower[key as keyof ResourceCost] += quantity;
     }
 
-    for (let each of currentPlayer.cards) {
-        totalBuyingPower[each.gemValue as keyof ResourceCost] += 1;
+    for (let [gem, arr] of Object.entries(currentPlayer.cards)) {
+        totalBuyingPower[gem as keyof ResourceCost] += arr.length;
     }
 
     return totalBuyingPower;

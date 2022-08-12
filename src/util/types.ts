@@ -62,11 +62,19 @@ export interface PlayerData {
     turnActive?: boolean,
     points: number,
     nobles: NobleData[],
-    cards: CardData[],
+    cards: PlayerCards,
     reservedCards?: CardData[],
     inventory: {
         [Property in keyof ResourceCost]: number
     }
+}
+
+export interface PlayerCards {
+    ruby: CardData[],
+    emerald: CardData[],
+    sapphire: CardData[],
+    onyx: CardData[],
+    diamond: CardData[],
 }
 
 export interface FullDeck {
