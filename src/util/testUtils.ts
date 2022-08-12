@@ -1,5 +1,6 @@
 import { initialState } from "../hooks/stateSetters"
 import { AppState, CardData, NobleData, PlayerData } from "./types"
+import Cards from '../data/cards.json';
 
 // mock data for early game
 export const mockPlayerOne: PlayerData = {
@@ -41,6 +42,40 @@ export const mockPlayerTwo: PlayerData = {
 export const mockState: AppState = {
     ...initialState,
     players: [mockPlayerOne, mockPlayerTwo]
+}
+
+export const sampleTierOneCard: CardData = {
+    gemValue: 'ruby',
+    tier: 3,
+    points: 0,
+    resourceCost: {
+        ruby: 0,
+        sapphire: 0,
+        emerald: 0,
+        diamond: 0,
+        onyx: 3
+    }
+}
+
+export const mockCardRows = {
+    tierOne: [
+        Cards.tierOne[0],
+        Cards.tierOne[1],
+        Cards.tierOne[2],
+        sampleTierOneCard,
+    ],
+    tierTwo: [
+        Cards.tierTwo[0],
+        Cards.tierTwo[1],
+        Cards.tierTwo[2],
+        Cards.tierTwo[3],
+    ],
+    tierThree: [
+        Cards.tierThree[0],
+        Cards.tierThree[1],
+        Cards.tierThree[2],
+        Cards.tierThree[3],
+    ]
 }
 
 // mock data for midgame

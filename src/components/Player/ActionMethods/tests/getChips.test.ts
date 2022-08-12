@@ -75,8 +75,4 @@ describe('get chips', () => {
             }
         })
     })
-
-    describe('getChips', () => {
-
-    })
 })

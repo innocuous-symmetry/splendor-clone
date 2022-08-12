@@ -11,20 +11,22 @@ export const tooExpensive = (card: CardData, state: AppState): boolean => {
     if (!currentPlayer) return true;
 
     let availableGold = currentPlayer.inventory.gold || 0;
-    for (let [cardGemType, cardCost] of Object.entries(card.resourceCost)) {
+
+    // iterate through resource costs on card
+    for (let [cardResource, cardQuantity] of Object.entries(card.resourceCost)) {
         let totalBuyingPower = getTotalBuyingPower(currentPlayer);
-        for (let [heldResource, quantity] of Object.entries(totalBuyingPower)) {
-            if (cardGemType === heldResource && quantity < cardCost) {
-                let adjustedQuantity = quantity;
-                while (availableGold > 0) {
+        // iterate through each section of player's total buying power
+        for (let [heldResource, heldQuantity] of Object.entries(totalBuyingPower)) {
+            // match card resource to held quantity
+            if (cardResource === heldResource) {
+                let adjustedQuantity = heldQuantity;
+                // enter while loop if adjustedQuantity does not cover cost
+                while (adjustedQuantity < cardQuantity) {
+                    // if there is no gold available to modify cost, card is too expensive
+                    if (!availableGold) return true;
+                    // else, add to the insufficient quantity and decrement available gold
                     adjustedQuantity++;
                     availableGold--;
-                }
-
-                if (adjustedQuantity > cardCost) {
-                    continue;
-                } else {
-                    return true;
                 }
             }
         }

@@ -43,7 +43,7 @@ export default function Player({ player, state, setState }: PlayerProps) {
             {
                 dynamic.reservedCards?.map((data: CardData) => {
                     return (
-                        <div key={v4()} className="mini-card" style={{backgroundColor: 'white'}}>
+                        <div key={v4()} className="mini-card" id={`${dynamic.name}-player-ui`} style={{backgroundColor: 'white'}}>
                             <p>{data.gemValue} cards</p>
                             <p>{data.points + " points" || null}</p>
                             {
