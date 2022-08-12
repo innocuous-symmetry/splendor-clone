@@ -44,10 +44,10 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         // shift turn order and identify current player in new player state
         const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
         const idx = newPlayers.indexOf(currentPlayer);
-        const updatedPlayer = newPlayers[idx];
 
         const newResourcePool = prev.gameboard.tradingResources;
         const cardCost = card.resourceCost;
+        const updatedPlayer = newPlayers[idx];
         const totalBuyingPower = getTotalBuyingPower(updatedPlayer);
 
         let availableGold = updatedPlayer.inventory['gold'] || 0;
