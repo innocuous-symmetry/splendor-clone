@@ -52,6 +52,17 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         const newResourcePool = prev.gameboard.tradingResources;
         let availableGold = updatedPlayer.inventory.gold || 0;
 
+        // evaluate whether gold must be used, assign to boolean
+        let buyingPowerTotal = 0;
+        let cardCostTotal = 0;
+        for (let key of Object.keys(playerBuyingPower)) {
+            if (key === 'gold') continue;
+            buyingPowerTotal += playerBuyingPower[key as keyof ResourceCost];
+            cardCostTotal += cardCost[key as keyof ResourceCost] || 0;
+        }
+
+        let useGold = buyingPowerTotal < cardCostTotal;
+
         for (let key of Object.keys(cardCost)) {
             const typedKey = key as keyof ResourceCost;
             let adjustedCost = cardCost[typedKey];
@@ -63,6 +74,16 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             const buyingPowerDifference = playerBuyingPower[typedKey] - adjustedInventoryValue;
             adjustedCost -= buyingPowerDifference;
 
+            // logic to handle the use of a gold chip
+            let newGoldCount = newResourcePool['gold'] || 0;
+            while (useGold) {
+                availableGold--;
+                adjustedCost--;
+                buyingPowerTotal++;
+                newGoldCount++;
+                useGold = buyingPowerTotal < cardCostTotal;
+            }
+
             while (adjustedCost > 0) {
                 adjustedInventoryValue--;
                 adjustedCost--;
@@ -72,7 +93,10 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             // assign modified values to player inventory and resource pool
             newPlayerInventory[typedKey] = adjustedInventoryValue;
             newResourcePool[typedKey] = adjustedResourcePoolValue;
+            newResourcePool['gold'] = newGoldCount;
         }
+
+        newPlayerInventory['gold'] = availableGold;
 
         // connect modified player state to updated list of all players
         const typeofCard = card.gemValue as keyof PlayerCards;

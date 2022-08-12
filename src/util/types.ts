@@ -84,7 +84,7 @@ export interface FullDeck {
 }
 
 export interface CardData {
-    gemValue: GemValue | string
+    gemValue: string
     tier: number
     points?: number
     resourceCost: ResourceCost
@@ -103,13 +103,4 @@ export interface NobleData {
     nobleid?: number,
     points: number,
     resourceCost: ResourceCost
-}
-
-export enum GemValue {
-    ruby,
-    sapphire,
-    emerald,
-    diamond,
-    onyx,
-    gold,
 }

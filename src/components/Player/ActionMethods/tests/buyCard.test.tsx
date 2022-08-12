@@ -7,9 +7,6 @@ import { AppState, PlayerData, setStateType } from "../../../../util/types"
 import { buyCard, tooExpensive } from "../buyCardActions"
 import { configure } from "enzyme";
 import Player from "../../Player"
-import Gameboard from "../../../Gameboard/Gameboard";
-import initializeBoard from "../../../../util/initializeBoard";
-import React from "react";
 
 configure({ adapter: new Adapter() });
 
@@ -19,7 +16,13 @@ const testPlayer: PlayerData = {
     starter: true,
     turnActive: true,
     points: 0,
-    cards: [],
+    cards: {
+        ruby: [],
+        sapphire: [],
+        emerald: [],
+        diamond: [],
+        onyx:[]
+    },
     nobles: [],
     inventory: {
         ruby: 1,
