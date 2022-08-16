@@ -12,7 +12,7 @@ export default function Card({ data, state, setState }: CardProps) {
     if (!data) return <div className="card"></div>;
 
     return (
-        <div className="card">
+        <div className="card" key={v4()}>
             <div className="top-row">
                 <p>Counts as: {data.gemValue}</p>
                 <p>Point value: {data.points || 0}</p>

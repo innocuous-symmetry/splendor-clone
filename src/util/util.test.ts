@@ -3,6 +3,7 @@ import cardTierToKey from "./cardTierToKey";
 import { mockPlayerOne, mockState } from "./testUtils";
 import { turnOrderUtil } from "./turnOrderUtil";
 import { useCurrentPlayer } from "../hooks/useCurrentPlayer";
+import getTotalBuyingPower from "./getTotalBuyingPower";
 
 describe('app utilities', () => {
     test('useCurrentPlayer', () => {
@@ -38,6 +39,14 @@ describe('app utilities', () => {
 
     test('initializeBoard', () => {
         expect(1).toBe(1);
+    })
+
+    test('get total buying power', () => {
+        const currentPlayer = useCurrentPlayer(mockState);
+        if (!currentPlayer) return;
+
+        const bp = getTotalBuyingPower(currentPlayer);
+        expect(bp).toBeDefined();
     })
 })
 

@@ -89,12 +89,24 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
 
         updatedPlayer.cards = { ...updatedPlayer.cards, [card.gemValue]: [...updatedPlayer.cards[card.gemValue as keyof PlayerCards], card] }
 
+        let reservedCardCheck = false;
+        // checks if current card was bought from reserved cards, removing it if so
+        if (updatedPlayer.reservedCards) {
+            let beforeLength = updatedPlayer.reservedCards.length;
+            updatedPlayer.reservedCards = updatedPlayer.reservedCards.filter((each: CardData) => each.resourceCost !== card.resourceCost);
+            let afterLength = updatedPlayer.reservedCards.length;
+            if (beforeLength !== afterLength) reservedCardCheck = true;
+        }
+
         const typedCardTier = cardTierToKey(card.tier);
         let newFullDeckTargetTier = prev.gameboard.deck[typedCardTier];
-        const replacementCard = newFullDeckTargetTier.shift();
         let newTargetCardRow = prev.gameboard.cardRows[typedCardTier];
-        newTargetCardRow = newTargetCardRow.filter((data: CardData) => data.resourceCost !== card.resourceCost);
-        if (replacementCard) newTargetCardRow.push(replacementCard);
+
+        if (!reservedCardCheck) {
+            const replacementCard = newFullDeckTargetTier.shift();
+            newTargetCardRow = newTargetCardRow.filter((data: CardData) => data.resourceCost !== card.resourceCost);
+            if (replacementCard) newTargetCardRow.push(replacementCard);
+        }
 
         return {
             ...prev,
