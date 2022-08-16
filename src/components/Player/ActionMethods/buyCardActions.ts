@@ -1,11 +1,11 @@
 import { turnOrderUtil } from "../../../util/turnOrderUtil";
-import { AppState, CardData, FullDeck, PlayerCards, ResourceCost, setStateType } from "../../../util/types";
-import { useCurrentPlayer } from "../../../hooks/useCurrentPlayer";
 import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
-import { initialActions, setStateGetNoble } from "../../../hooks/stateSetters";
-import { canPickUpNoble } from "../../Nobles/canPickUpNoble";
-import usePreviousPlayer from "../../../hooks/usePreviousPlayer";
+import { AppState, CardData, PlayerCards, ResourceCost, setStateType } from "../../../util/types";
 import cardTierToKey from "../../../util/cardTierToKey";
+import { canPickUpNoble } from "../../Nobles/canPickUpNoble";
+import { initialActions, setStateGetNoble } from "../../../hooks/stateSetters";
+import { useCurrentPlayer } from "../../../hooks/useCurrentPlayer";
+import usePreviousPlayer from "../../../hooks/usePreviousPlayer";
 
 export const tooExpensive = (card: CardData, state: AppState): boolean => {
     const currentPlayer = useCurrentPlayer(state);
@@ -63,7 +63,7 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             let goldToReturn = 0;
 
             // @ts-ignore
-            if (cardCost[typedKey] > totalBuyingPower[typedKey]) {
+            while (cardCostPointer > tempPlayerInventory) {
                 availableGold--;
                 goldToReturn++;
                 tempPlayerInventory++;

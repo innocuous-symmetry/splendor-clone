@@ -12,6 +12,8 @@ import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
 import SelectionView from '../Resources/SelectionView';
+import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
+import getTotalBuyingPower from '../../util/getTotalBuyingPower';
 const { validateChips } = getChipsActions;
 
 export default function Gameboard({ state, setState }: StateProps) {
@@ -56,6 +58,13 @@ export default function Gameboard({ state, setState }: StateProps) {
             }
         }
     }, [state])
+
+    useEffect(() => {
+        if (state.actions.buyCard.active) {
+            const currentPlayer = useCurrentPlayer(state);
+            currentPlayer && console.log(getTotalBuyingPower(currentPlayer));
+        }
+    }, [state.actions])
 
     // displays state of board if data is populated, otherwise points to game constructor
     useEffect(() => {

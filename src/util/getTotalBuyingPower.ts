@@ -11,7 +11,7 @@ export default function getTotalBuyingPower(currentPlayer: PlayerData) {
     }
 
     if (!currentPlayer) return totalBuyingPower;
-    
+
     for (let [key,quantity] of Object.entries(currentPlayer.inventory)) {
         totalBuyingPower[key as keyof ResourceCost] += quantity;
     }
