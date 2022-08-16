@@ -62,28 +62,27 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             let cardCostPointer = cardCost[typedKey] || 0;
             let goldToReturn = 0;
 
-            // @ts-ignore
-            while (cardCostPointer > tempPlayerInventory) {
+            while (cardCostPointer > tempPlayerInventory && availableGold > 0) {
                 availableGold--;
                 goldToReturn++;
                 tempPlayerInventory++;
             }
 
-            while (cardCostPointer > 0) {
-                if (tempPlayerInventory === 0) {
-                    availableGold--;
-                    goldToReturn++;
-                } else {
-                    tempPlayerInventory--;
-                    tempResourcePool++;
-                }
-
+            while (goldToReturn) {
+                goldToReturn--;
                 cardCostPointer--;
+                tempPlayerInventory--;
+                newResourcePool['gold'] && newResourcePool['gold']++;
             }
 
-            newResourcePool[typedKey] = tempResourcePool - goldToReturn;
-            newResourcePool['gold'] = (newResourcePool['gold'] || 0) + goldToReturn;
-            updatedPlayer.inventory[typedKey] = tempPlayerInventory - goldToReturn;
+            while (cardCostPointer > 0) {
+                cardCostPointer--;
+                tempPlayerInventory--;
+                tempResourcePool++;
+            }
+
+            newResourcePool[typedKey] = tempResourcePool;
+            updatedPlayer.inventory[typedKey] = tempPlayerInventory;
             updatedPlayer.inventory['gold'] = availableGold;
         }
 
@@ -127,6 +126,8 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             }
         }
     });
+
+    console.log(state.players);
 
     // iterates through gameboard nobles to determine if any can be acquired
     for (let noble of state.gameboard.nobles) {
