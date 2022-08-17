@@ -45,48 +45,65 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
         const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
         const idx = newPlayers.indexOf(currentPlayer);
 
+        // assign pointers
         const newResourcePool = prev.gameboard.tradingResources;
         const cardCost = card.resourceCost;
         const updatedPlayer = newPlayers[idx];
-        const totalBuyingPower = getTotalBuyingPower(updatedPlayer);
-
         let availableGold = updatedPlayer.inventory['gold'] || 0;
 
-        for (let key of Object.keys(totalBuyingPower)) {
+        // iterate and perform purchase logic
+        for (let key of Object.keys(updatedPlayer.inventory)) {
             const typedKey = key as keyof ResourceCost;
             if (key === 'gold') continue;
             if (cardCost[typedKey] === 0) continue;
 
-            let tempPlayerInventory = updatedPlayer.inventory[typedKey] || 0;
-            let tempResourcePool = newResourcePool[typedKey] || 0;
+            // derived pointers for sections of state
+            let inventoryPointer = updatedPlayer.inventory[typedKey] || 0;
+            let resourcePoolPointer = newResourcePool[typedKey] || 0;
             let cardCostPointer = cardCost[typedKey] || 0;
+            let heldCardPointer = updatedPlayer.cards[key as keyof PlayerCards].length || 0;
             let goldToReturn = 0;
 
-            while (cardCostPointer > tempPlayerInventory && availableGold > 0) {
-                availableGold--;
-                goldToReturn++;
-                tempPlayerInventory++;
-            }
-
-            while (goldToReturn) {
-                goldToReturn--;
+            // reduce required cost by number of permanent resources
+            while (heldCardPointer > 0) {
+                heldCardPointer--;
                 cardCostPointer--;
-                tempPlayerInventory--;
-                newResourcePool['gold'] && newResourcePool['gold']++;
             }
 
+            // use available gold to account for difference between cardCost and inventory
+            while (cardCostPointer > inventoryPointer) {
+                if (availableGold > 0) {
+                    availableGold--;
+                    cardCostPointer--;
+                    goldToReturn++;
+                }
+            }
+
+            // redistribute gold back into resource pool
+            while (goldToReturn > 0) {
+                updatedPlayer.inventory['gold'] && updatedPlayer.inventory['gold']--;
+                newResourcePool['gold'] && newResourcePool['gold']++;
+                goldToReturn--;
+            }
+
+            // complete remaining details of transaction
             while (cardCostPointer > 0) {
                 cardCostPointer--;
-                tempPlayerInventory--;
-                tempResourcePool++;
+                inventoryPointer--;
+                resourcePoolPointer++;
             }
 
-            newResourcePool[typedKey] = tempResourcePool;
-            updatedPlayer.inventory[typedKey] = tempPlayerInventory;
+            // reassign to higher scope variables
+            newResourcePool[typedKey] = resourcePoolPointer;
+            updatedPlayer.inventory[typedKey] = inventoryPointer;
             updatedPlayer.inventory['gold'] = availableGold;
         }
 
-        updatedPlayer.cards = { ...updatedPlayer.cards, [card.gemValue]: [...updatedPlayer.cards[card.gemValue as keyof PlayerCards], card] }
+        // update player's held cards
+        updatedPlayer.cards = {
+            ...updatedPlayer.cards,
+            [card.gemValue]: [...updatedPlayer.cards[card.gemValue as keyof PlayerCards], card]
+        }
 
         let reservedCardCheck = false;
         // checks if current card was bought from reserved cards, removing it if so
