@@ -76,6 +76,8 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
                     availableGold--;
                     cardCostPointer--;
                     goldToReturn++;
+                } else {
+                    break;
                 }
             }
 

@@ -1,10 +1,10 @@
-import { v4 } from "uuid";
 import { useEffect, useState } from "react";
-import { setStateGetChips } from "../../hooks/stateSetters";
+import { v4 } from "uuid";
+import { setStateGetChips, setStateReserveCard, setStateReservePlusGold } from "../../hooks/stateSetters";
+import { useCurrentPlayer } from "../../hooks/useCurrentPlayer";
 import { StateProps } from "../../util/propTypes";
 import { ResourceCost } from "../../util/types";
 import { getChipsActions } from "../Player/ActionMethods";
-import { useCurrentPlayer } from "../../hooks/useCurrentPlayer";
 import { hasMaxChips } from "../Player/ActionMethods/getChipsActions";
 const { getChips } = getChipsActions;
 
@@ -42,12 +42,21 @@ export const GetChipsHTML = ({ state, setState }: StateProps) => {
 }
 
 export const ReserveCardHTML = ({ state, setState }: StateProps) => {
-    const [takeGold, setTakeGold] = useState("");
+    const [takeGold, setTakeGold] = useState(false);
     const currentPlayer = useCurrentPlayer(state);
 
     useEffect(() => {
-
-    })
+        switch (takeGold) {
+            case true:
+                setState((prev) => setStateReservePlusGold(prev));
+                break;
+            case false:
+                setState((prev) => setStateReserveCard(prev));
+                break;
+            default:
+                break;
+        }
+    }, [takeGold]);
 
     return (
         <div className="selection-view">
@@ -60,8 +69,8 @@ export const ReserveCardHTML = ({ state, setState }: StateProps) => {
                     <input
                         id="take-gold-yes"
                         value="Yes"
-                        checked={takeGold === "Yes"}
-                        onChange={() => setTakeGold("Yes")}
+                        checked={takeGold}
+                        onChange={() => setTakeGold(true)}
                         type="radio"
                     >
                     </input>
@@ -70,8 +79,8 @@ export const ReserveCardHTML = ({ state, setState }: StateProps) => {
                     <input
                         id="take-gold-no"
                         value="No"
-                        checked={takeGold === "No"}
-                        onChange={() => setTakeGold("No")}
+                        checked={!takeGold}
+                        onChange={() => setTakeGold(false)}
                         type="radio">
                     </input>
                 </div>

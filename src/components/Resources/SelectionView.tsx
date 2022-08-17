@@ -5,12 +5,12 @@ import { GetChipsHTML, ReserveCardHTML } from "./ViewHTML";
 
 export default function SelectionView({ state, setState }: StateProps) {
     const [currentPlayer, setCurrentPlayer] = useState(useCurrentPlayer(state));
-
     const actionTypes = [
         state.actions.getChips,
         state.actions.buyCard,
         state.actions.reserveCard
     ]
+
     const [view, setView] = useState(<></>);
 
     useEffect(() => {

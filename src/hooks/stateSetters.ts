@@ -78,6 +78,20 @@ export const setStateReserveCard = (prev: AppState) => {
     }
 }
 
+export const setStateReservePlusGold = (prev: AppState) => {
+    return {
+        ...prev,
+        actions: {
+            ...initialState.actions,
+            reserveCard: {
+                active: true,
+                includeGold: true,
+                valid: false
+            }
+        }
+    }
+}
+
 export const setStateGetNoble = (prev: AppState, noble: NobleData, prevPlayer: PlayerData) => {
     const updatedPlayer = {
         ...prevPlayer,
