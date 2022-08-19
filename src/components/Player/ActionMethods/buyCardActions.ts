@@ -116,6 +116,15 @@ export const buyCard = (state: AppState, setState: setStateType, card: CardData)
             if (beforeLength !== afterLength) reservedCardCheck = true;
         }
 
+        let newScore = 0;
+        for (let each in updatedPlayer.cards) {
+            updatedPlayer.cards[each as keyof PlayerCards].forEach((value: CardData) => newScore += (value.points || 0));
+            // newScore += updatedPlayer.cards[each as keyof PlayerCards].length;
+        }
+
+        newScore += (updatedPlayer.nobles.length * 3)
+        updatedPlayer.points = newScore;
+
         const typedCardTier = cardTierToKey(card.tier);
         let newFullDeckTargetTier = prev.gameboard.deck[typedCardTier];
         let newTargetCardRow = prev.gameboard.cardRows[typedCardTier];
