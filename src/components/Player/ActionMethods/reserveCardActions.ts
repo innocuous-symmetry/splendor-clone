@@ -29,25 +29,20 @@ export const reserveCard = (state: AppState, setState: setStateType, card: CardD
     setState((prev: AppState) => {
         const { newPlayers, roundIncrement } = turnOrderUtil(prev, currentPlayer);
 
-        // const updatedPlayer = {
-        //     ...currentPlayer,
-        //     reservedCards: currentPlayer.reservedCards ? [...currentPlayer.reservedCards, card] : [card],
-        //     inventory: goldAllowable(currentPlayer) ? {
-        //         ...currentPlayer.inventory,
-        //         gold: currentPlayer.inventory.gold && currentPlayer.inventory.gold + 1
-        //     } : currentPlayer.inventory
-        // }
-
         const updatedPlayer = currentPlayer;
         updatedPlayer.reservedCards = currentPlayer.reservedCards ? [
             ...currentPlayer.reservedCards, card
         ] : [card];
 
-        if (prev.actions.reserveCard.includeGold) {
+        const newResources = prev.gameboard.tradingResources;
+
+        if (prev.actions.reserveCard.includeGold && newResources.gold) {
             updatedPlayer.inventory = {
                 ...currentPlayer.inventory,
                 gold: currentPlayer.inventory.gold ? currentPlayer.inventory.gold + 1 : 1
             }
+
+            newResources.gold = newResources.gold - 1;
         }
 
         const idx = newPlayers.indexOf(currentPlayer);
