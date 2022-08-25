@@ -1,4 +1,5 @@
 @import '../../sass/helper/mixins';
+@import '../../sass/helper/placeholders';
 
 .all-players {
     display: flex;
@@ -15,7 +16,11 @@
         .resources {
             .player-chips-enum {
                 display: flex;
+                justify-content: center;
                 @include map-gem-values(".player-chip");
+                p {
+                    @extend %chip-design;
+                }
             }
         }
     }

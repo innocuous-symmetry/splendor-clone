@@ -1,3 +1,15 @@
 %hidden {
     display: none;
 }
+
+// designed to extend a "p" element
+%chip-design {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 8px;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+}

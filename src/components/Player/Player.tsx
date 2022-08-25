@@ -93,9 +93,7 @@ export default function Player({ player, state, setState }: PlayerProps) {
                     <div className="player-chips-enum">
                         { dynamic && Object.entries(dynamic.inventory).map(([key,value]) => {
                             return value > 0 && (
-                                <p key={v4()} className={`player-chip-${key}`}>
-                                    {key}: {value}
-                                </p>
+                                <p key={v4()} className={`player-chip-${key}`}>{value}</p>
                             )
                         })}
                     </div>

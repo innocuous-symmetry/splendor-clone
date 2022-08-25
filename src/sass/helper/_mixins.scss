@@ -2,6 +2,7 @@
     #{$parentClass} {
         &-emerald {
             background-color: green;
+            color: white;
         }
         &-diamond {
             background-color: white;
@@ -17,10 +18,12 @@
         }
         &-ruby {
             background-color: red;
+            color: black;
         }
         &-gold {
             background-color: gold;
             color: black;
         }
+
     }
 }
