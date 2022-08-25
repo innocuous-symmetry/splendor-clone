@@ -1,10 +1,14 @@
+@import "../../sass/helper/mixins";
+
 .available-chips {
     display: flex;
     flex-flow: row nowrap;
     background-color: rgb(236, 238, 186);
     color: black;
-}
 
-.available-chips p {
-    margin: 1rem;
+    p {
+        margin: 1rem;
+    }
+
+    @include map-gem-values(".chips");
 }

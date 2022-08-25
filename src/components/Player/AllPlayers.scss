@@ -1,9 +1,22 @@
+@import '../../sass/helper/mixins';
+
 .all-players {
     display: flex;
     background-color: rgb(237, 213, 156);
     color: black;
-}
+    .player-ui {
+        p {
+            margin: 1rem;
+        }
+        .subheader {
+            font-weight: bold;
+        }
 
-.all-players p {
-    margin: 1rem;
+        .resources {
+            .player-chips-enum {
+                display: flex;
+                @include map-gem-values(".player-chip");
+            }
+        }
+    }
 }

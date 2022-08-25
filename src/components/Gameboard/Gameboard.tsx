@@ -1,19 +1,19 @@
 // types, data, utils
-import { AppState, PlayerData, ResourceCost } from '../../util/types';
 import { useCallback, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import initializeBoard, { setCardRows } from '../../util/initializeBoard';
+import { AppState, PlayerData, ResourceCost } from '../../util/types';
 import { getChipsActions } from '../Player/ActionMethods';
 import { StateProps } from '../../util/propTypes';
-import { Link } from 'react-router-dom';
+import './Gameboard.scss';
 
 // components
 import Nobles from '../Nobles/Nobles';
-import initializeBoard, { setCardRows } from '../../util/initializeBoard';
 import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
 import SelectionView from '../Resources/SelectionView';
 import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
-import getTotalBuyingPower from '../../util/getTotalBuyingPower';
 import usePreviousPlayer from '../../hooks/usePreviousPlayer';
 const { validateChips } = getChipsActions;
 
@@ -47,35 +47,26 @@ export default function Gameboard({ state, setState }: StateProps) {
     }, [state]);
 
     // util functions, setup on mount
-    useEffect(() => {
-        initializeBoard(state, setState);
-    }, [])
+    useEffect(() => initializeBoard(state, setState), [])
 
     useEffect(() => {
         setCardRows(state);
     }, [state])
 
-    useEffect(() => {
-        if (state.actions.buyCard.active) {
-            const currentPlayer = useCurrentPlayer(state);
-            currentPlayer && console.log(getTotalBuyingPower(currentPlayer));
-        }
-    }, [state.actions])
-
+    // endgame logic: once triggered, sets "endgame" to the player who triggered the effect
     useEffect(() => {
         const previousPlayer = usePreviousPlayer(state);
         if (previousPlayer && previousPlayer.points >= 15) setEndgame(previousPlayer);
     }, [state])
 
+    // endgame logic: determines the player with highest score after remaining allowed turns
     useEffect(() => {
         if (endgame) {
-            console.log('endgame!');
-
+            let winner: PlayerData;
             const currentPlayer = useCurrentPlayer(state);
             if (!currentPlayer) return;
 
             if (currentPlayer.id <= endgame.id) {
-                let winner: PlayerData;
                 const winnerData = state.players;
                 winner = winnerData.sort((x,y) => x.points - y.points)[0];
                 console.log(winner.name + ' wins!');
@@ -83,7 +74,7 @@ export default function Gameboard({ state, setState }: StateProps) {
         }
     }, [state, endgame])
 
-    // displays state of board if data is populated, otherwise points to game constructor
+    // rendering: displays state of board if data is populated, otherwise points to game constructor
     useEffect(() => {
         if (!state.players.length) {
             setView(
@@ -108,6 +99,5 @@ export default function Gameboard({ state, setState }: StateProps) {
         }
     }, [state]);
 
-    // render
     return view
 }

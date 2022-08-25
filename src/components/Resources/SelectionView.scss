@@ -1,0 +1,16 @@
+@import "../../sass/helper/mixins";
+
+.selection-view {
+    .current-selections {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include map-gem-values(".selection-value");
+        
+        p {
+            margin: 1rem;
+            padding: 0.5rem;
+            border-radius: 25%;
+        }
+    }
+}

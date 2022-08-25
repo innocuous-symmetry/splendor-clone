@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { StateProps } from "../../util/propTypes";
 import { useCurrentPlayer } from "../../hooks/useCurrentPlayer";
 import { GetChipsHTML, ReserveCardHTML } from "./ViewHTML";
+import './SelectionView.scss';
 
 export default function SelectionView({ state, setState }: StateProps) {
     const [currentPlayer, setCurrentPlayer] = useState(useCurrentPlayer(state));

@@ -57,11 +57,7 @@ export default function Player({ player, state, setState }: PlayerProps) {
 
     return (
         <div className="player-ui" key={v4()}>
-            {/* Static Data */}
-            <section className="player-constants">
-                <p>Name: {player.name}</p>
-                <p>Is {player.starter || "not"} round starter</p>
-            </section>
+            <p className="subheader">Name: {player.name} {player.starter && "(round starter)"}</p>
 
             {/* Dynamic data from state */}
             <section className="turn-and-action-based">
@@ -90,13 +86,19 @@ export default function Player({ player, state, setState }: PlayerProps) {
             </section>
 
             <section className="resources">
-                <strong>{dynamic?.name}'s Resources</strong>
+                <p className="subheader">{dynamic?.name}'s Resources</p>
 
                 <div className="player-chips">
                     <p>Chips:</p>
-                    { dynamic && Object.entries(dynamic.inventory).map(([key,value]) => {
-                        return value > 0 && <p key={v4()}>{key}: {value}</p>
-                    })}
+                    <div className="player-chips-enum">
+                        { dynamic && Object.entries(dynamic.inventory).map(([key,value]) => {
+                            return value > 0 && (
+                                <p key={v4()} className={`player-chip-${key}`}>
+                                    {key}: {value}
+                                </p>
+                            )
+                        })}
+                    </div>
                 </div>
 
                 <div className="player-cards">

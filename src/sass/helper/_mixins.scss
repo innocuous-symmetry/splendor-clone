@@ -1,0 +1,26 @@
+@mixin map-gem-values($parentClass) {
+    #{$parentClass} {
+        &-emerald {
+            background-color: green;
+        }
+        &-diamond {
+            background-color: white;
+            color: black;
+        }
+        &-onyx {
+            background-color: black;
+            color: white;
+        }
+        &-sapphire {
+            background-color: blue;
+            color: white;
+        }
+        &-ruby {
+            background-color: red;
+        }
+        &-gold {
+            background-color: gold;
+            color: black;
+        }
+    }
+}

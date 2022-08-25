@@ -1,4 +1,10 @@
+@import './helper/placeholders';
+
 #root {
+    .hidden {
+        @extend %hidden;
+    }
+
     display: flex;
     align-items: center;
     justify-content: center;
