@@ -1,0 +1,18 @@
+.nobles-panel {
+    display: flex;
+    flex-flow: column nowrap;
+    background-color: rgb(240, 236, 225);
+    padding: 1.5rem;
+    color: black;
+}
+
+.all-nobles {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.noble-card {
+    display: inline-flex;
+    flex-flow: column nowrap;
+}

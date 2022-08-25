@@ -1,7 +1,7 @@
 import { ResourceProps } from "../../util/propTypes";
 import { ResourceCost } from "../../util/types";
 import { v4 } from "uuid";
-import "./AvailableChips.css"
+import "./AvailableChips.scss"
 
 export default function AvailableChips({ state, liftSelection }: ResourceProps) {
     return (

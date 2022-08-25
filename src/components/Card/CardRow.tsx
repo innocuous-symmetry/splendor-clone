@@ -3,6 +3,7 @@ import { CardData } from "../../util/types"
 import Card from "../Card/Card"
 import { v4 } from 'uuid';
 import cardTierToKey from '../../util/cardTierToKey';
+import "./Card.scss";
 
 export default function CardRow({tier, state, setState}: CardRowProps) {
     const typedTier = cardTierToKey(tier);

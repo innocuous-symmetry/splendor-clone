@@ -1,7 +1,7 @@
 import { v4 } from "uuid";
 import { NobleData, ResourceCost } from "../../util/types";
 import { StateProps } from "../../util/propTypes";
-import "../Nobles/Nobles.css"
+import "../Nobles/Nobles.scss"
 
 export default function Nobles({ state }: StateProps) {
     if (!state.gameboard.nobles.length) {

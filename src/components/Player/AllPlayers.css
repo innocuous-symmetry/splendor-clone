@@ -1,9 +1,0 @@
-.all-players {
-    display: flex;
-    background-color: rgb(237, 213, 156);
-    color: black;
-}
-
-.all-players p {
-    margin: 1rem;
-}
