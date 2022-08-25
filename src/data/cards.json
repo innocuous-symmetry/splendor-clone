@@ -1,1089 +1,1178 @@
 {
-    "tierOne": [
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 1,
-          "emerald": 1,
-          "onyx": 1,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 1,
-          "emerald": 0,
-          "onyx": 1,
-          "diamond": 1
-        },
-        "gemValue": "emerald",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 1,
-          "emerald": 1,
-          "onyx": 0,
-          "diamond": 1
-        },
-        "gemValue": "onyx",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 0,
-          "emerald": 1,
-          "onyx": 1,
-          "diamond": 1
-        },
-        "gemValue": "sapphire",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 1,
-          "emerald": 1,
-          "onyx": 1,
-          "diamond": 1
-        },
-        "gemValue": "ruby",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 2,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 2
-        },
-        "gemValue": "onyx",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 0,
-          "emerald": 2,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 3,
-          "emerald": 1,
-          "onyx": 0,
-          "diamond": 1
-        },
-        "gemValue": "emerald",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 1,
-          "emerald": 3,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 2,
-          "diamond": 1
-        },
-        "gemValue": "sapphire",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 1,
-          "emerald": 2,
-          "onyx": 1,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 1,
-          "emerald": 1,
-          "onyx": 1,
-          "diamond": 2
-        },
-        "gemValue": "ruby",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 1,
-          "onyx": 1,
-          "diamond": 2
-        },
-        "gemValue": "ruby",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 0,
-          "emerald": 1,
-          "onyx": 1,
-          "diamond": 1
-        },
-        "gemValue": "sapphire",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 2,
-          "emerald": 2,
-          "onyx": 1,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 2,
-          "emerald": 1,
-          "onyx": 0,
-          "diamond": 1
-        },
-        "gemValue": "onyx",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 2,
-          "emerald": 1,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "ruby",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 1
-        },
-        "gemValue": "ruby",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 1,
-          "emerald": 0,
-          "onyx": 1,
-          "diamond": 3
-        },
-        "gemValue": "diamond",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 1,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 1,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 2
-        },
-        "gemValue": "emerald",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 1,
-          "emerald": 0,
-          "onyx": 2,
-          "diamond": 1
-        },
-        "gemValue": "emerald",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 1,
-          "emerald": 0,
-          "onyx": 1,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 0,
-          "emerald": 1,
-          "onyx": 1,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 0,
-          "emerald": 2,
-          "onyx": 0,
-          "diamond": 1
-        },
-        "gemValue": "sapphire",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 2,
-          "onyx": 0,
-          "diamond": 2
-        },
-        "gemValue": "onyx",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 2,
-          "emerald": 0,
-          "onyx": 2,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 2,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 2
-        },
-        "gemValue": "ruby",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 2,
-          "onyx": 2,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 3
-        },
-        "gemValue": "ruby",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 3,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 0,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 4,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 1,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 4
-        },
-        "gemValue": "ruby",
-        "points": 1,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 4,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 1,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 4,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 1,
-        "tier": 1
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 4,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 1,
-        "tier": 1
-      }
-    ],
-    "tierTwo": [
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 5,
-          "diamond": 3
-        },
-        "gemValue": "ruby",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 0,
-          "emerald": 5,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 2,
-          "diamond": 2
-        },
-        "gemValue": "emerald",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 5
-        },
-        "gemValue": "onyx",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 5,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 5,
-          "diamond": 0
-        },
-        "gemValue": "ruby",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 5,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 5,
-          "emerald": 3,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 5,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 5,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 2
-        },
-        "gemValue": "diamond",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 1,
-          "emerald": 4,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 1,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 4,
-          "diamond": 2
-        },
-        "gemValue": "sapphire",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 6,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 3,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 2,
-          "emerald": 0,
-          "onyx": 1,
-          "diamond": 4
-        },
-        "gemValue": "emerald",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 6
-        },
-        "gemValue": "diamond",
-        "points": 3,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 4,
-          "emerald": 2,
-          "onyx": 0,
-          "diamond": 1
-        },
-        "gemValue": "ruby",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 2,
-          "emerald": 2,
-          "onyx": 0,
-          "diamond": 3
-        },
-        "gemValue": "onyx",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 3,
-          "onyx": 2,
-          "diamond": 3
-        },
-        "gemValue": "onyx",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 6,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 3,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 2
-        },
-        "gemValue": "ruby",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 4,
-          "sapphire": 0,
-          "emerald": 1,
-          "onyx": 2,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 0,
-          "emerald": 2,
-          "onyx": 0,
-          "diamond": 3
-        },
-        "gemValue": "emerald",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 0,
-          "emerald": 3,
-          "onyx": 2,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 2,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 0
-        },
-        "gemValue": "ruby",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 2,
-          "emerald": 2,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 1,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 6,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "ruby",
-        "points": 3,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 6,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 3,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 5
-        },
-        "gemValue": "sapphire",
-        "points": 2,
-        "tier": 2
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 2,
-          "emerald": 3,
-          "onyx": 3,
-          "diamond": 0
-        },
-        "gemValue": "sapphire",
-        "points": 1,
-        "tier": 2
-      }
-    ],
-    "tierThree": [
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 7,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "ruby",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 7,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 6,
-          "diamond": 3
-        },
-        "gemValue": "diamond",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 3,
-          "emerald": 6,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 7,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 6
-        },
-        "gemValue": "sapphire",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 6,
-          "sapphire": 0,
-          "emerald": 3,
-          "onyx": 3,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 7
-        },
-        "gemValue": "sapphire",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 7,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 6,
-          "emerald": 3,
-          "onyx": 0,
-          "diamond": 3
-        },
-        "gemValue": "emerald",
-        "points": 4,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 5,
-          "emerald": 3,
-          "onyx": 3,
-          "diamond": 3
-        },
-        "gemValue": "ruby",
-        "points": 3,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 5
-        },
-        "gemValue": "emerald",
-        "points": 3,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 5,
-          "sapphire": 3,
-          "emerald": 3,
-          "onyx": 3,
-          "diamond": 0
-        },
-        "gemValue": "diamond",
-        "points": 3,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 3,
-          "emerald": 5,
-          "onyx": 0,
-          "diamond": 3
-        },
-        "gemValue": "onyx",
-        "points": 3,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 0,
-          "emerald": 3,
-          "onyx": 5,
-          "diamond": 3
-        },
-        "gemValue": "sapphire",
-        "points": 3,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 3,
-          "emerald": 0,
-          "onyx": 0,
-          "diamond": 7
-        },
-        "gemValue": "sapphire",
-        "points": 5,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 7,
-          "diamond": 3
-        },
-        "gemValue": "diamond",
-        "points": 5,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 3,
-          "sapphire": 0,
-          "emerald": 7,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "ruby",
-        "points": 5,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 0,
-          "sapphire": 7,
-          "emerald": 3,
-          "onyx": 0,
-          "diamond": 0
-        },
-        "gemValue": "emerald",
-        "points": 5,
-        "tier": 3
-      },
-      {
-        "resourceCost": {
-          "ruby": 7,
-          "sapphire": 0,
-          "emerald": 0,
-          "onyx": 3,
-          "diamond": 0
-        },
-        "gemValue": "onyx",
-        "points": 5,
-        "tier": 3
-      }
-    ]
-  }
-  
+  "tierOne": [
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 1,
+        "emerald": 1,
+        "onyx": 1,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/LILY-serafima-lazarenko-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 1,
+        "emerald": 0,
+        "onyx": 1,
+        "diamond": 1
+      },
+      "gemValue": "emerald",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-jacalyn-beales-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 1,
+        "emerald": 1,
+        "onyx": 0,
+        "diamond": 1
+      },
+      "gemValue": "onyx",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-tobias-mockenhaupt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 0,
+        "emerald": 1,
+        "onyx": 1,
+        "diamond": 1
+      },
+      "gemValue": "sapphire",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-yoksel-zok-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 1,
+        "emerald": 1,
+        "onyx": 1,
+        "diamond": 1
+      },
+      "gemValue": "ruby",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-alexey-savchenko-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 2,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 2
+      },
+      "gemValue": "onyx",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-artiom-vallat-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 0,
+        "emerald": 2,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-yoksel-zok-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 3,
+        "emerald": 1,
+        "onyx": 0,
+        "diamond": 1
+      },
+      "gemValue": "emerald",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-annie-spratt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 1,
+        "emerald": 3,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-anna-rozwadowska-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 2,
+        "diamond": 1
+      },
+      "gemValue": "sapphire",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-gemma-evans-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 1,
+        "emerald": 2,
+        "onyx": 1,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/LILY-evie-s-unsplash-2.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 1,
+        "emerald": 1,
+        "onyx": 1,
+        "diamond": 2
+      },
+      "gemValue": "ruby",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-arkadiy-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 1,
+        "onyx": 1,
+        "diamond": 2
+      },
+      "gemValue": "ruby",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-engin-akyurt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 0,
+        "emerald": 1,
+        "onyx": 1,
+        "diamond": 1
+      },
+      "gemValue": "sapphire",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-krzysztof-kowalik-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 2,
+        "emerald": 2,
+        "onyx": 1,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/LILY-evie-s-unsplash-2.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 2,
+        "emerald": 1,
+        "onyx": 0,
+        "diamond": 1
+      },
+      "gemValue": "onyx",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-adrian-swancar-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 2,
+        "emerald": 1,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "ruby",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-engin-akyurt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 1
+      },
+      "gemValue": "ruby",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-arkadiy-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 1,
+        "emerald": 0,
+        "onyx": 1,
+        "diamond": 3
+      },
+      "gemValue": "diamond",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/LILY-meghna-r-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 1,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/LILY-yi-duo-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 1,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 2
+      },
+      "gemValue": "emerald",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-annie-spratt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 1,
+        "emerald": 0,
+        "onyx": 2,
+        "diamond": 1
+      },
+      "gemValue": "emerald",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-annie-spratt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 1,
+        "emerald": 0,
+        "onyx": 1,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-annie-spratt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 0,
+        "emerald": 1,
+        "onyx": 1,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-nick-nice-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 0,
+        "emerald": 2,
+        "onyx": 0,
+        "diamond": 1
+      },
+      "gemValue": "sapphire",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-anna-rozwadowska-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 2,
+        "onyx": 0,
+        "diamond": 2
+      },
+      "gemValue": "onyx",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-yoksel-zok-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 2,
+        "emerald": 0,
+        "onyx": 2,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/LILY-yi-duo-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 2,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-jacalyn-beales-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 2
+      },
+      "gemValue": "ruby",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-ekrem-osmanoglu-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 2,
+        "onyx": 2,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-krzysztof-kowalik-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-anna-rozwadowska-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 3
+      },
+      "gemValue": "ruby",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-engin-akyurt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 3,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-rita-ox-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-tim-mossholder-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 0,
+      "tier": 1,
+      "image": "src/assets/img/LILY-evie-s-unsplash-2.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 4,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 1,
+      "tier": 1,
+      "image": "src/assets/img/FORGET-gemma-evans-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 4
+      },
+      "gemValue": "ruby",
+      "points": 1,
+      "tier": 1,
+      "image": "src/assets/img/ROSE-edward-howell-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 4,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 1,
+      "tier": 1,
+      "image": "src/assets/img/VIOLET-rita-ox-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 4,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 1,
+      "tier": 1,
+      "image": "src/assets/img/LILY-evie-s-unsplash-2.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 4,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 1,
+      "tier": 1,
+      "image": "src/assets/img/SUCCULENT-annie-spratt-unsplash.jpg"
+    }
+  ],
+  "tierTwo": [
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 5,
+        "diamond": 3
+      },
+      "gemValue": "ruby",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/ROSE-aleza-van-der-werff-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 0,
+        "emerald": 5,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/VIOLET-adrian-swancar-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 2,
+        "diamond": 2
+      },
+      "gemValue": "emerald",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/SUCCULENT-tim-mossholder-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 5
+      },
+      "gemValue": "onyx",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/VIOLET-nick-nice-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 5,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/SUCCULENT-angele-kamp-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 5,
+        "diamond": 0
+      },
+      "gemValue": "ruby",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/ROSE-engin-akyurt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 5,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/LILY-meghna-r-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 5,
+        "emerald": 3,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/SUCCULENT-tim-mossholder-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 5,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/LILY-serafima-lazarenko-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 5,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/FORGET-olga-budko-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 2
+      },
+      "gemValue": "diamond",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/LILY-yi-duo-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 1,
+        "emerald": 4,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/VIOLET-rita-ox-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 1,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 4,
+        "diamond": 2
+      },
+      "gemValue": "sapphire",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/FORGET-gemma-evans-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 6,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 3,
+      "tier": 2,
+      "image": "src/assets/img/SUCCULENT-annie-spratt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 2,
+        "emerald": 0,
+        "onyx": 1,
+        "diamond": 4
+      },
+      "gemValue": "emerald",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/SUCCULENT-edgar-castrejon-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 6
+      },
+      "gemValue": "diamond",
+      "points": 3,
+      "tier": 2,
+      "image": "src/assets/img/LILY-deleece-cook-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 4,
+        "emerald": 2,
+        "onyx": 0,
+        "diamond": 1
+      },
+      "gemValue": "ruby",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/ROSE-alexey-savchenko-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 2,
+        "emerald": 2,
+        "onyx": 0,
+        "diamond": 3
+      },
+      "gemValue": "onyx",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/VIOLET-artiom-vallat-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 3,
+        "onyx": 2,
+        "diamond": 3
+      },
+      "gemValue": "onyx",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/VIOLET-tobias-mockenhaupt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 6,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 3,
+      "tier": 2,
+      "image": "src/assets/img/VIOLET-yoksel-zok-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 2
+      },
+      "gemValue": "ruby",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/ROSE-engin-akyurt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 4,
+        "sapphire": 0,
+        "emerald": 1,
+        "onyx": 2,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/LILY-evie-s-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 0,
+        "emerald": 2,
+        "onyx": 0,
+        "diamond": 3
+      },
+      "gemValue": "emerald",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/SUCCULENT-jacalyn-beales-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 0,
+        "emerald": 3,
+        "onyx": 2,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/LILY-deleece-cook-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 2,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 0
+      },
+      "gemValue": "ruby",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/ROSE-alexey-savchenko-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 2,
+        "emerald": 2,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/FORGET-yoksel-zok-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 6,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "ruby",
+      "points": 3,
+      "tier": 2,
+      "image": "src/assets/img/ROSE-ekrem-osmanoglu-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 6,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 3,
+      "tier": 2,
+      "image": "src/assets/img/FORGET-yoksel-zok-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 5
+      },
+      "gemValue": "sapphire",
+      "points": 2,
+      "tier": 2,
+      "image": "src/assets/img/FORGET-yoksel-zok-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 2,
+        "emerald": 3,
+        "onyx": 3,
+        "diamond": 0
+      },
+      "gemValue": "sapphire",
+      "points": 1,
+      "tier": 2,
+      "image": "src/assets/img/FORGET-gemma-evans-unsplash.jpg"
+    }
+  ],
+  "tierThree": [
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 7,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "ruby",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/ROSE-engin-akyurt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 7,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/LILY-evie-s-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 6,
+        "diamond": 3
+      },
+      "gemValue": "diamond",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/LILY-meghna-r-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 3,
+        "emerald": 6,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/SUCCULENT-annie-spratt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 7,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/VIOLET-tobias-mockenhaupt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 6
+      },
+      "gemValue": "sapphire",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/FORGET-krzysztof-kowalik-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 6,
+        "sapphire": 0,
+        "emerald": 3,
+        "onyx": 3,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/VIOLET-tobias-mockenhaupt-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 7
+      },
+      "gemValue": "sapphire",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/FORGET-olga-budko-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 7,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/SUCCULENT-edgar-castrejon-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 6,
+        "emerald": 3,
+        "onyx": 0,
+        "diamond": 3
+      },
+      "gemValue": "emerald",
+      "points": 4,
+      "tier": 3,
+      "image": "src/assets/img/SUCCULENT-tim-mossholder-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 5,
+        "emerald": 3,
+        "onyx": 3,
+        "diamond": 3
+      },
+      "gemValue": "ruby",
+      "points": 3,
+      "tier": 3,
+      "image": "src/assets/img/ROSE-arkadiy-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 5
+      },
+      "gemValue": "emerald",
+      "points": 3,
+      "tier": 3,
+      "image": "src/assets/img/SUCCULENT-jacalyn-beales-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 5,
+        "sapphire": 3,
+        "emerald": 3,
+        "onyx": 3,
+        "diamond": 0
+      },
+      "gemValue": "diamond",
+      "points": 3,
+      "tier": 3,
+      "image": "src/assets/img/LILY-deleece-cook-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 3,
+        "emerald": 5,
+        "onyx": 0,
+        "diamond": 3
+      },
+      "gemValue": "onyx",
+      "points": 3,
+      "tier": 3,
+      "image": "src/assets/img/VIOLET-rita-ox-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 0,
+        "emerald": 3,
+        "onyx": 5,
+        "diamond": 3
+      },
+      "gemValue": "sapphire",
+      "points": 3,
+      "tier": 3,
+      "image": "src/assets/img/FORGET-anna-rozwadowska-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 3,
+        "emerald": 0,
+        "onyx": 0,
+        "diamond": 7
+      },
+      "gemValue": "sapphire",
+      "points": 5,
+      "tier": 3,
+      "image": "src/assets/img/FORGET-gemma-evans-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 7,
+        "diamond": 3
+      },
+      "gemValue": "diamond",
+      "points": 5,
+      "tier": 3,
+      "image": "src/assets/img/LILY-evie-s-unsplash-2.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 3,
+        "sapphire": 0,
+        "emerald": 7,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "ruby",
+      "points": 5,
+      "tier": 3,
+      "image": "src/assets/img/ROSE-aleza-van-der-werff-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 0,
+        "sapphire": 7,
+        "emerald": 3,
+        "onyx": 0,
+        "diamond": 0
+      },
+      "gemValue": "emerald",
+      "points": 5,
+      "tier": 3,
+      "image": "src/assets/img/SUCCULENT-angele-kamp-unsplash.jpg"
+    },
+    {
+      "resourceCost": {
+        "ruby": 7,
+        "sapphire": 0,
+        "emerald": 0,
+        "onyx": 3,
+        "diamond": 0
+      },
+      "gemValue": "onyx",
+      "points": 5,
+      "tier": 3,
+      "image": "src/assets/img/VIOLET-nick-nice-unsplash.jpg"
+    }
+  ]
+}

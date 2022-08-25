@@ -1,5 +1,5 @@
 @import "../../sass/helper/mixins";
-@import "../../sass/helper/placeholders";
+@import "../../sass/helper/variables";
 
 .card-row {
     display: flex;
@@ -12,35 +12,45 @@
         flex-flow: row nowrap;
         width: 100%;
         justify-content: space-around;
-    }
+
+        .card {
+            width: 25%;
+            min-height: 24vh;
+            border: 2px solid black;
+
+            .total-card-cost {
+                display: flex;
+                justify-content: center;
     
-    .card {
-        width: 25%;
-        border: 2px solid black;
-        > * {
-            margin: 1rem;
-        }
-
-        .total-card-cost {
-            display: flex;
-            justify-content: center;
-
-            @include map-gem-values(".card-cost");
-            p {
-                @extend %chip-design;
+                @include map-gem-values(".card-cost");
             }
+
+            > * {
+                margin: 1rem;
+            }
+
+            p {
+                background-color: black;
+            }
+
+            background-size: cover;
+        }
+    
+        .card-count {
+            background-color: black;
+            color: white;
+            width: 25%;
         }
     }
 }
   
   
 .tier-1 {
-    background-color: rgb(9, 67, 9);
+    background-color: rgb(23, 73, 23);
 }
   
 .tier-2 {
     background-color: rgb(174, 174, 32);
-    color: black;
 }
   
 .tier-3 {

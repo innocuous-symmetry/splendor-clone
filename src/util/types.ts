@@ -88,6 +88,7 @@ export interface CardData {
     tier: number
     points?: number
     resourceCost: ResourceCost
+    image: string
 }
 
 export interface ResourceCost {

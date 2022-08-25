@@ -8,14 +8,12 @@ const { buyCard, tooExpensive } = buyCardActions;
 
 export default function Card({ data, state, setState }: CardProps) {
     const currentPlayer = useCurrentPlayer(state);
-
     if (!data) return <div className="card"></div>;
 
     return (
-        <div className="card" key={v4()}>
+        <div className="card" key={v4()} style={{backgroundImage: `url(${data.image})`}}>
             <p>Counts as: {data.gemValue}</p>
-            <p>Point value: {data.points || 0}</p>
-            <p>Cost:</p>
+            { (data.points && data.points > 0) ? <p>{data.points} points</p> : null }
             <div className="total-card-cost">
             {
                 Object.keys(data.resourceCost).map((key: keyof ResourceCost | string) => {

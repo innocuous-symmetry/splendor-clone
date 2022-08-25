@@ -18,9 +18,6 @@
                 display: flex;
                 justify-content: center;
                 @include map-gem-values(".player-chip");
-                p {
-                    @extend %chip-design;
-                }
             }
         }
     }

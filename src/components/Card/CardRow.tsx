@@ -28,7 +28,7 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
         <div className={`card-row tier-${tier}`}>
             <p>Tier: {tier}</p>
             <div className="card-row-cards-visible">
-                <div className="card card-count">
+                <div className="card-count">
                     <p>Remaining: {state.gameboard.deck[typedTier].length}</p>
                 </div>
                 { cards && cards.map((cardData: CardData) => {

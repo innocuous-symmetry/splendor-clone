@@ -21,14 +21,20 @@ export default function Nobles({ state }: StateProps) {
                 state && state.gameboard.nobles.map((noble: NobleData) => {
                     return (
                         <div className="noble-card" key={v4()}>
-                            <p>Points: {noble.points}</p>
+                            <p>{noble.points} points</p>
                             <p>Cost:</p>
+                            <div className="mapped-noble-costs">
                             {
                                 Object.keys(noble.resourceCost).map((each) => {
                                     // @ts-ignore
-                                    return (noble.resourceCost[each as keyof ResourceCost] > 0) && <p key={v4()}>{each}: {noble.resourceCost[each as keyof ResourceCost]}</p>
+                                    return (noble.resourceCost[each as keyof ResourceCost] > 0) && (
+                                        <p key={v4()} className={`noble-cost-${each}`}>
+                                            {noble.resourceCost[each as keyof ResourceCost]}
+                                        </p>
+                                    )
                                 })
                             }
+                            </div>
                         </div>
                     )
                 })

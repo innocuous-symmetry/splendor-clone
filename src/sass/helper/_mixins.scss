@@ -1,3 +1,5 @@
+@import "./placeholders";
+
 @mixin map-gem-values($parentClass) {
     #{$parentClass} {
         &-emerald {
@@ -24,6 +26,16 @@
             background-color: gold;
             color: black;
         }
-
     }
+    
+    p {
+        @extend %chip-design;
+    }
+}
+
+@mixin get-random-image($targetList) {
+    $idx: random(6);
+    $nth: nth($targetList, $idx);
+
+    background-image: url($nth);
 }
