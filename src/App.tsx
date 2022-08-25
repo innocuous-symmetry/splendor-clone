@@ -5,7 +5,7 @@ import { useState } from 'react'
 import Gameboard from './components/Gameboard/Gameboard'
 import GameConstructor from './components/GameConstructor';
 import ResumeGame from './components/ResumeGame';
-import './App.css'
+import "./sass/App.scss";
 
 function App() {
   const [state, setState] = useState(initialState);
