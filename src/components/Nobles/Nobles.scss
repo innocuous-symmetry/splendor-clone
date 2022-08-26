@@ -3,10 +3,16 @@
 .nobles-panel {
     display: flex;
     flex-flow: column nowrap;
-    background-color: rgb(240, 236, 225);
+    background-color: rgb(212, 196, 152);
     color: black;
-    padding: 1.5rem;
+    padding: 1.5rem 0;
+    width: 65vw;
 
+    .noble-header {
+        position: relative;
+        bottom: 1rem;
+    }
+    
     .all-nobles {
         display: flex;
         flex-flow: row nowrap;
@@ -15,6 +21,13 @@
         .noble-card {
             display: inline-flex;
             flex-flow: column nowrap;
+            align-items: center;
+            height: 100%;
+            min-width: 25%;
+            border-right: 1px solid black;
+            &:last-child {
+                border-right: none;
+            }
 
             .mapped-noble-costs {
                 display: flex;

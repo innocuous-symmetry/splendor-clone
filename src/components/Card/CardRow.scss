@@ -64,6 +64,18 @@
             color: white;
             width: 25%;
         }
+
+        .cc-tier {
+            &-1 {
+                background-color: rgb(3, 30, 3);
+            }
+            &-2 {
+                background-color: rgb(80, 80, 7);
+            }
+            &-3 {
+                background-color: rgb(9, 9, 77);
+            }
+        }
     }
 }
   

@@ -3,8 +3,11 @@
 
 .all-players {
     display: flex;
+    justify-content: space-around;
+    min-width: 80vw;
     background-color: rgb(237, 213, 156);
     color: black;
+
     .player-ui {
         p {
             margin: 1rem;

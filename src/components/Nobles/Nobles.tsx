@@ -15,13 +15,12 @@ export default function Nobles({ state }: StateProps) {
 
     return (
         <div className="nobles-panel">
-            <strong>NOBLES</strong>
+            <strong className="noble-header">NOBLES: 3 points each</strong>
             <div className="all-nobles">
                 {
                 state && state.gameboard.nobles.map((noble: NobleData) => {
                     return (
                         <div className="noble-card" key={v4()}>
-                            <p>{noble.points} points</p>
                             <p>Cost:</p>
                             <div className="mapped-noble-costs">
                             {

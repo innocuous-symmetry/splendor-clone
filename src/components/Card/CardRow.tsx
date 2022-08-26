@@ -33,7 +33,7 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
                 <button onClick={() => setCollapsed(!collapsed)}>{collapsed ? "Show" : "Hide"}</button>
             </div>
             <div className={`card-row-cards-visible ${collapsed && 'hidden'}`}>
-                <div className="card-count">
+                <div className={`card-count cc-tier-${tier}`}>
                     <p>Remaining: {state.gameboard.deck[typedTier].length}</p>
                 </div>
                 { cards && cards.map((cardData: CardData) => {

@@ -87,7 +87,7 @@ export default function Gameboard({ state, setState }: StateProps) {
         } else {
             setView(
                 <div className="gameboard-rows">
-                    <strong>Round: {state.round}</strong>
+                    <h1 className="round-marker">Round: {state.round}</h1>
                     <Nobles state={state} setState={setState} />
                     <CardRow tier={3} state={state} setState={setState} />
                     <CardRow tier={2} state={state} setState={setState} />

@@ -1,0 +1,13 @@
+.gameboard-rows {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+
+    background-color: rgb(57, 57, 65);
+    width: 90vw;
+    padding: 1rem 1rem 4rem;
+
+    .round-marker {
+        font-size: 1.5rem;
+    }
+}
