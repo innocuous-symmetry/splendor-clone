@@ -1,11 +1,13 @@
+import { useState } from 'react';
+import { v4 } from 'uuid';
+import cardTierToKey from '../../util/cardTierToKey';
 import { CardRowProps } from '../../util/propTypes';
 import { CardData } from "../../util/types"
 import Card from "../Card/Card"
-import { v4 } from 'uuid';
-import cardTierToKey from '../../util/cardTierToKey';
 import "./CardRow.scss";
 
 export default function CardRow({tier, state, setState}: CardRowProps) {
+    const [collapsed, setCollapsed] = useState(true);
     const typedTier = cardTierToKey(tier);
 
     let cards: Array<CardData>
@@ -26,8 +28,11 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
 
     return (
         <div className={`card-row tier-${tier}`}>
-            <p>Tier: {tier}</p>
-            <div className="card-row-cards-visible">
+            <div className="card-row-top-bar">
+                <p>Tier: {tier}</p>
+                <button onClick={() => setCollapsed(!collapsed)}>{collapsed ? "Show" : "Hide"}</button>
+            </div>
+            <div className={`card-row-cards-visible ${collapsed && 'hidden'}`}>
                 <div className="card-count">
                     <p>Remaining: {state.gameboard.deck[typedTier].length}</p>
                 </div>

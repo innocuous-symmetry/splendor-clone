@@ -27,14 +27,21 @@ export default function Player({ player, state, setState }: PlayerProps) {
         )
 
         dynamic && setReservedView(
-            <>
+            <div className="reserved-card-view">
             <p>Reserved cards:</p>
             {
-                dynamic.reservedCards?.map((data: CardData) => {
-                    return <Card key={v4()} data={data} state={state} setState={setState} />
-                })
+                dynamic.reservedCards?.map((data: CardData) => (
+                    <div className="reserved-card">
+                        <p className={`mini-card ${data.gemValue}`} key={v4()}>{data.gemValue} card: {data.points || 0} points</p>
+                        <div className="reserved-card-cost">
+                        {
+                            Object.entries(data.resourceCost).map(([key, value]) => value > 0 && <p className={`reserve-cost-${key}`} key={v4()}>{value}</p>)
+                        }
+                        </div>
+                    </div>
+                ))
             }
-            </>
+            </div>
         )
     }, [dynamic, setState])
 

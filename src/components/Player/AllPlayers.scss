@@ -20,5 +20,15 @@
                 @include map-gem-values(".player-chip");
             }
         }
+
+        .reserved-card-view {
+            background-color: rgb(232, 224, 200);
+            .reserved-card-cost {
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                @include map-gem-values(".reserve-cost");
+            }
+        }
     }
 }

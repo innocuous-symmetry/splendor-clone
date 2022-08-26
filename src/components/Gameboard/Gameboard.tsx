@@ -20,6 +20,7 @@ const { validateChips } = getChipsActions;
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>);
     const [endgame, setEndgame] = useState<PlayerData>();
+    const [winner, setWinner] = useState<PlayerData>();
 
     // callbacks for lifting state
     const liftSelection = useCallback((value: keyof ResourceCost) => {
@@ -63,12 +64,12 @@ export default function Gameboard({ state, setState }: StateProps) {
     useEffect(() => {
         if (endgame) {
             let winner: PlayerData;
+            const winnerData = state.players;
             const currentPlayer = useCurrentPlayer(state);
             if (!currentPlayer) return;
 
             if (currentPlayer.id <= endgame.id) {
-                const winnerData = state.players;
-                winner = winnerData.sort((x,y) => x.points - y.points)[0];
+                winner = winnerData.sort((x,y) => x.points + y.points)[0];
                 console.log(winner.name + ' wins!');
             }
         }
