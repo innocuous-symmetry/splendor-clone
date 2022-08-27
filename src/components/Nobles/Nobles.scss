@@ -6,7 +6,11 @@
     background-color: rgb(212, 196, 152);
     color: black;
     padding: 1rem 0;
-    min-width: 55vw;
+    width: 55vw;
+
+    &.collapsed {
+        width: 15vw;
+    }
 
     .nobles-topbar {
         display: flex;

@@ -27,7 +27,7 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
     }
 
     return (
-        <div className={`card-row tier-${tier}`}>
+        <div className={`card-row tier-${tier} ${collapsed && 'collapsed'}`}>
             <div className="card-row-top-bar">
                 <p>Tier: {tier}</p>
                 <button onClick={() => setCollapsed(!collapsed)}>{collapsed ? "Show" : "Hide"}</button>

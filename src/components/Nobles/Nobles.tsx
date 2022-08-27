@@ -17,7 +17,7 @@ export default function Nobles({ state }: StateProps) {
     }
 
     return (
-        <div className="nobles-panel">
+        <div className={`nobles-panel ${collapsed && 'collapsed'}`}>
             <div className="nobles-topbar">
                 <strong className="nobles-header">NOBLES</strong>
                 <button onClick={() => setCollapsed(!collapsed)}>{collapsed ? "Show" : "Hide"}</button>
