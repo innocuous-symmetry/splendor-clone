@@ -1,4 +1,5 @@
 @import '../../sass/helper/mixins';
+@import '../../sass/helper/variables';
 @import '../../sass/helper/placeholders';
 
 .all-players {
@@ -31,6 +32,36 @@
                 flex-flow: row wrap;
                 justify-content: center;
                 @include map-gem-values(".reserve-cost");
+            }
+        }
+
+        .card {
+            width: 100%;
+
+            img {
+                display: none;
+            }
+
+            @each $gem in $gemlist {
+                @include map-gem-values('.foreground');
+                .foreground-#{$gem} {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 8px;
+
+                    p {
+                        display: inline;
+                        padding: 8px;
+                    }
+                    
+                    .total-card-cost {
+                        display: flex;
+                        flex-flow: row wrap;
+                        justify-content: center;
+                        @include map-gem-values(".card-cost");
+                    }
+                }
             }
         }
     }

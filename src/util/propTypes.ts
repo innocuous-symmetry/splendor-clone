@@ -7,6 +7,7 @@ export interface StateProps {
 
 export interface CardProps extends StateProps {
     data: CardData
+    reserved?: boolean
 }
 
 export interface CardRowProps extends StateProps {
