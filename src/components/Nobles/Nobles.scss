@@ -5,12 +5,17 @@
     flex-flow: column nowrap;
     background-color: rgb(212, 196, 152);
     color: black;
-    padding: 1.5rem 0;
-    width: 65vw;
+    padding: 1rem 0;
+    min-width: 55vw;
 
-    .noble-header {
-        position: relative;
-        bottom: 1rem;
+    .nobles-topbar {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: baseline;
+        > * {
+            margin: 0 1rem;
+        }
     }
     
     .all-nobles {

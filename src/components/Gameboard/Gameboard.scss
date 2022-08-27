@@ -1,11 +1,29 @@
-.gameboard-rows {
+.gameboard {
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row nowrap;
     align-items: center;
+    justify-content: center;
 
     background-color: rgb(57, 57, 65);
-    width: 90vw;
-    padding: 1rem 1rem 4rem;
+    width: 100%;
+
+    section {
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 1rem;
+    }
+
+    .gameboard-left {
+        min-width: 50vw;
+        padding: 1rem;
+    }
+
+    .gameboard-right {
+        min-width: 35vw;
+        padding: 1rem;
+    }
 
     .round-marker {
         font-size: 1.5rem;

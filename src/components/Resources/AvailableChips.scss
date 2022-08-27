@@ -2,8 +2,10 @@
 
 .available-chips {
     display: flex;
-    flex-flow: row nowrap;
-    background-color: rgb(236, 238, 186);
+    flex-flow: row wrap;
+    max-width: 50%;
+    align-items: center;
+    justify-content: center;
     color: black;
 
     p {

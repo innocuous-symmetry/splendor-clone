@@ -52,13 +52,12 @@ export default function Player({ player, state, setState }: PlayerProps) {
     }
 
     return (
-        <div className="player-ui" key={v4()}>
+        <div className={dynamic && dynamic.turnActive ? 'player-ui' : 'hidden'} key={v4()}>
             <p className="subheader">Name: {player.name} {player.starter && "(round starter)"}</p>
 
             {/* Dynamic data from state */}
             <section className="turn-and-action-based">
                 <p>Score: {dynamic && dynamic.points}</p>
-                <p>{dynamic?.turnActive ? "It's your turn!" : "..."}</p>
 
                 {/* Player actions */}
                 <button
@@ -78,12 +77,9 @@ export default function Player({ player, state, setState }: PlayerProps) {
                     onClick={() => handleClick(2)}>
                         Reserve Card
                 </button>
-
             </section>
 
             <section className="resources">
-                <p className="subheader">{dynamic?.name}'s Resources</p>
-
                 <div className="player-chips">
                     <p>Chips:</p>
                     <div className="player-chips-enum">

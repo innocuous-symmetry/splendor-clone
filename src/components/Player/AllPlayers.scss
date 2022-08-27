@@ -5,11 +5,13 @@
 .all-players {
     display: flex;
     justify-content: space-around;
-    min-width: 80vw;
+    max-width: 80vw;
+    padding: 0 2rem;
     background-color: rgb(237, 213, 156);
     color: black;
 
     .player-ui {
+        width: 30vw;
         p {
             margin: 1rem;
         }

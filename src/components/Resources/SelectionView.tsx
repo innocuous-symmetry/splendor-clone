@@ -15,6 +15,8 @@ export default function SelectionView({ state, setState }: StateProps) {
     const [view, setView] = useState(<></>);
 
     useEffect(() => {
+        setCurrentPlayer(useCurrentPlayer(state));
+
         setView(() => {
             switch (true) {
                 case (actionTypes[0].active):
@@ -36,9 +38,7 @@ export default function SelectionView({ state, setState }: StateProps) {
                     );
             }
         })
-
-        setCurrentPlayer(useCurrentPlayer(state));
-    }, [state, state.actions, setState])
+    }, [state, setState])
 
     return view
 }
