@@ -1,4 +1,4 @@
-import { AppState, PlayerData } from "./types";
+import { AppState, PlayerData } from "../types";
 
 export const turnOrderUtil = (prev: AppState, dynamic: PlayerData) => {
     let roundIncrement = false;

@@ -13,6 +13,11 @@ export interface CardProps extends StateProps {
 
 export interface CardRowProps extends StateProps {
     tier: number
+    liftCollapsed: (collapsed: boolean, tier?: number) => void
+}
+
+export interface NobleProps extends StateProps {
+    liftCollapsed: (collapsed: boolean, tier?: number) => void
 }
 
 export interface PlayerProps extends StateProps {

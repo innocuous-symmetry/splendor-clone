@@ -1,16 +1,22 @@
 @import "../../sass/helper/mixins";
+@import "../../sass/helper/variables";
 
 .available-chips {
     display: flex;
     flex-flow: row wrap;
-    max-width: 50%;
     align-items: center;
     justify-content: center;
     color: black;
+    margin: 1rem;
 
     p {
         margin: 1rem;
     }
 
     @include map-gem-values(".chips");
+    @each $gem in $gemlist {
+        .chips-#{$gem} {
+            border-radius: 50%;
+        }
+    }
 }

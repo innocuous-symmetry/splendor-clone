@@ -1,4 +1,4 @@
-import getTotalBuyingPower from "../../util/getTotalBuyingPower";
+import getTotalBuyingPower from "../../util/mechanics/getTotalBuyingPower";
 import { NobleData, PlayerData, ResourceCost } from "../../util/types";
 
 export const canPickUpNoble = (player: PlayerData, noble: NobleData) => {

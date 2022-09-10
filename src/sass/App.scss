@@ -5,6 +5,11 @@
         @extend %hidden;
     }
 
+    .collapsed {
+        width: 20vw;
+        align-items: flex-end;
+    }
+
     display: flex;
     align-items: center;
     justify-content: center;

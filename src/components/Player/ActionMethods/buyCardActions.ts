@@ -1,7 +1,7 @@
-import { turnOrderUtil } from "../../../util/turnOrderUtil";
-import getTotalBuyingPower from "../../../util/getTotalBuyingPower";
+import { turnOrderUtil } from "../../../util/mechanics/TurnOrderUtil";
+import getTotalBuyingPower from "../../../util/mechanics/getTotalBuyingPower";
 import { AppState, CardData, PlayerCards, ResourceCost, setStateType } from "../../../util/types";
-import cardTierToKey from "../../../util/cardTierToKey";
+import cardTierToKey from "../../../util/mechanics/cardTierToKey";
 import { canPickUpNoble } from "../../Nobles/canPickUpNoble";
 import { initialActions, setStateGetNoble } from "../../../hooks/stateSetters";
 import { useCurrentPlayer } from "../../../hooks/useCurrentPlayer";

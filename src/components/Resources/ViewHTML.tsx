@@ -28,7 +28,7 @@ export const GetChipsHTML = ({ state, setState }: StateProps) => {
             <div className="current-selections">
                 {
                     state.actions.getChips.active &&
-                    state.actions.getChips.selection?.map((each: keyof ResourceCost) => <p className={`selection-value-${each}`} key={v4()}>{each}</p>)
+                    state.actions.getChips.selection?.map((each: keyof ResourceCost) => <p className={`selection-value-${each}`} key={v4()}>{each[0].toUpperCase()}</p>)
                 }
             </div>
             {

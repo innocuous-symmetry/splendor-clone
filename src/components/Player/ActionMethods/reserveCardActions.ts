@@ -1,6 +1,6 @@
-import cardTierToKey from "../../../util/cardTierToKey";
+import cardTierToKey from "../../../util/mechanics/cardTierToKey";
 import { initialActions } from "../../../hooks/stateSetters";
-import { turnOrderUtil } from "../../../util/turnOrderUtil";
+import { turnOrderUtil } from "../../../util/mechanics/TurnOrderUtil";
 import { AppState, CardData, FullDeck, PlayerData, setStateType } from "../../../util/types";
 import { useCurrentPlayer } from "../../../hooks/useCurrentPlayer";
 

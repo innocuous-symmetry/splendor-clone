@@ -19,7 +19,7 @@ export default function AvailableChips({ state, liftSelection }: ResourceProps) 
                             disabled={state.gameboard.tradingResources[typedKey] <= 0}
                             onClick={() => liftSelection(typedKey)}
                             >
-                            {key}: {state.gameboard.tradingResources[typedKey]}
+                            {state.gameboard.tradingResources[typedKey]}
                         </button>
                     )
                 })

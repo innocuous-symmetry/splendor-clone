@@ -105,3 +105,11 @@ export interface NobleData {
     points: number,
     resourceCost: ResourceCost
 }
+
+export interface UIState {
+    noblesCollapsed: boolean
+    tierThreeCollapsed: boolean
+    tierTwoCollapsed: boolean
+    tierOneCollapsed: boolean
+    playerUICollapsed: boolean
+}

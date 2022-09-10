@@ -1,7 +1,7 @@
 import { AppState, PlayerData, setStateType } from '../../../util/types';
 import { useCurrentPlayer } from '../../../hooks/useCurrentPlayer';
 // @ts-ignore
-import { turnOrderUtil } from '../../../util/turnOrderUtil';
+import { turnOrderUtil } from '../../../util/mechanics/TurnOrderUtil';
 import { initialActions } from "../../../hooks/stateSetters";
 
 export const hasMaxChips = (player: PlayerData | null): boolean => {

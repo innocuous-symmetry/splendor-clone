@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
-import cardTierToKey from '../../util/cardTierToKey';
+import cardTierToKey from '../../util/mechanics/cardTierToKey';
 import { CardRowProps } from '../../util/propTypes';
 import { CardData } from "../../util/types"
 import Card from "../Card/Card"
@@ -25,6 +25,14 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
             cards = new Array<CardData>;
             break;
     }
+
+    useEffect(() => {
+        /**
+         * run callback function to pass state of collapsed to parent component
+         * repeat this process in Nobles.tsx
+        **/
+       console.log(collapsed);
+    }, [collapsed])
 
     return (
         <div className={`card-row tier-${tier} ${collapsed && 'collapsed'}`}>

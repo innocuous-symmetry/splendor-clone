@@ -1,9 +1,9 @@
 import { describe, expect, test } from "vitest"
-import cardTierToKey from "./cardTierToKey";
+import cardTierToKey from "./mechanics/cardTierToKey";
 import { mockPlayerOne, mockState } from "./testUtils";
-import { turnOrderUtil } from "./turnOrderUtil";
+import { turnOrderUtil } from "./mechanics/TurnOrderUtil";
 import { useCurrentPlayer } from "../hooks/useCurrentPlayer";
-import getTotalBuyingPower from "./getTotalBuyingPower";
+import getTotalBuyingPower from "./mechanics/getTotalBuyingPower";
 
 describe('app utilities', () => {
     test('useCurrentPlayer', () => {

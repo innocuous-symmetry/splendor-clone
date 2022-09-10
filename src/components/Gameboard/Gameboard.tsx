@@ -1,18 +1,17 @@
 // types, data, utils
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import initializeBoard, { setCardRows } from '../../util/initializeBoard';
-import { AppState, PlayerData, ResourceCost } from '../../util/types';
+import initializeBoard, { setCardRows } from '../../util/setup/initializeBoard';
+import { AppState, PlayerData, ResourceCost, UIState } from '../../util/types';
+import { defaultUIState } from '../../util/setup/defaultUIState';
 import { getChipsActions } from '../Player/ActionMethods';
 import { StateProps } from '../../util/propTypes';
 import './Gameboard.scss';
 
 // components
 import Nobles from '../Nobles/Nobles';
-import AvailableChips from '../Resources/AvailableChips';
 import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
-import SelectionView from '../Resources/SelectionView';
 import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
 import usePreviousPlayer from '../../hooks/usePreviousPlayer';
 const { validateChips } = getChipsActions;
@@ -20,7 +19,7 @@ const { validateChips } = getChipsActions;
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>);
     const [endgame, setEndgame] = useState<PlayerData>();
-    const [winner, setWinner] = useState<PlayerData>();
+    const [UICollapse, setUICollapse] = useState<UIState>(defaultUIState);
 
     // callbacks for lifting state
     const liftSelection = useCallback((value: keyof ResourceCost) => {
@@ -46,6 +45,29 @@ export default function Gameboard({ state, setState }: StateProps) {
             return newState;
         })
     }, [state]);
+
+    const liftCollapsed = useCallback((collapsed: boolean, tier?: number) => {
+        /**
+         * if tier is not provided, default should refer to the nobles row
+         * update ui collapse state within gameboard
+         * pass this section of state as a dependency to new useEffect
+         * if any of the four rows are open, collapse player ui
+         * 
+         * todo: incorporate "collapse all rows" to player ui
+         * also incorporate "collapse player ui"?
+        **/
+
+        switch (tier) {
+            case 1:
+                setUICollapse((prev) => {
+                    return prev;
+                })
+                break;
+            case 2: break;
+            case 3: break;
+            default: break;
+        }
+    }, [])
 
     // util functions, setup on mount
     useEffect(() => initializeBoard(state, setState), [])
@@ -90,10 +112,10 @@ export default function Gameboard({ state, setState }: StateProps) {
                     <h2 id="round-marker">Round: {state.round}</h2>
                     <div className="gameboard-columns">
                         <section className="gameboard-left">
-                            <Nobles state={state} setState={setState} />
-                            <CardRow tier={3} state={state} setState={setState} />
-                            <CardRow tier={2} state={state} setState={setState} />
-                            <CardRow tier={1} state={state} setState={setState} />
+                            <Nobles state={state} setState={setState} liftCollapsed={liftCollapsed} />
+                            <CardRow tier={3} state={state} setState={setState} liftCollapsed={liftCollapsed} />
+                            <CardRow tier={2} state={state} setState={setState} liftCollapsed={liftCollapsed} />
+                            <CardRow tier={1} state={state} setState={setState} liftCollapsed={liftCollapsed} />
                         </section>
                         <section className="gameboard-right">
                             <AllPlayers state={state} setState={setState} liftSelection={liftSelection} />

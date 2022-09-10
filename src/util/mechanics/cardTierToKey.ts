@@ -1,4 +1,4 @@
-import { FullDeck } from "./types"
+import { FullDeck } from "../types"
 
 export default function cardTierToKey(tier: number): keyof FullDeck {
     switch (tier) {

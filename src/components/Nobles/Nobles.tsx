@@ -1,10 +1,10 @@
 import { v4 } from "uuid";
 import { NobleData, ResourceCost } from "../../util/types";
-import { StateProps } from "../../util/propTypes";
+import { NobleProps } from "../../util/propTypes";
 import "../Nobles/Nobles.scss"
 import { useState } from "react";
 
-export default function Nobles({ state }: StateProps) {
+export default function Nobles({ state }: NobleProps) {
     const [collapsed, setCollapsed] = useState(true);
 
     if (!state.gameboard.nobles.length) {
@@ -19,7 +19,7 @@ export default function Nobles({ state }: StateProps) {
     return (
         <div className={`nobles-panel ${collapsed && 'collapsed'}`}>
             <div className="nobles-topbar">
-                <strong className="nobles-header">NOBLES</strong>
+                <strong className="nobles-header">Nobles</strong>
                 <button onClick={() => setCollapsed(!collapsed)}>{collapsed ? "Show" : "Hide"}</button>
             </div>
             <div className={collapsed ? "hidden" : "all-nobles"}>

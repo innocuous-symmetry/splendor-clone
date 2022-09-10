@@ -1,4 +1,4 @@
-import { PlayerData, ResourceCost } from "./types";
+import { PlayerData, ResourceCost } from "../types";
 
 export default function getTotalBuyingPower(currentPlayer: PlayerData) {
     let totalBuyingPower = {

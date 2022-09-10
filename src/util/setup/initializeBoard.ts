@@ -1,5 +1,5 @@
-import { AppState, FullDeck, NobleData, ResourceCost, setStateType } from "./types";
-import NobleStore from '../data/nobles.json';
+import { AppState, FullDeck, NobleData, ResourceCost, setStateType } from "../types";
+import NobleStore from '../../data/nobles.json';
 
 const shuffleDeck = (state: AppState, setState: setStateType) => {
     if (!state.gameboard.deck) return;
