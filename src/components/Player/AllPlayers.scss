@@ -4,19 +4,24 @@
 
 .all-players {
     display: flex;
+    flex-flow: column nowrap;
     justify-content: space-around;
-    max-width: 80vw;
-    padding: 0 2rem;
+    align-items: center;
     background-color: rgb(237, 213, 156);
     color: black;
 
     .player-ui {
-        width: 30vw;
-        p {
-            margin: 1rem;
-        }
         .subheader {
             font-weight: bold;
+        }
+
+        background-color:rgb(172, 149, 94);
+        margin: 1rem 0;
+        padding: 0 2rem;
+
+        .turn-and-action-based {
+            display: flex;
+            flex-flow: row nowrap;
         }
 
         .resources {

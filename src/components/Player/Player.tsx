@@ -52,14 +52,11 @@ export default function Player({ player, state, setState }: PlayerProps) {
     }
 
     return (
-        <div className={dynamic && dynamic.turnActive ? 'player-ui' : 'hidden'} key={v4()}>
+        <div className="player-ui" key={v4()}>
             <p className="subheader">Name: {player.name} {player.starter && "(round starter)"}</p>
+            <p>Score: {dynamic && dynamic.points}</p>
 
-            {/* Dynamic data from state */}
             <section className="turn-and-action-based">
-                <p>Score: {dynamic && dynamic.points}</p>
-
-                {/* Player actions */}
                 <button
                     disabled={(dynamic && hasMaxChips(dynamic)) || (!dynamic?.turnActive)}
                     onClick={() => handleClick(0)}>

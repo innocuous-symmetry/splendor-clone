@@ -37,7 +37,7 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
                     <p>Remaining: {state.gameboard.deck[typedTier].length}</p>
                 </div>
                 { cards && cards.map((cardData: CardData) => {
-                    return <Card key={v4()} data={cardData} state={state} setState={setState} />
+                    return <Card key={v4()} data={cardData} state={state} setState={setState} collapsed={collapsed} />
                 })}
             </div>
         </div>

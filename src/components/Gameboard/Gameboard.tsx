@@ -87,18 +87,18 @@ export default function Gameboard({ state, setState }: StateProps) {
         } else {
             setView(
                 <div className="gameboard">
-                    <section className="gameboard-left">
-                        <h2>Round: {state.round}</h2>
-                        <Nobles state={state} setState={setState} />
-                        <CardRow tier={3} state={state} setState={setState} />
-                        <CardRow tier={2} state={state} setState={setState} />
-                        <CardRow tier={1} state={state} setState={setState} />
-                    </section>
-                    <section className="gameboard-right">
-                        <SelectionView state={state} setState={setState} />
-                        <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
-                        <AllPlayers state={state} setState={setState} />
-                    </section>
+                    <h2 id="round-marker">Round: {state.round}</h2>
+                    <div className="gameboard-columns">
+                        <section className="gameboard-left">
+                            <Nobles state={state} setState={setState} />
+                            <CardRow tier={3} state={state} setState={setState} />
+                            <CardRow tier={2} state={state} setState={setState} />
+                            <CardRow tier={1} state={state} setState={setState} />
+                        </section>
+                        <section className="gameboard-right">
+                            <AllPlayers state={state} setState={setState} liftSelection={liftSelection} />
+                        </section>
+                    </div>
                 </div>
             )
         }

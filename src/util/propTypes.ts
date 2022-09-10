@@ -8,14 +8,11 @@ export interface StateProps {
 export interface CardProps extends StateProps {
     data: CardData
     reserved?: boolean
+    collapsed?: boolean
 }
 
 export interface CardRowProps extends StateProps {
     tier: number
-}
-
-export interface AllPlayersProps extends StateProps {
-    setActionState: (value: SetActionType, player?: PlayerData) => void
 }
 
 export interface PlayerProps extends StateProps {

@@ -6,7 +6,7 @@ import { buyCardActions } from '../Player/ActionMethods';
 import { hasMaxReserved, reserveCard } from '../Player/ActionMethods/reserveCardActions';
 const { buyCard, tooExpensive } = buyCardActions;
 
-export default function Card({ data, state, setState, reserved = false }: CardProps) {
+export default function Card({ data, state, setState, reserved = false, collapsed = false }: CardProps) {
     const currentPlayer = useCurrentPlayer(state);
     if (!data || !currentPlayer) return <div className="card"></div>;
 
@@ -18,7 +18,7 @@ export default function Card({ data, state, setState, reserved = false }: CardPr
 
     return (
         <div className='card' key={v4()}>
-            <img src={data.image} loading="lazy" />
+            { collapsed ? <div className={`img-placeholder-${data.gemValue}`}></div> : <img src={data.image} loading="lazy" /> }
             <div className={reserved ? `foreground-${data.gemValue}` : 'foreground'}>
                 <section className="card-top-section">
                     <p>{data.gemValue.toUpperCase()}</p>
