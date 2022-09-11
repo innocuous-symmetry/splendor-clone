@@ -46,17 +46,7 @@ export default function Gameboard({ state, setState }: StateProps) {
         })
     }, [state]);
 
-    const liftCollapsed = useCallback((collapsed: boolean, tier?: number) => {
-        /**
-         * if tier is not provided, default should refer to the nobles row
-         * update ui collapse state within gameboard
-         * pass this section of state as a dependency to new useEffect
-         * if any of the four rows are open, collapse player ui
-         * 
-         * todo: incorporate "collapse all rows" to player ui
-         * also incorporate "collapse player ui"?
-        **/
-        
+    const liftCollapsed = useCallback((collapsed: boolean, tier = 5) => {
         setUICollapse((prev: UIState) => {
             switch (tier) {
                 case 1:
@@ -81,11 +71,7 @@ export default function Gameboard({ state, setState }: StateProps) {
                     }
             }
         });
-
-        
-    }, [UICollapse])
-
-    useEffect(() => console.log(UICollapse), [UICollapse]);
+    }, [UICollapse, setUICollapse])
 
     // util functions, setup on mount
     useEffect(() => initializeBoard(state, setState), [])
@@ -142,7 +128,7 @@ export default function Gameboard({ state, setState }: StateProps) {
                 </div>
             )
         }
-    }, [state]);
+    }, [state, UICollapse]);
 
     return view
 }

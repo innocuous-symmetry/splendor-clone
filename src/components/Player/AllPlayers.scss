@@ -10,10 +10,6 @@
     background-color: rgb(188, 176, 146);
     color: black;
 
-    &.collapsed {
-        background-color: red;
-    }
-
     .player-ui {
         .subheader {
             font-weight: bold;
@@ -76,4 +72,10 @@
             }
         }
     }
+}
+
+.mini-player-ui {
+    background-color: red;
+    width: 10vw;
+    align-items: flex-end;
 }

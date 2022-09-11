@@ -6,9 +6,11 @@ import { AllPlayersProps } from "../../util/propTypes";
 import AvailableChips from "../Resources/AvailableChips";
 import SelectionView from "../Resources/SelectionView";
 import "./AllPlayers.scss"
+import { shouldRightSideCollapse } from "../../util/mechanics/shouldRightSideCollapse";
 
 export default function AllPlayers({ state, setState, liftSelection, UICollapse }: AllPlayersProps) {
     const [playerView, setPlayerView] = useState<JSX.Element>();
+    const [collapseClass, setCollapseClass] = useState("all-players");
 
     useEffect(() => {
         const currentPlayer = useCurrentPlayer(state);
@@ -16,8 +18,12 @@ export default function AllPlayers({ state, setState, liftSelection, UICollapse 
         setPlayerView(<Player key={v4()} player={currentPlayer} state={state} setState={setState} />);
     }, [state]);
 
+    useEffect(() => {
+        setCollapseClass( shouldRightSideCollapse(UICollapse) ? "mini-player-ui" : "all-players" );
+    }, [UICollapse]);
+
     return (
-        <div className={UICollapse.playerUICollapsed ? "all-players collapsed" : "all-players"}>
+        <div className={collapseClass}>
             <SelectionView state={state} setState={setState} />
             <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
             { playerView }

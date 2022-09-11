@@ -7,6 +7,10 @@ import { useEffect, useState } from "react";
 export default function Nobles({ state, liftCollapsed }: NobleProps) {
     const [collapsed, setCollapsed] = useState(true);
 
+    useEffect(() => {
+        liftCollapsed(collapsed);
+    }, [collapsed]);
+
     if (!state.gameboard.nobles.length) {
         return (
             <div className="nobles-panel">
@@ -15,11 +19,7 @@ export default function Nobles({ state, liftCollapsed }: NobleProps) {
             </div>
         )
     }
-
-    // useEffect(() => {
-    //     liftCollapsed(collapsed, 5);
-    // }, [collapsed]);
-
+    
     return (
         <div className={`nobles-panel ${collapsed && 'collapsed'}`}>
             <div className="nobles-topbar">
