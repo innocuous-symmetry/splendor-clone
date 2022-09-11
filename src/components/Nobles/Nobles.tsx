@@ -2,9 +2,9 @@ import { v4 } from "uuid";
 import { NobleData, ResourceCost } from "../../util/types";
 import { NobleProps } from "../../util/propTypes";
 import "../Nobles/Nobles.scss"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function Nobles({ state }: NobleProps) {
+export default function Nobles({ state, liftCollapsed }: NobleProps) {
     const [collapsed, setCollapsed] = useState(true);
 
     if (!state.gameboard.nobles.length) {
@@ -15,6 +15,10 @@ export default function Nobles({ state }: NobleProps) {
             </div>
         )
     }
+
+    // useEffect(() => {
+    //     liftCollapsed(collapsed, 5);
+    // }, [collapsed]);
 
     return (
         <div className={`nobles-panel ${collapsed && 'collapsed'}`}>

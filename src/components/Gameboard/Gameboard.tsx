@@ -56,18 +56,36 @@ export default function Gameboard({ state, setState }: StateProps) {
          * todo: incorporate "collapse all rows" to player ui
          * also incorporate "collapse player ui"?
         **/
+        
+        setUICollapse((prev: UIState) => {
+            switch (tier) {
+                case 1:
+                    return {
+                        ...prev,
+                        tierOneCollapsed: collapsed
+                    }
+                case 2:
+                    return {
+                        ...prev,
+                        tierTwoCollapsed: collapsed
+                    }
+                case 3:
+                    return {
+                        ...prev,
+                        tierThreeCollapsed: collapsed
+                    }
+                default:
+                    return {
+                        ...prev,
+                        noblesCollapsed: collapsed
+                    }
+            }
+        });
 
-        switch (tier) {
-            case 1:
-                setUICollapse((prev) => {
-                    return prev;
-                })
-                break;
-            case 2: break;
-            case 3: break;
-            default: break;
-        }
-    }, [])
+        
+    }, [UICollapse])
+
+    useEffect(() => console.log(UICollapse), [UICollapse]);
 
     // util functions, setup on mount
     useEffect(() => initializeBoard(state, setState), [])
@@ -118,7 +136,7 @@ export default function Gameboard({ state, setState }: StateProps) {
                             <CardRow tier={1} state={state} setState={setState} liftCollapsed={liftCollapsed} />
                         </section>
                         <section className="gameboard-right">
-                            <AllPlayers state={state} setState={setState} liftSelection={liftSelection} />
+                            <AllPlayers state={state} setState={setState} liftSelection={liftSelection} UICollapse={UICollapse} />
                         </section>
                     </div>
                 </div>

@@ -1,4 +1,4 @@
-import { AppState, CardData, PlayerData, ResourceCost, SetActionType, setStateType } from "./types";
+import { AppState, CardData, PlayerData, ResourceCost, setStateType, UIState } from "./types";
 
 export interface StateProps {
     state: AppState,
@@ -28,3 +28,6 @@ export interface ResourceProps extends StateProps {
     liftSelection: (value: keyof ResourceCost) => void
 }
 
+export interface AllPlayersProps extends ResourceProps {
+    UICollapse: UIState
+}

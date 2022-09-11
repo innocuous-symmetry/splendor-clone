@@ -6,7 +6,7 @@ import { CardData } from "../../util/types"
 import Card from "../Card/Card"
 import "./CardRow.scss";
 
-export default function CardRow({tier, state, setState}: CardRowProps) {
+export default function CardRow({tier, state, setState, liftCollapsed}: CardRowProps) {
     const [collapsed, setCollapsed] = useState(true);
     const typedTier = cardTierToKey(tier);
 
@@ -27,11 +27,7 @@ export default function CardRow({tier, state, setState}: CardRowProps) {
     }
 
     useEffect(() => {
-        /**
-         * run callback function to pass state of collapsed to parent component
-         * repeat this process in Nobles.tsx
-        **/
-       console.log(collapsed);
+        liftCollapsed(collapsed, tier);
     }, [collapsed])
 
     return (
