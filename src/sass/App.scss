@@ -1,8 +1,6 @@
-@import './helper/placeholders';
-
 #root {
     .hidden {
-        @extend %hidden;
+        display: none;
     }
 
     .collapsed {

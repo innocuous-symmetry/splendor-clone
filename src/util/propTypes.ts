@@ -1,4 +1,3 @@
-import { Dispatch, SetStateAction } from "react";
 import { AppState, CardData, PlayerData, ResourceCost, setStateType, UIState } from "./types";
 
 export interface StateProps {
@@ -30,5 +29,9 @@ export interface ResourceProps extends StateProps {
 }
 
 export interface AllPlayersProps extends ResourceProps {
+    UICollapse: UIState
+}
+
+export interface SelectionProps extends StateProps {
     UICollapse: UIState
 }

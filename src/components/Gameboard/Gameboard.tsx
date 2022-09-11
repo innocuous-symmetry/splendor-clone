@@ -14,6 +14,7 @@ import AllPlayers from '../Player/AllPlayers';
 import CardRow from '../Card/CardRow';
 import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
 import usePreviousPlayer from '../../hooks/usePreviousPlayer';
+import { shouldRightSideCollapse } from '../../util/mechanics/shouldRightSideCollapse';
 const { validateChips } = getChipsActions;
 
 export default function Gameboard({ state, setState }: StateProps) {
@@ -115,13 +116,13 @@ export default function Gameboard({ state, setState }: StateProps) {
                 <div className="gameboard">
                     <h2 id="round-marker">Round: {state.round}</h2>
                     <div className="gameboard-columns">
-                        <section className="gameboard-left">
+                        <section className={shouldRightSideCollapse(UICollapse) ? "gameboard-left-expanded" : "gameboard-left"}>
                             <Nobles state={state} setState={setState} liftCollapsed={liftCollapsed} />
                             <CardRow tier={3} state={state} setState={setState} liftCollapsed={liftCollapsed} />
                             <CardRow tier={2} state={state} setState={setState} liftCollapsed={liftCollapsed} />
                             <CardRow tier={1} state={state} setState={setState} liftCollapsed={liftCollapsed} />
                         </section>
-                        <section className="gameboard-right">
+                        <section className={shouldRightSideCollapse(UICollapse) ? "gameboard-right-compact" : "gameboard-right"}>
                             <AllPlayers state={state} setState={setState} liftSelection={liftSelection} UICollapse={UICollapse} />
                         </section>
                     </div>

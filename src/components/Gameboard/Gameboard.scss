@@ -33,5 +33,15 @@
             justify-content: flex-end;
             width: 50%;
         }
+
+        .gameboard-left-expanded {
+            align-items: flex-start;
+            width: 90%;
+        }
+
+        .gameboard-right-compact {
+            justify-content: flex-end;
+            width: 10%;
+        }
     }
 }

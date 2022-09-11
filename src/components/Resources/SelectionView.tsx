@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { StateProps } from "../../util/propTypes";
+import { SelectionProps } from "../../util/propTypes";
 import { useCurrentPlayer } from "../../hooks/useCurrentPlayer";
 import { GetChipsHTML, ReserveCardHTML } from "./ViewHTML";
-import './SelectionView.scss';
+import { shouldRightSideCollapse } from "../../util/mechanics/shouldRightSideCollapse";
 
-export default function SelectionView({ state, setState }: StateProps) {
+export default function SelectionView({ state, setState, UICollapse }: SelectionProps) {
     const [currentPlayer, setCurrentPlayer] = useState(useCurrentPlayer(state));
     const actionTypes = [
         state.actions.getChips,
@@ -16,20 +16,19 @@ export default function SelectionView({ state, setState }: StateProps) {
 
     useEffect(() => {
         setCurrentPlayer(useCurrentPlayer(state));
-
         setView(() => {
             switch (true) {
                 case (actionTypes[0].active):
-                    return <GetChipsHTML state={state} setState={setState} />
+                    return <GetChipsHTML state={state} setState={setState} UICollapse={UICollapse} />
                 case (actionTypes[1].active):
                     return (
-                        <div className="selection-view">
+                        <div className={shouldRightSideCollapse(UICollapse) ? "selection-view-mini" : "selection-view"}>
                             <h2>{currentPlayer?.name} has elected to purchase a card!</h2>
                             <strong>Choose a card above to purchase.</strong>
                         </div>
                     )
                 case (actionTypes[2].active):
-                    return <ReserveCardHTML state={state} setState={setState} />;
+                    return <ReserveCardHTML state={state} setState={setState} UICollapse={UICollapse} />;
                 default:
                     return (
                         <div className="selection-view">

@@ -2,15 +2,21 @@ import { useEffect, useState } from "react";
 import { v4 } from "uuid";
 import { setStateGetChips, setStateReserveCard, setStateReservePlusGold } from "../../hooks/stateSetters";
 import { useCurrentPlayer } from "../../hooks/useCurrentPlayer";
-import { StateProps } from "../../util/propTypes";
+import { shouldRightSideCollapse } from "../../util/mechanics/shouldRightSideCollapse";
+import { SelectionProps } from "../../util/propTypes";
 import { ResourceCost } from "../../util/types";
 import { getChipsActions } from "../Player/ActionMethods";
 import { hasMaxChips } from "../Player/ActionMethods/getChipsActions";
 const { getChips } = getChipsActions;
 
-export const GetChipsHTML = ({ state, setState }: StateProps) => {
+export const GetChipsHTML = ({ state, setState, UICollapse }: SelectionProps) => {
     const [prompt, setPrompt] = useState("");
+    const [style, setStyle] = useState("");
     const currentPlayer = useCurrentPlayer(state);
+
+    useEffect(() => {
+        setStyle(shouldRightSideCollapse(UICollapse) ? "selection-view-mini" : "selection-view");
+    }, [UICollapse]);
 
     useEffect(() => {
         if (!state.actions.getChips.active) setPrompt("");
@@ -22,7 +28,7 @@ export const GetChipsHTML = ({ state, setState }: StateProps) => {
     }, [state])
 
     return (
-        <div className="selection-view">
+        <div className={style}>
             <h2>{currentPlayer?.name} has elected to collect resources!</h2> 
             <strong>{prompt}</strong>
             <div className="current-selections">
@@ -41,9 +47,14 @@ export const GetChipsHTML = ({ state, setState }: StateProps) => {
     )
 }
 
-export const ReserveCardHTML = ({ state, setState }: StateProps) => {
+export const ReserveCardHTML = ({ state, setState, UICollapse }: SelectionProps) => {
     const [takeGold, setTakeGold] = useState(false);
+    const [style, setStyle] = useState("");
     const currentPlayer = useCurrentPlayer(state);
+
+    useEffect(() => {
+        setStyle(shouldRightSideCollapse(UICollapse) ? "selection-view-mini" : "selection-view");
+    }, [UICollapse]);
 
     useEffect(() => {
         switch (takeGold) {
@@ -59,7 +70,7 @@ export const ReserveCardHTML = ({ state, setState }: StateProps) => {
     }, [takeGold]);
 
     return (
-        <div className="selection-view">
+        <div className={style}>
             <h2>{currentPlayer?.name} has elected to reserve a card!</h2>
             <strong>Please make your selection above.</strong>
             { !hasMaxChips(currentPlayer) && (

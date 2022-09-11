@@ -19,12 +19,12 @@ export default function AllPlayers({ state, setState, liftSelection, UICollapse 
     }, [state]);
 
     useEffect(() => {
-        setCollapseClass( shouldRightSideCollapse(UICollapse) ? "mini-player-ui" : "all-players" );
+        setCollapseClass( shouldRightSideCollapse(UICollapse) ? "all-players-mini" : "all-players" );
     }, [UICollapse]);
 
     return (
         <div className={collapseClass}>
-            <SelectionView state={state} setState={setState} />
+            <SelectionView state={state} setState={setState} UICollapse={UICollapse} />
             <AvailableChips state={state} setState={setState} liftSelection={liftSelection} />
             { playerView }
         </div>

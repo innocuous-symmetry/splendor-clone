@@ -3,12 +3,21 @@
 @import '../../sass/helper/placeholders';
 
 .all-players {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-around;
-    align-items: center;
-    background-color: rgb(188, 176, 146);
-    color: black;
+    @extend %all-players-base;
+    .selection-view {
+        .current-selections {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include map-gem-values(".selection-value");
+            
+            p {
+                margin: 1rem;
+                padding: 1rem;
+                border-radius: 50%;
+            }
+        }
+    }
 
     .player-ui {
         .subheader {
@@ -41,41 +50,9 @@
                 @include map-gem-values(".reserve-cost");
             }
         }
-
-        .card {
-            width: 100%;
-
-            img {
-                display: none;
-            }
-
-            @each $gem in $gemlist {
-                @include map-gem-values('.foreground');
-                .foreground-#{$gem} {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    padding: 8px;
-
-                    p {
-                        display: inline;
-                        padding: 8px;
-                    }
-                    
-                    .total-card-cost {
-                        display: flex;
-                        flex-flow: row wrap;
-                        justify-content: center;
-                        @include map-gem-values(".card-cost");
-                    }
-                }
-            }
-        }
     }
 }
 
-.mini-player-ui {
-    background-color: red;
-    width: 10vw;
-    align-items: flex-end;
+.all-players-mini {
+    @extend %all-players-base;
 }
