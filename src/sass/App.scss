@@ -2,7 +2,7 @@
 
 #root {
     .hidden {
-        @extend %hidden;
+        display: none
     }
 
     display: flex;
