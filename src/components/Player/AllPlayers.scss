@@ -2,6 +2,56 @@
 @import '../../sass/helper/variables';
 @import '../../sass/helper/placeholders';
 
+// local placeholder
+%all-players-base {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(188, 176, 146);
+    color: black;
+
+    .player-ui {
+        .subheader {
+            font-weight: bold;
+        }
+
+        background-color:rgb(172, 149, 94);
+        margin: 1rem 0;
+        padding: 0 2rem;
+    }
+
+    .card {
+        width: 100%;
+
+        img {
+            display: none;
+        }
+
+        @each $gem in $gemlist {
+            @include map-gem-values('.foreground');
+            .foreground-#{$gem} {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 8px;
+
+                p {
+                    display: inline;
+                    padding: 8px;
+                }
+                
+                .total-card-cost {
+                    display: flex;
+                    flex-flow: row wrap;
+                    justify-content: center;
+                    @include map-gem-values(".card-cost");
+                }
+            }
+        }
+    }
+}
+
 .all-players {
     @extend %all-players-base;
     .selection-view {

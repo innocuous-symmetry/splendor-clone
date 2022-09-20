@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import initializeBoard, { setCardRows } from '../../util/setup/initializeBoard';
 import { AppState, PlayerData, ResourceCost, UIState } from '../../util/types';
 import { defaultUIState } from '../../util/setup/defaultUIState';
-import { getChipsActions } from '../Player/ActionMethods';
 import { StateProps } from '../../util/propTypes';
 import './Gameboard.scss';
 
@@ -15,7 +14,7 @@ import CardRow from '../Card/CardRow';
 import { useCurrentPlayer } from '../../hooks/useCurrentPlayer';
 import usePreviousPlayer from '../../hooks/usePreviousPlayer';
 import { shouldRightSideCollapse } from '../../util/mechanics/shouldRightSideCollapse';
-const { validateChips } = getChipsActions;
+import { setStateUpdateSelection } from '../../hooks/stateSetters';
 
 export default function Gameboard({ state, setState }: StateProps) {
     const [view, setView] = useState(<p>Loading...</p>);
@@ -25,26 +24,7 @@ export default function Gameboard({ state, setState }: StateProps) {
     // callbacks for lifting state
     const liftSelection = useCallback((value: keyof ResourceCost) => {
         if (!state.actions.getChips.active) return;
-        setState((prev: AppState) => {
-            let newSelection = prev.actions.getChips.selection;
-            newSelection?.push(value);
-
-            let newState = {
-                ...prev,
-                actions: {
-                    ...state.actions,
-                    getChips: {
-                        active: true,
-                        selection: newSelection,
-                        valid: false
-                    }
-                }
-            }
-
-            const result = validateChips(newState);
-            newState.actions.getChips.valid = result;
-            return newState;
-        })
+        setState((prev: AppState) => setStateUpdateSelection(prev, value));
     }, [state]);
 
     const liftCollapsed = useCallback((collapsed: boolean, tier = 5) => {
@@ -123,7 +103,9 @@ export default function Gameboard({ state, setState }: StateProps) {
                             <CardRow tier={1} state={state} setState={setState} liftCollapsed={liftCollapsed} />
                         </section>
                         <section className={shouldRightSideCollapse(UICollapse) ? "gameboard-right-compact" : "gameboard-right"}>
-                            <AllPlayers state={state} setState={setState} liftSelection={liftSelection} UICollapse={UICollapse} />
+                            <AllPlayers
+                                state={state} setState={setState} liftSelection={liftSelection}
+                                UICollapse={UICollapse} setUICollapse={setUICollapse} liftCollapsed={liftCollapsed} />
                         </section>
                     </div>
                 </div>

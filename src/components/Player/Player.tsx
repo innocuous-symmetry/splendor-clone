@@ -1,10 +1,10 @@
-import { setStateAwaitAction, setStateBuyCard, setStateGetChips, setStateReserveCard } from "../../hooks/stateSetters";
 import { useEffect, useState } from "react";
-import { PlayerProps } from "../../util/propTypes";
-import { CardData, PlayerData } from "../../util/types"
+import { v4 } from "uuid";
+import { setStateAwaitAction, setStateBuyCard, setStateGetChips, setStateReserveCard } from "../../hooks/stateSetters";
 import { hasMaxReserved } from "./ActionMethods/reserveCardActions";
 import { hasMaxChips } from "./ActionMethods/getChipsActions";
-import { v4 } from "uuid";
+import { CardData, PlayerData } from "../../util/types"
+import { PlayerProps } from "../../util/propTypes";
 import Card from "../Card/Card";
 
 export default function Player({ player, state, setState }: PlayerProps) {

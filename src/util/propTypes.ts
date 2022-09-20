@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { AppState, CardData, PlayerData, ResourceCost, setStateType, UIState } from "./types";
 
 export interface StateProps {
@@ -29,7 +30,9 @@ export interface ResourceProps extends StateProps {
 }
 
 export interface AllPlayersProps extends ResourceProps {
-    UICollapse: UIState
+    UICollapse: UIState,
+    setUICollapse: Dispatch<SetStateAction<UIState>>
+    liftCollapsed: (collapsed: boolean, tier?: number) => void
 }
 
 export interface SelectionProps extends StateProps {

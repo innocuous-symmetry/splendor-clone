@@ -18,7 +18,9 @@ export default function Card({ data, state, setState, reserved = false, collapse
 
     return (
         <div className='card' key={v4()}>
+            { /*
             { collapsed ? <div className={`img-placeholder-${data.gemValue}`}></div> : <img src={data.image} loading="lazy" /> }
+            */ }
             <div className={reserved ? `foreground-${data.gemValue}` : 'foreground'}>
                 <section className="card-top-section">
                     <p>{data.gemValue.toUpperCase()}</p>

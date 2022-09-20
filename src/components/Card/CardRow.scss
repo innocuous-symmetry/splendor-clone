@@ -23,8 +23,7 @@
         width: 100%;
 
         .card {
-            width: 35%;
-            height: 40vh;
+            width: 18%;
             border: 2px solid black;
 
             img {
@@ -35,8 +34,8 @@
             }
 
             .foreground {
-                position: relative;
-                top: -100%;
+                // position: relative;
+                // top: -100%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;

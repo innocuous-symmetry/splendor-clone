@@ -1,5 +1,6 @@
-import { AppState, CardData, NobleData, PlayerData, ResourceCost } from "../util/types";
+import { AppState, CardData, NobleData, PlayerData, ResourceCost, UIState } from "../util/types";
 import CardDeck from '../data/cards.json';
+import { validateChips } from "../components/Player/ActionMethods/getChipsActions";
 
 export const initialActions = {
     buyCard: { active: false },
@@ -49,6 +50,27 @@ export const setStateGetChips = (prev: AppState) => {
             }
         }
     }
+}
+
+export const setStateUpdateSelection = (prev: AppState, value: keyof ResourceCost) => {
+    let newSelection = prev.actions.getChips.selection;
+            newSelection?.push(value);
+
+            let newState = {
+                ...prev,
+                actions: {
+                    ...prev.actions,
+                    getChips: {
+                        active: true,
+                        selection: newSelection,
+                        valid: false
+                    }
+                }
+            }
+
+            const result = validateChips(newState);
+            newState.actions.getChips.valid = result;
+            return newState;
 }
 
 export const setStateBuyCard = (prev: AppState) => {
